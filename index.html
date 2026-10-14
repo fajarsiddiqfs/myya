@@ -96,6 +96,17 @@ nav #menu li:last-child a{border-bottom:2px solid var(--b)}}
 @media(max-width:860px){.hero-grid{grid-template-columns:1fr;gap:24px}.hero-text{text-align:center}.hero-text h1{font-size:clamp(40px,10vw,64px)}.hero-text .sub{margin-top:24px}.rot{text-align:center;font-size:clamp(34px,10vw,56px)}.hero-img{justify-self:center;max-width:100%}}
 @media(max-width:860px){.cards{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:640px){.tiers,.cards{grid-template-columns:1fr}.hero{padding:12px 0 0}section{padding:56px 0}.rot{min-width:100%}}
+.feat{padding:80px 0}.feat.alt{background:var(--g)}
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.feat.rev .feat-text{order:2}
+.feat-label{display:inline-block;background:var(--b);color:var(--w);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 14px;border-radius:999px;margin-bottom:16px}
+.feat h2{text-align:left}
+.feat-text p{margin-top:18px;font-size:clamp(15px,1.6vw,18px);color:var(--m);max-width:520px}
+.media{position:relative;aspect-ratio:4/3;border:2px solid var(--b);border-radius:24px;overflow:hidden;background:var(--w)}
+.media img{display:block;width:100%;height:100%;object-fit:cover}
+.media.ph{display:flex;align-items:center;justify-content:center;color:var(--m);font-size:14px;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+@media(max-width:860px){.feat-grid{grid-template-columns:1fr;gap:32px;justify-items:center;text-align:center}.feat.rev .feat-text{order:0}.feat h2{text-align:center}.feat-text p{margin-left:auto;margin-right:auto}.media{width:100%;max-width:560px;margin:0 auto}}
+@media(max-width:640px){.feat{padding:56px 0}}
 .stats{background:var(--b);padding:44px 0}
 .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
 .stat b{display:block;font-family:Anton,Impact,'Arial Narrow',Inter,sans-serif;font-weight:400;font-size:clamp(48px,7vw,88px);line-height:1;letter-spacing:.01em;color:var(--w)}
@@ -198,6 +209,67 @@ nav #menu li:last-child a{border-bottom:2px solid var(--b)}}
         <a class="btn" href="#" data-join="member">Join</a>
       </div>
     </div>
+  </div>
+</section>
+
+<section class="feat" id="about">
+  <div class="wrap feat-grid">
+    <div class="feat-text">
+      <span class="feat-label">About Us</span>
+      <h2>A Community That Moves Together.</h2>
+      <p>We're bringing Malaysia's yo-yo players and enthusiasts together to share skills, express creativity, and grow the community.</p>
+    </div>
+    <div class="media ph" role="img" aria-label="About image">Image</div>
+  </div>
+</section>
+
+<section class="feat alt rev" id="events">
+  <div class="wrap feat-grid">
+    <div class="feat-text">
+      <h2>Malaysia Yo-Yo Championships</h2>
+      <p>Description coming soon.</p>
+    </div>
+    <div class="media ph" role="img" aria-label="Events image">Image</div>
+  </div>
+</section>
+
+<section class="feat" id="meetups">
+  <div class="wrap feat-grid">
+    <div class="feat-text">
+      <h2>Meet-Ups</h2>
+      <p>Description coming soon.</p>
+    </div>
+    <div class="media ph" role="img" aria-label="Meet-Ups image">Image</div>
+  </div>
+</section>
+
+<section class="feat alt rev" id="learn">
+  <div class="wrap feat-grid">
+    <div class="feat-text">
+      <h2>Learn</h2>
+      <p>Description coming soon.</p>
+    </div>
+    <div class="media ph" role="img" aria-label="Learn image">Image</div>
+  </div>
+</section>
+
+<section class="feat" id="clubs">
+  <div class="wrap feat-grid">
+    <div class="feat-text">
+      <h2>Clubs</h2>
+      <p>Description coming soon.</p>
+    </div>
+    <div class="media ph" role="img" aria-label="Clubs image">Image</div>
+  </div>
+</section>
+
+<section class="feat alt rev" id="shops">
+  <div class="wrap feat-grid">
+    <div class="feat-text">
+      <h2>Shops</h2>
+      <p>Description coming soon.</p>
+    </div>
+    <div class="media ph" role="img" aria-label="Shops image">Image</div>
   </div>
 </section>
 

@@ -147,6 +147,7 @@ nav #menu li:last-child a{border-bottom:2px solid var(--b)}}
 .reel-info .rt{font-size:17px;font-weight:800;line-height:1.25;margin:0 0 4px}
 .reel-info .rd{font-size:13px;line-height:1.4;opacity:.85;margin:0}
 .reel.playing .reel-shade,.reel.playing .reel-play,.reel.playing .reel-info{opacity:0}
+.reel.broken::before,.vs.broken::before{content:"Can't play here \2014  tap to open video";position:absolute;top:42%;left:0;right:0;text-align:center;color:#fff;font:600 14px/1.3 sans-serif;z-index:1;opacity:.9}
 .reel:focus-visible{outline:3px solid var(--b);outline-offset:3px}
 @media(max-width:860px){.reel{flex-basis:calc((100% - 20px)/2)}}
 @media(max-width:560px){.reel{flex-basis:78%;border-radius:24px}}
@@ -773,10 +774,11 @@ var REELS=[
       var v=document.createElement("video");v.playsInline=true;v.setAttribute("playsinline","");v.preload="metadata";v.loop=true;
       if(r.poster)v.poster=r.poster;
       v.src=r.src+(r.src.indexOf("#")<0?"#t="+(r.t||0.1):"");
+      v.addEventListener("error",function(){c.classList.add("broken");console.error("Trick Circle video failed to load:",v.src,v.error&&v.error.code,v.error&&v.error.message);});
       c.insertBefore(v,c.firstChild);
     }
     (function(c,k){
-      function toggle(){openV(k);}
+      function toggle(){if(c.classList.contains("broken")&&REELS[k]&&REELS[k].src){window.open(REELS[k].src,"_blank","noopener");return;}openV(k);}
       c.addEventListener("click",toggle);
       c.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();toggle();}});
     })(c,k);
@@ -810,7 +812,8 @@ var REELS=[
   REELS.forEach(function(r,i){
     var s=document.createElement("div");s.className="vs";
     s.innerHTML='<video playsinline preload="metadata"></video><div class="vs-nb">'+AV+'<b>'+esc(r.title)+'</b><span>'+esc(r.desc)+'</span></div><div class="vs-ui"><div class="vs-bar"><i></i></div><div class="vs-top">'+AV+'<div class="vs-t"><b>MYYA'+VB+'</b><a class="vs-ig" href="https://instagram.com/malaysiayoyoassociation" target="_blank" rel="noopener">'+IG+'@malaysiayoyoassociation</a></div><button type="button" class="vs-mu" aria-label="Mute">'+SM+'</button><button type="button" class="vs-pp" aria-label="Play or pause">'+SU+'</button></div><div class="vs-cap"><b>'+esc(r.title)+'</b><p>'+esc(r.desc)+'</p></div></div>';
-    var v=s.querySelector("video");v.src=r.src+"#t=0.1";if(r.poster)v.poster=r.poster;
+    var v=s.querySelector("video");v.dataset.src=r.src+"#t="+(r.t||0.1);if(r.poster)v.poster=r.poster;
+    v.addEventListener("error",function(){s.classList.add("broken");console.error("Trick Circle viewer video failed:",v.currentSrc,v.error&&v.error.code,v.error&&v.error.message);});
     var bar=s.querySelector(".vs-bar i"),pp=s.querySelector(".vs-pp");
     v.addEventListener("timeupdate",function(){if(v.duration)bar.style.width=(v.currentTime/v.duration*100)+"%";});
     v.addEventListener("play",function(){pp.innerHTML=SU;});v.addEventListener("pause",function(){pp.innerHTML=SP;});
@@ -826,7 +829,9 @@ var REELS=[
   function layout(){
     var A=slides[0].offsetWidth,sc=.56,N=A*sc,G=36;vw.style.setProperty("--A",A+"px");
     slides.forEach(function(s,i){
-      var d=i-cur,a=Math.abs(d),x=d===0?0:(d<0?-1:1)*(A/2+G+N/2+(a-1)*(N+G));
+      var d=i-cur,a=Math.abs(d),vv=s.querySelector("video");
+      if(a<=1&&!vv.getAttribute("src")&&vv.dataset.src){vv.src=vv.dataset.src;}
+      var x=d===0?0:(d<0?-1:1)*(A/2+G+N/2+(a-1)*(N+G));
       s.style.setProperty("--x",x+"px");s.style.setProperty("--s",d===0?1:sc);
       s.style.opacity=a>2?0:(d===0?1:.6);s.style.pointerEvents=a>2?"none":"auto";s.style.zIndex=10-a;s.classList.toggle("on",d===0);
     });

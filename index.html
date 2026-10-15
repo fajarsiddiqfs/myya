@@ -131,8 +131,8 @@ nav #menu li:last-child a{border-bottom:2px solid var(--b)}}
 .reels-head p{color:var(--m);margin-top:14px;font-size:17px;line-height:1.6}
 .rc-track{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch}
 .rc-track::-webkit-scrollbar{display:none}
-.reel{flex:0 0 calc((100% - 40px)/3);scroll-snap-align:start;aspect-ratio:9/16;border-radius:28px;overflow:hidden;background:#000;position:relative;cursor:pointer;-webkit-tap-highlight-color:transparent}
-.reel video{display:block;width:100%;height:100%;object-fit:cover;background:#000}
+.reel{flex:0 0 calc((100% - 40px)/3);scroll-snap-align:start;aspect-ratio:9/16;border-radius:28px;overflow:hidden;background:var(--g);position:relative;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.reel video{display:block;width:100%;height:100%;object-fit:cover;background:transparent}
 .reel-shade{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.78) 0%,rgba(0,0,0,0) 48%);pointer-events:none;transition:opacity .25s}
 .reel-play{position:absolute;top:50%;left:50%;width:64px;height:64px;margin:-32px 0 0 -32px;color:#fff;pointer-events:none;filter:drop-shadow(0 2px 8px rgba(0,0,0,.45));transition:opacity .25s}
 .reel-play svg{display:block;width:100%;height:100%;fill:currentColor}
@@ -148,8 +148,8 @@ nav #menu li:last-child a{border-bottom:2px solid var(--b)}}
 .vw-brand{position:absolute;top:22px;left:26px;font-size:22px;font-weight:800;letter-spacing:-.02em}
 .vw-x{position:absolute;top:12px;right:16px;z-index:6;width:48px;height:48px;border:0;background:none;color:#fff;cursor:pointer;display:grid;place-items:center}
 .vw-x svg{width:30px;height:30px}
-.vs{position:absolute;top:50%;left:50%;width:calc(var(--h)*9/16);height:var(--h);border-radius:18px;overflow:hidden;background:#000;cursor:pointer;transform:translate(calc(-50% + var(--x,0px)),-50%) scale(var(--s,1));transition:transform .45s cubic-bezier(.3,.7,.2,1),opacity .3s}
-.vs video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#000}
+.vs{position:absolute;top:50%;left:50%;width:calc(var(--h)*9/16);height:var(--h);border-radius:18px;overflow:hidden;background:transparent;cursor:pointer;transform:translate(calc(-50% + var(--x,0px)),-50%) scale(var(--s,1));transition:transform .45s cubic-bezier(.3,.7,.2,1),opacity .3s}
+.vs video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:transparent}
 .vs:not(.on)::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.38)}
 .vs-nb{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 16px;gap:4px;text-shadow:0 1px 8px rgba(0,0,0,.6)}
 .vs-nb .av{width:84px;height:84px;font-size:34px;margin-bottom:8px;box-shadow:0 0 0 4px #000,0 0 0 7px #e1306c}
@@ -476,9 +476,9 @@ nav #menu li:last-child a{border-bottom:2px solid var(--b)}}
 <section class="feat rev" id="clubs">
   <div class="wrap feat-grid">
     <div class="feat-text">
-      <span class="feat-label">Build Champions &amp; Legacy</span>
+      <span class="feat-label">Building Champions &amp; Legends</span>
       <h2>Yo-Yo Clubs</h2>
-      <p>From sharing new tricks and freestyle showcases to preparing for the World Yo-Yo Championships and Asia-Pacific Yo-Yo Championships, International Yo-Yo Contest, yo-yo clubs bring players together to practise, learn, and push their limits. Build friendships, sharpen your skills, and help shape the next generation of Malaysian yo-yo champions.</p>
+      <p>From sharing new tricks and freestyle showcases to preparing for the World Yo-Yo Championships, Asia-Pacific Yo-Yo Championships other International Yo-Yo Contest, yo-yo clubs bring players together to practise, learn, and push their limits. Build friendships, sharpen your skills, and help shape the next generation of Malaysian yo-yo champions.</p>
       <a class="btn feat-btn" href="https://www.instagram.com/strongeryoyocup/" target="_blank" rel="noopener">Get Together</a>
     </div>
     <div class="slider" role="region" aria-roledescription="carousel" aria-label="Yo-yo club photos">
@@ -501,8 +501,8 @@ nav #menu li:last-child a{border-bottom:2px solid var(--b)}}
   <div class="wrap feat-grid">
     <div class="feat-text">
       <span class="feat-label">Product &amp; Brands</span>
-      <h2>Yo-Yo Shops</h2>
-      <p>Discover yo-yo shops, local brands, trusted international brands, equipment, and accessories for every player. From affordable beginner yo-yos to professional competition gear, explore other yo-yo shops, support homegrown Malaysian brands, and meet the people driving Malaysia’s yo-yo scene forward.</p>
+      <h2>Yo-Yo Shop</h2>
+      <p>Discover local yo-yo brands, trusted international brands, equipment, and accessories for every yo-yo player. From affordable beginner yo-yos to professional competition gear, explore and support homegrown Malaysian brands, and meet the people driving Malaysia’s yo-yo scene forward.</p>
       <a class="btn feat-btn" href="https://kedaiyoyo.com/" target="_blank" rel="noopener">Buy Now</a>
     </div>
     <div class="slider fit" role="region" aria-roledescription="carousel" aria-label="Yo-yo shop products">
@@ -674,13 +674,13 @@ nav #menu li:last-child a{border-bottom:2px solid var(--b)}}
   els.forEach(function(el){io.observe(el);});
 })();
 Array.prototype.forEach.call(document.querySelectorAll(".slider"),function(sl){
-  var tr=sl.querySelector(".sl-track"),n=tr.children.length,dots=sl.querySelectorAll(".sl-dots button"),cap=sl.querySelector(".sl-cap"),i=0,timer=null;
+  var tr=sl.querySelector(".sl-track"),n=tr.children.length,dots=sl.querySelectorAll(".sl-dots button"),cap=sl.querySelector(".sl-cap"),i=0,timer=null,lk=null;
   var reduce=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
   function mark(k){i=k;for(var j=0;j<dots.length;j++)dots[j].classList.toggle("on",j===k);if(cap)cap.textContent=tr.children[k].getAttribute("data-cap")||"";}
-  function go(k){k=(k+n)%n;mark(k);tr.scrollTo({left:k*tr.clientWidth,behavior:reduce?"auto":"smooth"});}
+  function go(k){k=(k+n)%n;mark(k);clearTimeout(lk);lk=setTimeout(function(){lk=null;},650);tr.scrollTo({left:k*tr.clientWidth,behavior:reduce?"auto":"smooth"});}
   function restart(){if(reduce||sl.hasAttribute("data-noauto"))return;clearInterval(timer);timer=setInterval(function(){go(i+1);},4500);}
   function stop(){clearInterval(timer);}
-  tr.addEventListener("scroll",function(){mark(Math.min(n-1,Math.round(tr.scrollLeft/tr.clientWidth)));},{passive:true});
+  tr.addEventListener("scroll",function(){if(lk)return;mark(Math.min(n-1,Math.round(tr.scrollLeft/tr.clientWidth)));},{passive:true});
   sl.querySelector(".sl-prev").addEventListener("click",function(){go(i-1);restart();});
   sl.querySelector(".sl-next").addEventListener("click",function(){go(i+1);restart();});
   for(var d=0;d<dots.length;d++)(function(d){dots[d].addEventListener("click",function(){go(d);restart();});})(d);
@@ -701,7 +701,7 @@ var REELS=[
 ];
 (function(){
   var car=document.getElementById("reelcar");if(!car)return;
-  var tr=car.querySelector(".rc-track"),cards=tr.children,dotsBox=car.querySelector(".sl-dots"),idx=0,max=0;
+  var tr=car.querySelector(".rc-track"),cards=tr.children,dotsBox=car.querySelector(".sl-dots"),idx=0,max=0,lk=null;
   var reduce=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
   var PLAY='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15a1 1 0 0 0 1.5.86l12.4-7.5a1 1 0 0 0 0-1.72L8.5 3.64A1 1 0 0 0 7 4.5z"/></svg>';
   function esc(t){var d=document.createElement("div");d.textContent=t||"";return d.innerHTML;}
@@ -723,14 +723,14 @@ var REELS=[
   }
   function step(){var c=cards[0],g=parseFloat(getComputedStyle(tr).columnGap)||0;return c.getBoundingClientRect().width+g;}
   function mark(n){idx=n;var d=dotsBox.children;for(var j=0;j<d.length;j++)d[j].classList.toggle("on",j===n);}
-  function go(n){n=n<0?max:(n>max?0:n);mark(n);tr.scrollTo({left:n*step(),behavior:reduce?"auto":"smooth"});}
+  function go(n){n=n<0?max:(n>max?0:n);mark(n);clearTimeout(lk);lk=setTimeout(function(){lk=null;},650);tr.scrollTo({left:n*step(),behavior:reduce?"auto":"smooth"});}
   function build(){
     max=Math.max(0,Math.round((tr.scrollWidth-tr.clientWidth)/step()));
     dotsBox.innerHTML="";
     for(var j=0;j<=max;j++){var b=document.createElement("button");b.type="button";b.setAttribute("aria-label","Reel "+(j+1));(function(j){b.addEventListener("click",function(){go(j);});})(j);dotsBox.appendChild(b);}
     mark(Math.min(idx,max));
   }
-  tr.addEventListener("scroll",function(){mark(Math.min(max,Math.round(tr.scrollLeft/step())));},{passive:true});
+  tr.addEventListener("scroll",function(){if(lk)return;mark(Math.min(max,Math.round(tr.scrollLeft/step())));},{passive:true});
   car.querySelector(".sl-prev").addEventListener("click",function(){go(idx-1);});
   car.querySelector(".sl-next").addEventListener("click",function(){go(idx+1);});
   window.addEventListener("resize",build);

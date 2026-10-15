@@ -162,13 +162,14 @@ nav #menu li:last-child a{border-bottom:2px solid var(--b)}}
 .vs-top{position:absolute;top:28px;left:16px;right:12px;display:flex;align-items:center;gap:10px}
 .vs-t{flex:1;min-width:0;line-height:1.25}.vs-t b{display:flex;align-items:center;gap:5px;font-size:15px}.vs-ig{display:flex;align-items:center;gap:5px;margin-top:2px;color:#fff;text-decoration:none;font-size:13px;opacity:.92;pointer-events:auto}.vs-ig:hover{text-decoration:underline}.av img{display:block;width:100%;height:100%;border-radius:50%;object-fit:cover}
 .vs-top button{pointer-events:auto;width:38px;height:38px;border:0;background:none;color:#fff;cursor:pointer;display:grid;place-items:center}
-.vs-top svg{width:24px;height:24px;fill:currentColor}
+.vs-top button svg{width:24px;height:24px;fill:currentColor}.vs-top .vbadge{width:16px;height:16px;flex:0 0 16px;display:block;fill:none}
 .vs-cap{position:absolute;left:20px;right:20px;bottom:22px;text-align:left}
 .vs-cap b{display:block;font-size:20px;margin-bottom:6px}.vs-cap p{margin:0;font-size:15px;line-height:1.45;opacity:.92}
 .vw-ar{position:absolute;top:50%;width:38px;height:38px;margin-top:-19px;border:0;border-radius:50%;background:rgba(90,90,90,.75);color:#fff;cursor:pointer;display:grid;place-items:center;z-index:5}
 .vw-ar svg{width:18px;height:18px}
 .vw-prev{left:calc(50% - var(--A,360px)/2 - 58px)}.vw-next{left:calc(50% + var(--A,360px)/2 + 20px)}
-@media(max-width:700px){.vw{--h:min(100dvh,177.78vw)}.vs{border-radius:0}.vs:not(.on){opacity:0!important;pointer-events:none}.vw-ar,.vw-brand{display:none}.vw-x{top:26px}}
+.sl-view,.rc-view{position:relative}.sl-edge{position:absolute;top:50%;z-index:4;width:42px;height:42px;margin-top:-21px;border:0;border-radius:50%;background:rgba(255,255,255,.88);color:#111;display:flex;align-items:center;justify-content:center;padding:0;cursor:pointer;box-shadow:0 2px 10px rgba(0,0,0,.25);opacity:.9;transition:opacity .15s,transform .15s}.sl-edge:hover{opacity:1;transform:scale(1.06)}.sl-edge svg{width:20px;height:20px}.sl-edge-prev{left:12px}.sl-edge-next{right:12px}@media(max-width:560px){.sl-edge{width:36px;height:36px;margin-top:-18px}.sl-edge-prev{left:8px}.sl-edge-next{right:8px}}
+@media(max-width:700px){.vw{--h:min(100dvh,177.78vw)}.vs{border-radius:0}.vs:not(.on){opacity:0!important;pointer-events:none}.vw-brand{display:none}.vw-ar{background:rgba(0,0,0,.45)}.vw-prev{left:8px}.vw-next{left:auto;right:8px}.vw-x{top:26px}}
 .sl-nav{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:18px}
 .sl-btn{flex:none;width:44px;height:44px;border-radius:50%;border:0;background:var(--g);color:var(--b);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;transition:.15s}
 .sl-btn:hover{background:#e2e2e2}
@@ -672,7 +673,7 @@ var REELS=[
   var SP='<svg viewBox="0 0 24 24"><path d="M7 4.5v15a1 1 0 0 0 1.5.86l12.4-7.5a1 1 0 0 0 0-1.72L8.5 3.64A1 1 0 0 0 7 4.5z"/></svg>',SU='<svg viewBox="0 0 24 24"><path d="M7 4h4v16H7zM13 4h4v16h-4z"/></svg>',SM='<svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 4V5L7 9H3zm13.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4zM14 3.2v2.1a7 7 0 0 1 0 13.4v2.1a9 9 0 0 0 0-17.6z"/></svg>',SX='<svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 4V5L7 9H3zm12.6 3l2.4-2.4-1.4-1.4-2.4 2.4-2.4-2.4-1.4 1.4 2.4 2.4-2.4 2.4 1.4 1.4 2.4-2.4 2.4 2.4 1.4-1.4z"/></svg>';
   var FAV=(document.querySelector('link[rel="icon"]')||{}).href||"";
   var AV='<div class="av"><img src="'+FAV+'" alt=""></div>';
-  var VB='<svg viewBox="0 0 24 24" width="16" height="16" aria-label="Verified"><path fill="#0095f6" d="M12 1l2.6 1.9 3.2-.1 1 3.1 2.6 1.9-1 3.1 1 3.1-2.6 1.9-1 3.1-3.2-.1L12 23l-2.6-1.9-3.2.1-1-3.1-2.6-1.9 1-3.1-1-3.1 2.6-1.9 1-3.1 3.2.1z"/><path d="M8 12.3l2.7 2.7L16.2 9.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  var VB='<svg class="vbadge" viewBox="0 0 24 24" width="16" height="16" role="img" aria-label="Verified"><path fill="#0095f6" d="M12.00 0.70 L12.59 0.81 L13.14 1.12 L13.65 1.59 L14.10 2.14 L14.50 2.68 L14.88 3.15 L15.27 3.48 L15.71 3.66 L16.23 3.70 L16.82 3.64 L17.49 3.54 L18.20 3.47 L18.88 3.50 L19.50 3.67 L19.99 4.01 L20.33 4.50 L20.50 5.12 L20.53 5.80 L20.46 6.51 L20.36 7.17 L20.30 7.77 L20.34 8.29 L20.52 8.73 L20.85 9.12 L21.32 9.50 L21.86 9.90 L22.41 10.35 L22.88 10.86 L23.19 11.41 L23.30 12.00 L23.19 12.59 L22.88 13.14 L22.41 13.65 L21.86 14.10 L21.32 14.50 L20.85 14.88 L20.52 15.27 L20.34 15.71 L20.30 16.23 L20.36 16.82 L20.46 17.49 L20.53 18.20 L20.50 18.88 L20.33 19.50 L19.99 19.99 L19.50 20.33 L18.88 20.50 L18.20 20.53 L17.49 20.46 L16.82 20.36 L16.23 20.30 L15.71 20.34 L15.27 20.52 L14.88 20.85 L14.50 21.32 L14.10 21.86 L13.65 22.41 L13.14 22.88 L12.59 23.19 L12.00 23.30 L11.41 23.19 L10.86 22.88 L10.35 22.41 L9.90 21.86 L9.50 21.32 L9.12 20.85 L8.73 20.52 L8.29 20.34 L7.77 20.30 L7.18 20.36 L6.51 20.46 L5.80 20.53 L5.12 20.50 L4.50 20.33 L4.01 19.99 L3.67 19.50 L3.50 18.88 L3.47 18.20 L3.54 17.49 L3.64 16.83 L3.70 16.23 L3.66 15.71 L3.48 15.27 L3.15 14.88 L2.68 14.50 L2.14 14.10 L1.59 13.65 L1.12 13.14 L0.81 12.59 L0.70 12.00 L0.81 11.41 L1.12 10.86 L1.59 10.35 L2.14 9.90 L2.68 9.50 L3.15 9.12 L3.48 8.73 L3.66 8.29 L3.70 7.77 L3.64 7.17 L3.54 6.51 L3.47 5.80 L3.50 5.12 L3.67 4.50 L4.01 4.01 L4.50 3.67 L5.12 3.50 L5.80 3.47 L6.51 3.54 L7.18 3.64 L7.77 3.70 L8.29 3.66 L8.73 3.48 L9.12 3.15 L9.50 2.68 L9.90 2.14 L10.35 1.59 L10.86 1.12 L11.41 0.81Z"/><path d="M7.6 12.4l3 3 5.8-6.2" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
   var IG='<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg>';
   var slides=[],cur=-1,muted=false,opener=null;
   REELS.forEach(function(r,i){
@@ -720,6 +721,25 @@ var REELS=[
   vw.addEventListener("touchend",function(e){var dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>50)show(cur+(dx<0?1:-1));},{passive:true});
   window.addEventListener("resize",function(){if(vw.classList.contains("open"))layout();});
   build();
+})();
+</script>
+<script>
+/* Left/right arrows on every photo slider and the video reel carousel */
+(function(){
+  var L='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>';
+  var R='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>';
+  function add(root,view){
+    var prev=root.querySelector(".sl-prev"),next=root.querySelector(".sl-next");
+    if(!view||!prev||!next)return;
+    function mk(cls,label,svg,target){
+      var b=document.createElement("button");b.type="button";b.className="sl-edge "+cls;b.setAttribute("aria-label",label);b.innerHTML=svg;
+      b.addEventListener("click",function(e){e.stopPropagation();target.click();});
+      view.appendChild(b);
+    }
+    mk("sl-edge-prev","Previous",L,prev);mk("sl-edge-next","Next",R,next);
+  }
+  Array.prototype.forEach.call(document.querySelectorAll(".slider"),function(sl){add(sl,sl.querySelector(".sl-view"));});
+  var rc=document.getElementById("reelcar");if(rc)add(rc,rc.querySelector(".rc-view"));
 })();
 </script>
 </body>

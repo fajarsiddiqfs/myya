@@ -156,12 +156,13 @@ nav #menu li:last-child a{border-bottom:2px solid var(--b)}}
 .reel:focus-visible{outline:3px solid var(--b);outline-offset:3px}
 @media(max-width:860px){.reel{flex-basis:calc((100% - 20px)/2)}}
 @media(max-width:560px){.reel{flex-basis:78%;border-radius:24px}}
-.vw{--h:min(88vh,920px);position:fixed;inset:0;z-index:1000;background:rgba(18,18,18,.97);color:#fff;font-family:var(--hero-font);overflow:hidden;display:none;touch-action:pan-y}
+.vw{--h:min(88vh,920px);position:fixed;inset:0;z-index:1000;background:rgba(18,18,18,.97);color:#fff;font-family:var(--hero-font);overflow:hidden;display:none;touch-action:none;overscroll-behavior:contain}
 .vw.open{display:block}
+.vw.drag .vs{transition:none}
 .vw-brand{position:absolute;top:22px;left:26px;font-size:22px;font-weight:800;letter-spacing:-.02em}
-.vw-x{position:absolute;top:12px;right:16px;z-index:6;width:48px;height:48px;border:0;background:none;color:#fff;cursor:pointer;display:grid;place-items:center}
+.vw-x{position:absolute;top:12px;right:16px;z-index:30;width:48px;height:48px;border:0;background:none;color:#fff;cursor:pointer;display:grid;place-items:center}
 .vw-x svg{width:30px;height:30px}
-.vs{position:absolute;top:50%;left:50%;width:calc(var(--h)*9/16);height:var(--h);border-radius:18px;overflow:hidden;background:transparent;cursor:pointer;transform:translate(calc(-50% + var(--x,0px)),-50%) scale(var(--s,1));transition:transform .45s cubic-bezier(.3,.7,.2,1),opacity .3s}
+.vs{position:absolute;top:50%;left:50%;width:calc(var(--h)*9/16);height:var(--h);border-radius:18px;overflow:hidden;background:transparent;cursor:pointer;transform:translate(calc(-50% + var(--x,0px)),calc(-50% + var(--y,0px))) scale(var(--s,1));transition:transform .45s cubic-bezier(.3,.7,.2,1),opacity .3s}
 .vs video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:transparent}
 .vs:not(.on)::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.38)}
 .vs-nb{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 16px;gap:4px;text-shadow:0 1px 8px rgba(0,0,0,.6)}
@@ -181,7 +182,7 @@ nav #menu li:last-child a{border-bottom:2px solid var(--b)}}
 .vw-ar{position:absolute;top:50%;width:38px;height:38px;margin-top:-19px;border:0;border-radius:50%;background:rgba(90,90,90,.75);color:#fff;cursor:pointer;display:grid;place-items:center;z-index:5}
 .vw-ar svg{width:18px;height:18px}
 .vw-prev{left:calc(50% - var(--A,360px)/2 - 58px)}.vw-next{left:calc(50% + var(--A,360px)/2 + 20px)}
-@media(max-width:700px){.vw{--h:min(100dvh,177.78vw)}.vs{border-radius:0}.vs:not(.on){opacity:0!important;pointer-events:none}.vw-brand{display:none}.vw-ar{background:rgba(0,0,0,.45)}.vw-prev{left:8px}.vw-next{left:auto;right:8px}.vw-x{top:26px}}
+@media(max-width:700px){.vw{--h:min(100dvh,177.78vw)}.vs{border-radius:0}.vs:not(.on){opacity:0!important;pointer-events:none}.vw-brand{display:none}.vw-ar{background:rgba(0,0,0,.45)}.vw-prev{left:8px}.vw-next{left:auto;right:8px}.vw-x{top:calc(env(safe-area-inset-top,0px) + 25px);right:8px;width:44px;height:44px;background:rgba(0,0,0,.45);border-radius:50%}.vw-x svg{width:22px;height:22px}.vs-top{right:62px}.vw-x:focus{outline:none}}
 .sl-nav{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:18px}
 .sl-btn{flex:none;width:44px;height:44px;border-radius:50%;border:0;background:var(--g);color:var(--b);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;transition:.15s}
 .sl-btn:hover{background:#e2e2e2}
@@ -783,10 +784,10 @@ Array.prototype.forEach.call(document.querySelectorAll(".slider"),function(sl){
 /* Reels: fill in each video's R2 link (src), optional thumbnail image (poster), title and description/location.
    t = second of the video used as the card thumbnail (default 0.1). Change it to pick a different frame. */
 var REELS=[
-  {src:"https://pub-80cf938ac23747d88878235161f9dcd3.r2.dev/myya/coaching.mp4",poster:"",title:"Coaching",desc:"MYYA CCA Coaching"},
-  {src:"https://pub-80cf938ac23747d88878235161f9dcd3.r2.dev/myya/sunway%20meetup.mp4",poster:"",title:"Sunway Yo-Yo Meetup",desc:"Sunway Square",t:4},
+  {src:"https://pub-80cf938ac23747d88878235161f9dcd3.r2.dev/myya/coaching.mp4",poster:"",title:"Yo-Yo School",desc:"MYYA CCA Coaching"},
   {src:"https://pub-80cf938ac23747d88878235161f9dcd3.r2.dev/myya/KLjomlepak.mp4",poster:"",title:"KL Jom Lepak",desc:"Kuala Lumpur · Hangout",t:5},
-  {src:"https://pub-80cf938ac23747d88878235161f9dcd3.r2.dev/myya/team.mp4",poster:"",title:"MYYA Ambassadors Team",desc:"Yo-Yo Performance",t:6},
+  {src:"https://pub-80cf938ac23747d88878235161f9dcd3.r2.dev/myya/team.mp4",poster:"",title:"MYYA Junior Team",desc:"Yo-Yo Performance",t:6},
+  {src:"https://pub-80cf938ac23747d88878235161f9dcd3.r2.dev/myya/sunway%20meetup.mp4",poster:"",title:"Sunway Yo-Yo Meetup",desc:"Sunway Square",t:4},
   {src:"https://pub-80cf938ac23747d88878235161f9dcd3.r2.dev/myya/jomspeed.mp4",poster:"",title:"Jom Speed Challenge",desc:"Fajar Siddiq 15 secs in 10x trick"}
 ];
 (function(){
@@ -878,12 +879,32 @@ var REELS=[
   vw.querySelector(".vw-x").addEventListener("click",closeV);
   vw.querySelector(".vw-prev").addEventListener("click",function(){show(cur-1);});
   vw.querySelector(".vw-next").addEventListener("click",function(){show(cur+1);});
-  vw.addEventListener("click",function(e){if(e.target===vw)closeV();});
+  vw.addEventListener("click",function(e){if(e.target!==vw)return;if(window.innerWidth<=700&&cur>=0)ptog(slides[cur].querySelector("video"));else closeV();});
   document.addEventListener("keydown",function(e){if(!vw.classList.contains("open"))return;
     if(e.key==="Escape")closeV();else if(e.key==="ArrowLeft")show(cur-1);else if(e.key==="ArrowRight")show(cur+1);
     else if(e.key===" "&&e.target.tagName!=="BUTTON"){e.preventDefault();ptog(slides[cur].querySelector("video"));}});
-  var tx=0;vw.addEventListener("touchstart",function(e){tx=e.touches[0].clientX;},{passive:true});
-  vw.addEventListener("touchend",function(e){var dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>50)show(cur+(dx<0?1:-1));},{passive:true});
+  /* Touch: swipe left/right = next/previous, swipe down = close, tap anywhere = play/pause */
+  var g=null,swiped=false,swT=0;
+  function flagSwipe(){swiped=true;clearTimeout(swT);swT=setTimeout(function(){swiped=false;},400);}
+  function resetDrag(){vw.classList.remove("drag");vw.style.removeProperty("--y");vw.style.removeProperty("background");}
+  vw.addEventListener("touchstart",function(e){
+    if(e.touches.length!==1){g=null;return;}
+    var t=e.touches[0];g={x:t.clientX,y:t.clientY,axis:""};
+  },{passive:true});
+  vw.addEventListener("touchmove",function(e){
+    if(!g)return;var t=e.touches[0],dx=t.clientX-g.x,dy=t.clientY-g.y;
+    if(!g.axis&&(Math.abs(dx)>10||Math.abs(dy)>10))g.axis=Math.abs(dy)>Math.abs(dx)?"y":"x";
+    if(g.axis==="y"&&dy>0){vw.classList.add("drag");vw.style.setProperty("--y",dy+"px");vw.style.background="rgba(18,18,18,"+(.97*(1-Math.min(dy/500,1)*.7)).toFixed(2)+")";}
+  },{passive:true});
+  vw.addEventListener("touchend",function(e){
+    if(!g)return;var t=e.changedTouches[0],dx=t.clientX-g.x,dy=t.clientY-g.y,a=g.axis;g=null;
+    if(a)flagSwipe();
+    vw.classList.remove("drag");
+    if(a==="y"&&dy>110){closeV();resetDrag();}
+    else{vw.style.removeProperty("--y");vw.style.removeProperty("background");if(a==="x"&&Math.abs(dx)>50)show(cur+(dx<0?1:-1));}
+  },{passive:true});
+  vw.addEventListener("touchcancel",function(){g=null;resetDrag();},{passive:true});
+  vw.addEventListener("click",function(e){if(swiped){e.stopPropagation();e.preventDefault();}},true);
   window.addEventListener("resize",function(){if(vw.classList.contains("open"))layout();});
   build();
 })();

@@ -1124,9 +1124,24 @@ btn.addEventListener("click",function(e){
   }
   function fire(el){var r=el.getBoundingClientRect();window.myyaConfetti(r.left+r.width/2,r.top+r.height/2);}
   var fb=document.getElementById("fabbtn");
-  if(fb)fb.addEventListener("click",function(){fire(fb);});
+  /* widget: confetti only when it opens (the toggle runs first, so "true" here means it just opened) */
+  if(fb)fb.addEventListener("click",function(){if(fb.getAttribute("aria-expanded")==="true")fire(fb);});
+  /* Join (Lifetime): show the confetti first, then open the link */
   var jm=document.querySelector('a[data-join="member"]');
-  if(jm)jm.addEventListener("click",function(){fire(jm);});
+  var reduceM=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if(jm)jm.addEventListener("click",function(e){
+    if(reduceM||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||e.button)return;
+    e.preventDefault();
+    if(jm.getAttribute("data-busy"))return;
+    jm.setAttribute("data-busy","1");
+    fire(jm);
+    var url=jm.href;
+    setTimeout(function(){
+      jm.removeAttribute("data-busy");
+      var w=window.open(url,"_blank");
+      if(w){try{w.opener=null;}catch(x){}}else{location.href=url;}
+    },700);
+  });
 })();
 </script>
 <script>

@@ -4,6 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Malaysia Yo-Yo Association</title>
+<link rel="preconnect" href="https://pub-80cf938ac23747d88878235161f9dcd3.r2.dev" crossorigin>
+<link rel="preload" href="https://pub-80cf938ac23747d88878235161f9dcd3.r2.dev/myya/yoyobearing.mp3" as="fetch" crossorigin>
 <meta name="description" content="Malaysia’s home for yo-yo. Connecting players, building champions and growing the community through competitions, events, workshops and meetups since 2015.">
 <link rel="canonical" href="https://malaysiayoyoassociation.com/">
 <meta property="og:type" content="website">
@@ -1137,27 +1139,33 @@ btn.addEventListener("click",function(e){
   var lastAct=t0,isIdle=false,IDLE=5000;
   addEventListener("scroll",function(){lastAct=performance.now();},{passive:true});
   disc.addEventListener("focus",function(){lastAct=performance.now();});
-  /* Yo-yo sound: the official recording (yoyobearing.mp3 on Cloudflare R2), looped while the yo-yo spins fast */
+  /* Yo-yo sound: the official recording (yoyobearing.mp3 on Cloudflare R2).
+     Downloaded and decoded as soon as the page opens, so it is ready (no lag) when the yo-yo is clicked. */
   var SRC="https://pub-80cf938ac23747d88878235161f9dcd3.r2.dev/myya/yoyobearing.mp3",VOL=.8;
-  var AC=window.AudioContext||window.webkitAudioContext,ac=null,raw=null,buf=null,node=null,ng=null,el=null,wantOn=false,fadeT=0;
+  var AC=window.AudioContext||window.webkitAudioContext,OAC=window.OfflineAudioContext||window.webkitOfflineAudioContext;
+  var ac=null,buf=null,node=null,ng=null,el=null,elUnlocked=false,wantOn=false,fadeT=0;
   try{
     fetch(SRC,{mode:"cors"}).then(function(r){if(!r.ok)throw 0;return r.arrayBuffer();})
-      .then(function(ab){raw=ab;decodeRaw();}).catch(function(){});
-  }catch(e){}
-  function decodeRaw(){
-    if(!ac||!raw||buf)return;
-    var ab=raw;raw=null;
-    try{ac.decodeAudioData(ab,function(b){buf=b;apply();},function(){makeEl(false);});}catch(e){makeEl(false);}
+      .then(decode).catch(function(){makeEl();});
+  }catch(e){makeEl();}
+  function decode(ab){
+    if(!OAC){makeEl();return;}
+    try{
+      /* decode in an offline context: needs no click, and the result plays in the live context later */
+      var p=new OAC(1,1,44100).decodeAudioData(ab,function(b){buf=b;apply();},function(){makeEl();});
+      if(p&&p.catch)p.catch(function(){});
+    }catch(e){makeEl();}
   }
   /* fallback if the file can't be read as data (e.g. CORS not enabled on the bucket): plain audio element */
-  function makeEl(unlock){
+  function makeEl(){
     if(el||!window.Audio)return;
     el=new Audio(SRC);el.loop=true;el.preload="auto";
-    if(unlock){
-      el.muted=true;
-      var p=el.play();
-      if(p&&p.then)p.then(function(){el.pause();el.currentTime=0;el.muted=false;},function(){el.muted=false;});
-    }
+  }
+  function unlockEl(){
+    if(!el||elUnlocked)return;
+    elUnlocked=true;el.muted=true;
+    var p=el.play();
+    if(p&&p.then)p.then(function(){if(!wantOn){el.pause();el.currentTime=0;}el.muted=false;},function(){el.muted=false;elUnlocked=false;});
   }
   function fadeEl(to,done){
     clearInterval(fadeT);var n=0;
@@ -1168,11 +1176,11 @@ btn.addEventListener("click",function(e){
     },30);
   }
   function initAudio(){
-    try{
-      if(AC){if(!ac)ac=new AC();if(ac.state==="suspended")ac.resume();decodeRaw();}
-      if(!buf&&!raw)makeEl(true);
-    }catch(e){}
+    try{if(AC){if(!ac)ac=new AC();if(ac.state==="suspended")ac.resume();}}catch(e){}
   }
+  /* get the audio engine ready on the very first touch/click/key anywhere, before the yo-yo is used */
+  function onGesture(){initAudio();unlockEl();}
+  ["pointerdown","touchend","keydown","click"].forEach(function(ev){document.addEventListener(ev,onGesture,{passive:true,capture:true});});
   function apply(){
     if(wantOn){
       if(buf&&ac){
@@ -1180,7 +1188,7 @@ btn.addEventListener("click",function(e){
         if(el&&!el.paused)el.pause();
         var t=ac.currentTime;
         node=ac.createBufferSource();node.buffer=buf;node.loop=true;
-        ng=ac.createGain();ng.gain.setValueAtTime(.0001,t);ng.gain.setTargetAtTime(VOL,t,.08);
+        ng=ac.createGain();ng.gain.setValueAtTime(.0001,t);ng.gain.setTargetAtTime(VOL,t,.05);
         node.connect(ng);ng.connect(ac.destination);node.start(0);
       }else if(el&&el.paused){
         try{el.volume=0;}catch(e){}
@@ -1220,7 +1228,7 @@ btn.addEventListener("click",function(e){
   }
   function frame(now){
     var dt=Math.min(.05,(now-last)/1000);last=now;
-    if(prevT>0&&target===0){pt.classList.remove("show");void pt.offsetWidth;pt.classList.add("show");whoosh(false);}
+    if(prevT>0&&target===0){pt.classList.remove("show");void pt.offsetWidth;pt.classList.add("show");sound(false);whoosh(false);}
     prevT=target;
     if(target>0&&now>until)target=0;
     extra+=(target-extra)*(1-Math.exp(-dt*(target>0?5:2.2)));
@@ -1233,7 +1241,7 @@ btn.addEventListener("click",function(e){
     ang=(ang+spin*dt)%360;
     svg.style.transform="rotate("+ang+"deg)";
     var f=spin>1000;
-    if(f!==fast){fast=f;yo.classList.toggle("fast",f);if(f)tStart=now;sound(f);}
+    if(f!==fast){fast=f;yo.classList.toggle("fast",f);if(f)tStart=now;}
     if(fast){
       var el=Math.min(10,Math.max(.001,(now-tStart)/1000));
       tm.textContent=el.toFixed(3)+"s";
@@ -1245,6 +1253,7 @@ btn.addEventListener("click",function(e){
   function drop(){
     initAudio();
     if(target>0){target=0;return;}
+    sound(true);
     whoosh(true);
     var total=Math.max(240,Math.min(innerHeight*.65,520));
     target=Math.max(100,total-115);

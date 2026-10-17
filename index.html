@@ -295,7 +295,6 @@ nav #menu li:last-child a{border-bottom:2px solid var(--b)}}
 @keyframes yo-pt{0%{opacity:0;transform:translateY(8px) scale(.8)}15%{opacity:.7;transform:translateY(0) scale(1.1)}100%{opacity:0;transform:translateY(-26px) scale(1)}}
 .yo.on.idle{opacity:0;transition:opacity .9s ease}
 .yo.idle .yo-d{pointer-events:none}
-@media(prefers-reduced-motion:reduce){.yo.run .yo-d svg{animation:none}}
 /* Local Yo-Yo Brands */
 #brands .sub{text-align:center;max-width:620px;margin:16px auto 0;color:var(--m);font-size:clamp(15px,1.6vw,18px)}
 .bcar{margin-top:48px}
@@ -1133,8 +1132,7 @@ btn.addEventListener("click",function(e){
   var yo=document.getElementById("yo");if(!yo)return;
   var str=yo.querySelector(".yo-s"),disc=yo.querySelector(".yo-d");
   var reduce=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if(reduce){str.style.height="80px";return;}
-  var svg=disc.querySelector(".yo-face"),tm=yo.querySelector(".yo-t"),pt=yo.querySelector(".yo-p"),prevT=0,tStart=0,ang=0,spin=500,fast=false;
+  var svg=disc.querySelector(".yo-face"),tm=yo.querySelector(".yo-t"),pt=yo.querySelector(".yo-p"),prevT=0,tStart=0,ang=0,spin=reduce?0:500,fast=false;
   var t0=performance.now(),last=t0,extra=0,target=0,until=0;
   var lastAct=t0,isIdle=false,IDLE=5000;
   addEventListener("scroll",function(){lastAct=performance.now();},{passive:true});
@@ -1181,10 +1179,11 @@ btn.addEventListener("click",function(e){
     thud(ac.currentTime+.3);
   }
   document.addEventListener("visibilitychange",function(){
-    if(document.hidden){target=0;spin=500;if(snd){snd.master.gain.cancelScheduledValues(0);snd.master.gain.value=0;}}
+    if(document.hidden){target=0;spin=reduce?0:500;if(snd){snd.master.gain.cancelScheduledValues(0);snd.master.gain.value=0;}}
   });
 
   function base(t){
+    if(reduce)return 80;
     if(t<.8){var k=t/.8;return 70*(1-Math.pow(1-k,3));}
     return 115-45*Math.cos((t-.8)*Math.PI*2/3.6);
   }
@@ -1199,7 +1198,7 @@ btn.addEventListener("click",function(e){
     var idle=now-lastAct>IDLE;
     if(idle!==isIdle){isIdle=idle;yo.classList.toggle("idle",idle);}
     str.style.height=(base((now-t0)/1000)+extra)+"px";
-    spin+=((target>0?1900:500)-spin)*(1-Math.exp(-dt*4));
+    spin+=((target>0?1900:(reduce?0:500))-spin)*(1-Math.exp(-dt*4));
     ang=(ang+spin*dt)%360;
     svg.style.transform="rotate("+ang+"deg)";
     var f=spin>1000;

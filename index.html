@@ -1137,36 +1137,67 @@ btn.addEventListener("click",function(e){
   var lastAct=t0,isIdle=false,IDLE=5000;
   addEventListener("scroll",function(){lastAct=performance.now();},{passive:true});
   disc.addEventListener("focus",function(){lastAct=performance.now();});
-  /* Yo-yo sound: TV "no signal" static (soft white-noise shhh); plays only after a click */
-  var AC=window.AudioContext||window.webkitAudioContext,ac=null,snd=null;
+  /* Yo-yo sound: the official recording (yoyobearing.mp3 on Cloudflare R2), looped while the yo-yo spins fast */
+  var SRC="https://pub-80cf938ac23747d88878235161f9dcd3.r2.dev/myya/yoyobearing.mp3",VOL=.8;
+  var AC=window.AudioContext||window.webkitAudioContext,ac=null,raw=null,buf=null,node=null,ng=null,el=null,wantOn=false,fadeT=0;
+  try{
+    fetch(SRC,{mode:"cors"}).then(function(r){if(!r.ok)throw 0;return r.arrayBuffer();})
+      .then(function(ab){raw=ab;decodeRaw();}).catch(function(){});
+  }catch(e){}
+  function decodeRaw(){
+    if(!ac||!raw||buf)return;
+    var ab=raw;raw=null;
+    try{ac.decodeAudioData(ab,function(b){buf=b;apply();},function(){makeEl(false);});}catch(e){makeEl(false);}
+  }
+  /* fallback if the file can't be read as data (e.g. CORS not enabled on the bucket): plain audio element */
+  function makeEl(unlock){
+    if(el||!window.Audio)return;
+    el=new Audio(SRC);el.loop=true;el.preload="auto";
+    if(unlock){
+      el.muted=true;
+      var p=el.play();
+      if(p&&p.then)p.then(function(){el.pause();el.currentTime=0;el.muted=false;},function(){el.muted=false;});
+    }
+  }
+  function fadeEl(to,done){
+    clearInterval(fadeT);var n=0;
+    fadeT=setInterval(function(){
+      n++;var v=el.volume,dlt=to-v;
+      if(Math.abs(dlt)<.05||n>25){try{el.volume=to;}catch(e){}clearInterval(fadeT);if(done)done();}
+      else{try{el.volume=Math.max(0,Math.min(1,v+dlt*.3));}catch(e){}}
+    },30);
+  }
   function initAudio(){
-    if(!AC)return;
     try{
-      if(!ac)ac=new AC();
-      if(ac.state==="suspended")ac.resume();
-      if(snd)return;
-      var len=ac.sampleRate*2,buf=ac.createBuffer(1,len,ac.sampleRate),d=buf.getChannelData(0);
-      for(var i=0;i<len;i++)d[i]=Math.random()*2-1;
-      var master=ac.createGain();master.gain.value=0;master.connect(ac.destination);
-      var src=ac.createBufferSource();src.buffer=buf;src.loop=true;
-      var hp=ac.createBiquadFilter();hp.type="highpass";hp.frequency.value=450;hp.Q.value=.5;
-      var lp=ac.createBiquadFilter();lp.type="lowpass";lp.frequency.value=7000;lp.Q.value=.4;
-      var g=ac.createGain();g.gain.value=.55;
-      src.connect(hp);hp.connect(lp);lp.connect(g);g.connect(master);
-      src.start();
-      snd={lp:lp,master:master};
-    }catch(e){snd=null;}
+      if(AC){if(!ac)ac=new AC();if(ac.state==="suspended")ac.resume();decodeRaw();}
+      if(!buf&&!raw)makeEl(true);
+    }catch(e){}
   }
-  function sound(on){
-    if(!snd)return;
-    var t=ac.currentTime;
-    snd.master.gain.cancelScheduledValues(t);
-    snd.master.gain.setTargetAtTime(on?.16:0,t,on?.1:.2);
+  function apply(){
+    if(wantOn){
+      if(buf&&ac){
+        if(node)return;
+        if(el&&!el.paused)el.pause();
+        var t=ac.currentTime;
+        node=ac.createBufferSource();node.buffer=buf;node.loop=true;
+        ng=ac.createGain();ng.gain.setValueAtTime(.0001,t);ng.gain.setTargetAtTime(VOL,t,.08);
+        node.connect(ng);ng.connect(ac.destination);node.start(0);
+      }else if(el&&el.paused){
+        try{el.volume=0;}catch(e){}
+        el.currentTime=0;
+        var pr=el.play();if(pr&&pr.catch)pr.catch(function(){});
+        fadeEl(VOL);
+      }
+    }else{
+      if(node){
+        var t2=ac.currentTime,n=node,g=ng;node=null;ng=null;
+        g.gain.cancelScheduledValues(t2);g.gain.setTargetAtTime(0,t2,.12);
+        try{n.stop(t2+.7);}catch(e){}
+      }
+      if(el&&!el.paused)fadeEl(0,function(){el.pause();});
+    }
   }
-  function tune(){
-    var k=Math.max(0,Math.min(1,(spin-500)/1400));
-    snd.lp.frequency.value=5500+3500*k;
-  }
+  function sound(on){wantOn=on;apply();}
   function thud(t){
     var o=ac.createOscillator();o.type="sine";
     o.frequency.setValueAtTime(150,t);o.frequency.exponentialRampToValueAtTime(65,t+.1);
@@ -1179,7 +1210,7 @@ btn.addEventListener("click",function(e){
     thud(ac.currentTime+.3);
   }
   document.addEventListener("visibilitychange",function(){
-    if(document.hidden){target=0;spin=reduce?0:500;if(snd){snd.master.gain.cancelScheduledValues(0);snd.master.gain.value=0;}}
+    if(document.hidden){target=0;spin=reduce?0:500;wantOn=false;apply();}
   });
 
   function base(t){
@@ -1203,7 +1234,6 @@ btn.addEventListener("click",function(e){
     svg.style.transform="rotate("+ang+"deg)";
     var f=spin>1000;
     if(f!==fast){fast=f;yo.classList.toggle("fast",f);if(f)tStart=now;sound(f);}
-    if(snd)tune();
     if(fast){
       var el=Math.min(10,Math.max(.001,(now-tStart)/1000));
       tm.textContent=el.toFixed(3)+"s";
@@ -1222,6 +1252,35 @@ btn.addEventListener("click",function(e){
   }
   disc.addEventListener("click",drop);
   disc.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();drop();}});
+})();
+</script>
+<script>
+(function(){
+  /* Click beep for buttons, the BM/EN switch and the bottom-right widget (synthesised; starts only after a click) */
+  var AC=window.AudioContext||window.webkitAudioContext,ac=null,lastT=0;
+  if(!AC)return;
+  function beep(f1,f2){
+    try{
+      if(!ac)ac=new AC();
+      if(ac.state==="suspended")ac.resume();
+      var t=ac.currentTime,o=ac.createOscillator();o.type="square";
+      o.frequency.setValueAtTime(f1,t);o.frequency.setValueAtTime(f2,t+.05);
+      var lp=ac.createBiquadFilter();lp.type="lowpass";lp.frequency.value=2800;
+      var g=ac.createGain();g.gain.setValueAtTime(.0001,t);
+      g.gain.exponentialRampToValueAtTime(.045,t+.005);
+      g.gain.setValueAtTime(.045,t+.09);
+      g.gain.exponentialRampToValueAtTime(.0001,t+.14);
+      o.connect(lp);lp.connect(g);g.connect(ac.destination);o.start(t);o.stop(t+.15);
+    }catch(e){}
+  }
+  document.addEventListener("click",function(e){
+    var el=e.target&&e.target.closest?e.target.closest('button,a.btn,a.lang,[role="button"]'):null;
+    if(!el||el.closest(".yo-d,.vw-x,.vw-ar,.vs-mu,.vs-pp"))return;
+    var now=Date.now();if(now-lastT<80)return;lastT=now;
+    /* widget and language switch: rising beep when turning on, falling when turning off */
+    var st=el.getAttribute("aria-expanded")||el.getAttribute("aria-pressed");
+    if(st==="true")beep(1180,780);else if(st==="false")beep(780,1180);else beep(880,1175);
+  },true);
 })();
 </script>
 </body>

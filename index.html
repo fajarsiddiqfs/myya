@@ -485,6 +485,78 @@ nav #menu li:last-child a{border-bottom:2px solid var(--b)}}
 .jg-notes ul{margin:8px 0 0;padding-left:20px}
 .jg-notes ul li{margin-top:4px}
 @media(max-width:640px){.jg-stages,.jg-two{grid-template-columns:1fr}}
+.jg-path{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.jg-sh{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+.jg-time{font-size:14px;font-weight:800;padding:3px 10px;border-radius:999px;background:var(--b);color:var(--w);white-space:nowrap}
+.jg-path .jg-pct{font-size:clamp(26px,3vw,34px)}
+.jg-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.jg-tab{font:inherit;font-weight:800;font-size:14px;padding:8px 18px;border-radius:999px;border:1px solid var(--b);background:var(--w);color:var(--b);cursor:pointer}
+.jg-tab[aria-selected="true"]{background:var(--b);color:var(--w)}
+.jg-tab:focus-visible,.jg-det summary:focus-visible{outline:2px solid var(--b);outline-offset:3px}
+.jg-panel[hidden]{display:none}
+.jg-after{margin:14px 0 0}
+.jg-w{min-width:76px}
+.jg-pe-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.jg-pe-grid li{grid-column:span 2}
+.jg-pe-grid li:nth-child(n+4){grid-column:span 3}
+@media(max-width:640px){.jg-pe-grid li,.jg-pe-grid li:nth-child(n+4){grid-column:1/-1}}
+.jg-pe-grid li{border:1px solid var(--l);border-radius:20px;padding:14px 16px;display:flex;flex-direction:column;gap:8px;font-size:15px;line-height:1.4;color:var(--m)}
+.jg-pe-h{display:flex;align-items:center;justify-content:space-between;gap:8px;color:var(--b)}
+.jg-ltr{flex:none;width:26px;height:26px;display:grid;place-items:center;border:1.5px solid var(--b);border-radius:8px;font-weight:900;font-size:13px;line-height:1}
+.jg-pe-h b{flex:1;min-width:0}
+.jg-pe-h .jg-pctb{min-width:0;padding:3px 9px;font-size:12px}
+.jg-ex{border:1px solid var(--l);border-radius:20px;background:var(--g);padding:6px 20px}
+.jg-xr{display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-top:1px solid var(--l);font-size:15px}
+.jg-xr:first-child{border-top:0}
+.jg-xr b{font-variant-numeric:tabular-nums}
+.jg-xt{border-top:1px solid var(--b);font-weight:800;font-size:17px}
+.jg-det{margin-top:28px;border:1px solid var(--l);border-radius:20px;padding:0 20px}
+.jg-det summary{cursor:pointer;padding:16px 0;font-weight:800;font-size:15px}
+.jg-det[open] summary{border-bottom:1px solid var(--l);margin-bottom:14px}
+.jg-det .jg-notes{margin-bottom:6px}
+.jg-det>.jg-p:last-child{padding-bottom:18px}
+@media(max-width:640px){.jg-path{grid-template-columns:1fr}}
+.jg-card .jg-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+.jg-card .jg-head h3{margin:0}
+.jg-sw{display:inline-flex;border:1px solid var(--b);border-radius:999px;padding:3px;gap:2px}
+.jg-sw button{font:inherit;font-weight:800;font-size:14px;padding:7px 16px;border:0;border-radius:999px;background:transparent;color:var(--b);cursor:pointer;font-variant-numeric:tabular-nums}
+.jg-sw button[aria-pressed="true"]{background:var(--b);color:var(--w)}
+.jg-sw button:focus-visible{outline:2px solid var(--b);outline-offset:2px}
+.jg-view[hidden]{display:none}
+.jg-cap{margin:0 0 16px;font-size:15px;line-height:1.5;color:var(--m)}
+.jg-cap b{color:var(--b)}
+.jg-ref{color:var(--b);font-weight:700;text-underline-offset:3px}
+.jg-ref:focus-visible{outline:2px solid var(--b);outline-offset:2px}
+.sc-card{max-width:960px}
+.sc-wrap{overflow-x:auto;border:1px solid var(--l);border-radius:20px;background:var(--w);-webkit-overflow-scrolling:touch}
+.sc-wrap:focus-visible{outline:2px solid var(--b);outline-offset:3px}
+.sc-t{border-collapse:separate;border-spacing:0;font-size:12.5px;font-variant-numeric:tabular-nums;width:max-content;min-width:100%}
+.sc-t th,.sc-t td{padding:7px 9px;text-align:center;white-space:nowrap;border-bottom:1px solid var(--l);background:var(--w)}
+.sc-t thead th{background:var(--g);font-weight:800;border-bottom:1px solid var(--l)}
+.sc-t thead tr:first-child th{border-bottom:1px solid #bdbdbd}
+.sc-t .sc-b{border-left:1px solid #bdbdbd}
+.sc-t td.sc-in{background:var(--g)}
+.sc-t .sc-tot,.sc-t .sc-rk{font-weight:800}
+.sc-t .sc-c1,.sc-t .sc-c2{position:sticky;z-index:2;background:var(--w)}
+.sc-t thead .sc-c1,.sc-t thead .sc-c2{background:var(--g);z-index:3}
+.sc-t .sc-c1{left:0;min-width:38px;width:38px}
+.sc-t .sc-c2{left:38px;width:236px;min-width:236px;text-align:left;border-right:1px solid #bdbdbd;white-space:nowrap}
+.sc-t .sc-na td,.sc-t .sc-na .sc-c1,.sc-t .sc-na .sc-c2{background:#8c8c8c;color:var(--w);font-size:11px;border-bottom:0}
+.sc-t.sc-sum .sc-j{display:none}
+.sc-t.sc-sum .sc-jr th{padding:0;height:0;line-height:0;font-size:0;border-bottom:0}
+
+.sc-hint{font-size:13px}
+.sc-leg{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:10px 18px;font-size:15px;line-height:1.4}
+.sc-leg li{display:flex;align-items:center;gap:10px}
+.sc-k{flex:none;min-width:30px;height:26px;padding:0 6px;display:inline-grid;place-items:center;border:1.5px solid var(--b);border-radius:8px;font-weight:900;font-size:12px}
+@media(max-width:640px){.sc-t .sc-c2{width:128px;min-width:128px;font-size:12px;white-space:normal}}
+.jg-w2{min-width:104px}
+.jg-path.jg-path4{grid-template-columns:repeat(auto-fit,minmax(205px,1fr))}
+.jg-stage .jg-p.jg-after{margin-top:12px;font-size:14px}
+.jg-pe-grid.jg-fe-grid{grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
+.jg-pe-grid.jg-fe-grid li,.jg-pe-grid.jg-fe-grid li:nth-child(n+4){grid-column:auto}
+
+
 .ck-log-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:12px}
 .ck-log h3{font-size:clamp(18px,2.2vw,22px);font-weight:800}
 .ck-log .btn{cursor:pointer;font-family:inherit}
@@ -1122,18 +1194,69 @@ nav #menu li:last-child a{border-bottom:2px solid var(--b)}}
     </div>
 
     <div class="jg-card">
-      <h3 data-i18n="Judging System">Judging System</h3>
-      <div class="jg-stages">
+      <div class="jg-head">
+        <h3 data-i18n="Judging System">Judging System</h3>
+        <div class="jg-sw" role="group" aria-label="Judging system" data-i18n-aria="Judging system">
+          <button type="button" id="jg-b-5050" aria-pressed="true">50/50</button>
+          <button type="button" id="jg-b-6040" aria-pressed="false">60/40</button>
+        </div>
+      </div>
+      <div class="jg-view" id="jg-v-5050">
+      <p class="jg-cap"><b>APYOYO / IYYF</b> <span data-i18n="Use this if your contest follows APYOYO / IYYF rules.">Use this if your contest follows APYOYO / IYYF rules.</span><br><span data-i18n="Official site:">Official site:</span> <a class="jg-ref" href="https://apyoyo.com/" target="_blank" rel="noopener">apyoyo.com</a></p>
+      <div class="jg-path">
         <div class="jg-stage">
-          <span class="jg-tag" data-i18n="Prelim">Prelim</span>
+          <div class="jg-sh"><span class="jg-tag" data-i18n="Prelim">Prelim</span><b class="jg-time">1 min</b></div>
           <div class="jg-row"><b class="jg-pct">100%</b><span data-i18n="Technical Execution (TE) (Clicker)">Technical Execution (TE) (Clicker)</span></div>
         </div>
         <div class="jg-stage">
-          <span class="jg-tag" data-i18n="Semifinal &amp; Finals">Semifinal &amp; Finals</span>
+          <div class="jg-sh"><span class="jg-tag" data-i18n="Semi-final">Semi-final</span><b class="jg-time">1.5 min</b></div>
+          <div class="jg-row"><b class="jg-pct">50%</b><span data-i18n="Technical Execution (TE) (Clicker)">Technical Execution (TE) (Clicker)</span></div>
+          <div class="jg-row"><b class="jg-pct">50%</b><span data-i18n="Performance Evaluation (PE)">Performance Evaluation (PE)</span></div>
+        </div>
+        <div class="jg-stage">
+          <div class="jg-sh"><span class="jg-tag" data-i18n="Final">Final</span><b class="jg-time">3 min</b></div>
           <div class="jg-row"><b class="jg-pct">50%</b><span data-i18n="Technical Execution (TE) (Clicker)">Technical Execution (TE) (Clicker)</span></div>
           <div class="jg-row"><b class="jg-pct">50%</b><span data-i18n="Performance Evaluation (PE)">Performance Evaluation (PE)</span></div>
         </div>
       </div>
+
+      <h4 data-i18n="🏁 How players advance">🏁 How players advance</h4>
+      <div class="jg-tabs" role="tablist">
+        <button type="button" role="tab" class="jg-tab" aria-selected="true" aria-controls="jg-p-1a" id="jg-t-1a" data-i18n="1A">1A</button>
+        <button type="button" role="tab" class="jg-tab" aria-selected="false" aria-controls="jg-p-2a" id="jg-t-2a" tabindex="-1" data-i18n="2A – 5A">2A – 5A</button>
+        <button type="button" role="tab" class="jg-tab" aria-selected="false" aria-controls="jg-p-u14" id="jg-t-u14" tabindex="-1" data-i18n="Under 14">Under 14</button>
+        <button type="button" role="tab" class="jg-tab" aria-selected="false" aria-controls="jg-p-u17" id="jg-t-u17" tabindex="-1" data-i18n="Under 17">Under 17</button>
+      </div>
+      <div class="jg-panel" role="tabpanel" id="jg-p-1a" aria-labelledby="jg-t-1a">
+        <p class="jg-p" data-i18n="All non-seeded contestants start in the 1-minute Prelim.">All non-seeded contestants start in the 1-minute Prelim.</p>
+        <ul class="jg-list">
+          <li><span class="jg-pctb jg-w">Top 5</span><div><b data-i18n="Straight to the Final (3 min)">Straight to the Final (3 min)</b><span data-i18n="From the Prelim.">From the Prelim.</span></div></li>
+          <li><span class="jg-pctb jg-w">6 – 25</span><div><b data-i18n="Go to the Semi-final (1.5 min)">Go to the Semi-final (1.5 min)</b><span data-i18n="From the Prelim.">From the Prelim.</span></div></li>
+          <li><span class="jg-pctb jg-w">Top 10</span><div><b data-i18n="Go to the Final">Go to the Final</b><span data-i18n="From the Semi-final.">From the Semi-final.</span></div></li>
+        </ul>
+        <p class="jg-p jg-after" data-i18n="Eligible seeded players and champions also compete in the Final.">Eligible seeded players and champions also compete in the Final.</p>
+      </div>
+      <div class="jg-panel" role="tabpanel" id="jg-p-2a" aria-labelledby="jg-t-2a" hidden>
+        <p class="jg-p" data-i18n="All non-seeded contestants start in the 1-minute Prelim.">All non-seeded contestants start in the 1-minute Prelim.</p>
+        <ul class="jg-list">
+          <li><span class="jg-pctb jg-w">2A</span><div><b data-i18n="Top 5 go to the Final">Top 5 go to the Final</b><span data-i18n="Two responsive yo-yos, looping.">Two responsive yo-yos, looping.</span></div></li>
+          <li><span class="jg-pctb jg-w">3A</span><div><b data-i18n="Top 5 go to the Final">Top 5 go to the Final</b><span data-i18n="Two yo-yos, string tricks.">Two yo-yos, string tricks.</span></div></li>
+          <li><span class="jg-pctb jg-w">4A</span><div><b data-i18n="Top 6 go to the Final">Top 6 go to the Final</b><span data-i18n="Off-string yo-yo freestyle.">Off-string yo-yo freestyle.</span></div></li>
+          <li><span class="jg-pctb jg-w">5A</span><div><b data-i18n="Top 5 go to the Final">Top 5 go to the Final</b><span data-i18n="Counterweight yo-yo freestyle.">Counterweight yo-yo freestyle.</span></div></li>
+        </ul>
+        <p class="jg-p jg-after" data-i18n="A 1.5-minute Semi-final may be added when a division has many contestants.">A 1.5-minute Semi-final may be added when a division has many contestants.</p>
+      </div>
+      <div class="jg-panel" role="tabpanel" id="jg-p-u14" aria-labelledby="jg-t-u14" hidden>
+        <ul class="jg-list">
+          <li><span class="jg-pctb jg-w">U14</span><div><b data-i18n="Age 14 and below">Age 14 and below</b><span data-i18n="Routine length: 2 minutes.">Routine length: 2 minutes.</span></div></li>
+        </ul>
+      </div>
+      <div class="jg-panel" role="tabpanel" id="jg-p-u17" aria-labelledby="jg-t-u17" hidden>
+        <ul class="jg-list">
+          <li><span class="jg-pctb jg-w">U17</span><div><b data-i18n="Age 17 and below">Age 17 and below</b></div></li>
+        </ul>
+      </div>
+
       <h4 data-i18n="⚙️ Technical Execution (TE)">⚙️ Technical Execution (TE)</h4>
       <p class="jg-p" data-i18n="Judges use 2 main clickers:">Judges use 2 main clickers:</p>
       <div class="jg-two">
@@ -1146,29 +1269,184 @@ nav #menu li:last-child a{border-bottom:2px solid var(--b)}}
           <span data-i18n="Negative clicks are given due to trick or control miss.">Negative clicks are given due to trick or control miss.</span>
         </div>
       </div>
-      <h4 data-i18n="⚙️ PE Components">⚙️ PE Components</h4>
-      <ul class="jg-list jg-pe">
-          <li><span class="jg-pctb">20%</span><div><b data-i18n="Performance Quality">Performance Quality</b><span data-i18n="Stage presence, confidence, audience connection.">Stage presence, confidence, audience connection.</span></div></li>
-          <li><span class="jg-pctb">20%</span><div><b data-i18n="Musicality">Musicality</b><span data-i18n="Synchronisation with music, rhythm, choreography.">Synchronisation with music, rhythm, choreography.</span></div></li>
-          <li><span class="jg-pctb">20%</span><div><b data-i18n="Trick Diversity">Trick Diversity</b><span data-i18n="Range of tricks performed.">Range of tricks performed.</span></div></li>
-          <li><span class="jg-pctb">20%</span><div><b data-i18n="Uniqueness">Uniqueness</b><span data-i18n="Originality, creativity, tricks or concepts not commonly seen.">Originality, creativity, tricks or concepts not commonly seen.</span></div></li>
-          <li><span class="jg-pctb">20%</span><div><b data-i18n="Execution">Execution</b><span data-i18n="Smoothness, control, overall cleanliness.">Smoothness, control, overall cleanliness.</span></div></li>
+
+      <h4 data-i18n="⚠️ Penalties">⚠️ Penalties</h4>
+      <p class="jg-p" data-i18n="No major deducts – these are replaced with negative clicks using the same weightage (e.g. -1 click for rewind, -3 clicks for yo-yo change).">No major deducts – these are replaced with negative clicks using the same weightage (e.g. -1 click for rewind, -3 clicks for yo-yo change).</p>
+      <ul class="jg-list">
+        <li><span class="jg-pctb jg-w">&minus;1</span><div><b data-i18n="Yo-yo stop / restart (rewind)">Yo-yo stop / restart (rewind)</b></div></li>
+        <li><span class="jg-pctb jg-w">&minus;3</span><div><b data-i18n="Yo-yo discard / change">Yo-yo discard / change</b></div></li>
+        <li><span class="jg-pctb jg-w">&minus;5</span><div><b data-i18n="Yo-yo detach / string cut">Yo-yo detach / string cut</b><span data-i18n="Applies to 1A, 2A, 3A and 5A.">Applies to 1A, 2A, 3A and 5A.</span></div></li>
+        <li><span class="jg-pctb jg-w">&minus;1</span><div><b data-i18n="Trick or control miss">Trick or control miss</b><span data-i18n="Each miss is one negative click.">Each miss is one negative click.</span></div></li>
+        <li><span class="jg-pctb jg-w">DQ</span><div><b data-i18n="Disqualification">Disqualification</b><span data-i18n="Yo-yo flies into the audience area behind the judges' table.">Yo-yo flies into the audience area behind the judges' table.</span></div></li>
       </ul>
-      <h4 data-i18n="Notes">Notes</h4>
-      <ul class="jg-notes">
-        <li data-i18n="No major deducts – these are replaced with negative clicks using the same weightage (e.g. -1 click for rewind, -3 clicks for yo-yo change).">No major deducts – these are replaced with negative clicks using the same weightage (e.g. -1 click for rewind, -3 clicks for yo-yo change).</li>
-        <li><span data-i18n="Contestants are only allowed to bring the following items onto the stage:">Contestants are only allowed to bring the following items onto the stage:</span>
-          <ul>
-            <li data-i18n="Yo-yos">Yo-yos</li>
-            <li data-i18n="Strings">Strings</li>
-            <li data-i18n="Counterweights">Counterweights</li>
-            <li data-i18n="Gloves (or equivalent items)">Gloves (or equivalent items)</li>
-            <li data-i18n="A backup music device for competition">A backup music device for competition</li>
-            <li data-i18n="A tray provided by contest officials">A tray provided by contest officials</li>
-          </ul>
-        </li>
-        <li data-i18n="Prohibited items include maintenance tools, performance props, and any other items not listed above. This includes, but is not limited to: bags, cases, cloths, jackets, or extra clothing (other than what the contestant is already wearing).">Prohibited items include maintenance tools, performance props, and any other items not listed above. This includes, but is not limited to: bags, cases, cloths, jackets, or extra clothing (other than what the contestant is already wearing).</li>
+
+      <h4 data-i18n="⚙️ Performance Evaluation (PE) Components">⚙️ Performance Evaluation (PE) Components</h4>
+      <ul class="jg-pe-grid">
+        <li><div class="jg-pe-h"><span class="jg-ltr" aria-hidden="true">P</span><b data-i18n="Performance Quality">Performance Quality</b><span class="jg-pctb">20%</span></div><span data-i18n="Do you own the stage and connect with the audience?">Do you own the stage and connect with the audience?</span></li>
+        <li><div class="jg-pe-h"><span class="jg-ltr" aria-hidden="true">M</span><b data-i18n="Musicality">Musicality</b><span class="jg-pctb">20%</span></div><span data-i18n="Do your tricks match the music's rhythm and choreography?">Do your tricks match the music's rhythm and choreography?</span></li>
+        <li><div class="jg-pe-h"><span class="jg-ltr" aria-hidden="true">T</span><b data-i18n="Trick Diversity">Trick Diversity</b><span class="jg-pctb">20%</span></div><span data-i18n="Do you show a wide range of tricks?">Do you show a wide range of tricks?</span></li>
+        <li><div class="jg-pe-h"><span class="jg-ltr" aria-hidden="true">U</span><b data-i18n="Uniqueness">Uniqueness</b><span class="jg-pctb">20%</span></div><span data-i18n="Is it original, with ideas not commonly seen?">Is it original, with ideas not commonly seen?</span></li>
+        <li><div class="jg-pe-h"><span class="jg-ltr" aria-hidden="true">E</span><b data-i18n="Execution">Execution</b><span class="jg-pctb">20%</span></div><span data-i18n="Is it smooth, controlled and clean?">Is it smooth, controlled and clean?</span></li>
       </ul>
+
+      <h4 data-i18n="🧮 Example TE score">🧮 Example TE score</h4>
+      <div class="jg-ex">
+        <div class="jg-xr"><span data-i18n="Positive clicks (unique tricks)">Positive clicks (unique tricks)</span><b>+38</b></div>
+        <div class="jg-xr"><span data-i18n="4 trick or control misses">4 trick or control misses</span><b>&minus;4</b></div>
+        <div class="jg-xr"><span data-i18n="1 rewind">1 rewind</span><b>&minus;1</b></div>
+        <div class="jg-xr"><span data-i18n="1 yo-yo change">1 yo-yo change</span><b>&minus;3</b></div>
+        <div class="jg-xr jg-xt"><span data-i18n="TE score">TE score</span><b>30</b></div>
+      </div>
+      <p class="jg-p jg-after" data-i18n="In the Prelim, this TE score is your score. In the Semi-final and Final, TE counts for 50% and PE for the other 50%.">In the Prelim, this TE score is your score. In the Semi-final and Final, TE counts for 50% and PE for the other 50%.</p>
+
+      <details class="jg-det">
+        <summary data-i18n="Stage rules: what you can bring">Stage rules: what you can bring</summary>
+        <p class="jg-p" data-i18n="Contestants are only allowed to bring the following items onto the stage:">Contestants are only allowed to bring the following items onto the stage:</p>
+        <ul class="jg-notes">
+          <li data-i18n="Yo-yos">Yo-yos</li>
+          <li data-i18n="Strings">Strings</li>
+          <li data-i18n="Counterweights">Counterweights</li>
+          <li data-i18n="Gloves (or equivalent items)">Gloves (or equivalent items)</li>
+          <li data-i18n="A backup music device for competition">A backup music device for competition</li>
+          <li data-i18n="A tray provided by contest officials">A tray provided by contest officials</li>
+        </ul>
+        <p class="jg-p jg-after" data-i18n="Prohibited items include maintenance tools, performance props, and any other items not listed above. This includes, but is not limited to: bags, cases, cloths, jackets, or extra clothing (other than what the contestant is already wearing).">Prohibited items include maintenance tools, performance props, and any other items not listed above. This includes, but is not limited to: bags, cases, cloths, jackets, or extra clothing (other than what the contestant is already wearing).</p>
+      </details>
+      </div>
+      <div class="jg-view" id="jg-v-6040" hidden>
+      <p class="jg-cap"><b>WORLDS / IYYF</b> <span data-i18n="Use this if your contest follows WORLDS / IYYF rules.">Use this if your contest follows WORLDS / IYYF rules.</span><br><span data-i18n="Official site:">Official site:</span> <a class="jg-ref" href="https://iyyf.org/" target="_blank" rel="noopener">iyyf.org</a></p>
+      <div class="jg-path jg-path4">
+        <div class="jg-stage">
+          <div class="jg-sh"><span class="jg-tag" data-i18n="WildCard">WildCard</span><b class="jg-time" data-i18n="30 sec">30 sec</b></div>
+          <div class="jg-row"><b class="jg-pct">TE</b><span data-i18n="Technical Execution only">Technical Execution only</span></div>
+        </div>
+        <div class="jg-stage">
+          <div class="jg-sh"><span class="jg-tag" data-i18n="Prelim">Prelim</span><b class="jg-time">1 min</b></div>
+          <div class="jg-row"><b class="jg-pct">60%</b><span data-i18n="Technical Execution (TE)">Technical Execution (TE)</span></div>
+          <div class="jg-row"><b class="jg-pct">40%</b><span data-i18n="Freestyle Evaluation (FE)">Freestyle Evaluation (FE)</span></div>
+          <p class="jg-p jg-after" data-i18n="4 FE categories. Minus Major Deductions.">4 FE categories. Minus Major Deductions.</p>
+        </div>
+        <div class="jg-stage">
+          <div class="jg-sh"><span class="jg-tag" data-i18n="Semi-final">Semi-final</span><b class="jg-time" data-i18n="90 sec">90 sec</b></div>
+          <div class="jg-row"><b class="jg-pct">60%</b><span data-i18n="Technical Execution (TE)">Technical Execution (TE)</span></div>
+          <div class="jg-row"><b class="jg-pct">40%</b><span data-i18n="Freestyle Evaluation (FE)">Freestyle Evaluation (FE)</span></div>
+          <p class="jg-p jg-after" data-i18n="4 FE categories. Minus Major Deductions.">4 FE categories. Minus Major Deductions.</p>
+        </div>
+        <div class="jg-stage">
+          <div class="jg-sh"><span class="jg-tag" data-i18n="Final">Final</span><b class="jg-time">3 min</b></div>
+          <div class="jg-row"><b class="jg-pct">60%</b><span data-i18n="Technical Execution (TE)">Technical Execution (TE)</span></div>
+          <div class="jg-row"><b class="jg-pct">40%</b><span data-i18n="Freestyle Evaluation (FE)">Freestyle Evaluation (FE)</span></div>
+          <p class="jg-p jg-after" data-i18n="8 FE categories. Minus Major Deductions.">8 FE categories. Minus Major Deductions.</p>
+        </div>
+      </div>
+      <p class="jg-p jg-after" data-i18n="60/40 is the standard IYYF championship weighting. See the official IYYF rules for the full formula.">60/40 is the standard IYYF championship weighting. See the official IYYF rules for the full formula.</p>
+      <h4 data-i18n="🏁 Championship divisions">🏁 Championship divisions</h4>
+      <p class="jg-p" data-i18n="Round lengths: WildCard 30 sec, Prelim 1 min, Semi-final 90 sec, Final 3 min. All five divisions follow the same rounds.">Round lengths: WildCard 30 sec, Prelim 1 min, Semi-final 90 sec, Final 3 min. All five divisions follow the same rounds.</p>
+      <ul class="jg-list">
+        <li><span class="jg-pctb jg-w2">1A</span><div><b data-i18n="One yo-yo, string tricks">One yo-yo, string tricks</b></div></li>
+        <li><span class="jg-pctb jg-w2">2A</span><div><b data-i18n="Two responsive yo-yos, looping">Two responsive yo-yos, looping</b></div></li>
+        <li><span class="jg-pctb jg-w2">3A</span><div><b data-i18n="Two yo-yos, string tricks">Two yo-yos, string tricks</b></div></li>
+        <li><span class="jg-pctb jg-w2">4A</span><div><b data-i18n="Off-string yo-yo freestyle">Off-string yo-yo freestyle</b></div></li>
+        <li><span class="jg-pctb jg-w2">5A</span><div><b data-i18n="Counterweight yo-yo freestyle">Counterweight yo-yo freestyle</b></div></li>
+      </ul>
+
+      <h4 data-i18n="🏁 Who competes in each round">🏁 Who competes in each round</h4>
+      <ul class="jg-list">
+          <li><span class="jg-pctb jg-w2">WildCard</span><div><b data-i18n="Eligible unseeded contestants">Eligible unseeded contestants</b><span data-i18n="30 seconds. Technical Execution only, to the official WildCard music list.">30 seconds. Technical Execution only, to the official WildCard music list.</span></div></li>
+          <li><span class="jg-pctb jg-w2">Prelim</span><div><b data-i18n="WildCard winners and other eligible seeded contestants">WildCard winners and other eligible seeded contestants</b><span data-i18n="1 minute.">1 minute.</span></div></li>
+          <li><span class="jg-pctb jg-w2">Semi-final</span><div><b data-i18n="Eligible Prelim winners, National Champions and seeded players">Eligible Prelim winners, National Champions and seeded players</b><span data-i18n="90 seconds.">90 seconds.</span></div></li>
+          <li><span class="jg-pctb jg-w2">Final</span><div><b data-i18n="Semi-final winners and eligible seeded World Champions">Semi-final winners and eligible seeded World Champions</b><span data-i18n="3 minutes.">3 minutes.</span></div></li>
+      </ul>
+      <h4 data-i18n="⚙️ Technical Execution (TE)">⚙️ Technical Execution (TE)</h4>
+      <div class="jg-two">
+        <div class="jg-mini"><b data-i18n="Positive points">Positive points</b><span data-i18n="Points for successful technical elements.">Points for successful technical elements.</span></div>
+        <div class="jg-mini"><b data-i18n="Negative points">Negative points</b><span data-i18n="Points lost for technical errors and misses.">Points lost for technical errors and misses.</span></div>
+      </div>
+      <p class="jg-p jg-after" data-i18n="TE counts for 60% of the score. The exact TE formula is in the official IYYF scoring rules.">TE counts for 60% of the score. The exact TE formula is in the official IYYF scoring rules.</p>
+      <h4 data-i18n="⚠️ Major Deductions (MD)">⚠️ Major Deductions (MD)</h4>
+      <p class="jg-p" data-i18n="Major Deductions are scored separately from TE and FE.">Major Deductions are scored separately from TE and FE.</p>
+      <ul class="jg-list">
+          <li><span class="jg-pctb jg-w">&minus;1</span><div><b data-i18n="Yo-yo stop / restart">Yo-yo stop / restart</b></div></li>
+          <li><span class="jg-pctb jg-w">&minus;3</span><div><b data-i18n="Yo-yo discard / change">Yo-yo discard / change</b></div></li>
+          <li><span class="jg-pctb jg-w">&minus;5</span><div><b data-i18n="Yo-yo detach / string cut">Yo-yo detach / string cut</b><span data-i18n="Applies to 1A, 2A, 3A and 5A.">Applies to 1A, 2A, 3A and 5A.</span></div></li>
+          <li><span class="jg-pctb jg-w">DQ</span><div><b data-i18n="Disqualification">Disqualification</b><span data-i18n="Yo-yo flies into the audience area behind the judges' table.">Yo-yo flies into the audience area behind the judges' table.</span></div></li>
+      </ul>
+      <h4 data-i18n="⚙️ Freestyle Evaluation (FE) Categories">⚙️ Freestyle Evaluation (FE) Categories</h4>
+      <p class="jg-p" data-i18n="The Prelim and Semi-final use 4 FE categories. The Final uses all 8.">The Prelim and Semi-final use 4 FE categories. The Final uses all 8.</p>
+      <ul class="jg-pe-grid jg-fe-grid">
+        <li><div class="jg-pe-h"><b data-i18n="Execution">Execution</b></div><span data-i18n="Is it clean and well executed?">Is it clean and well executed?</span></li>
+        <li><div class="jg-pe-h"><b data-i18n="Control">Control</b></div><span data-i18n="Do you stay in control of the yo-yo and your tricks?">Do you stay in control of the yo-yo and your tricks?</span></li>
+        <li><div class="jg-pe-h"><b data-i18n="Trick Diversity">Trick Diversity</b></div><span data-i18n="Do you show a variety of tricks and elements?">Do you show a variety of tricks and elements?</span></li>
+        <li><div class="jg-pe-h"><b data-i18n="Space Use & Emphasis">Space Use & Emphasis</b></div><span data-i18n="Do you use the stage well and make key moments stand out?">Do you use the stage well and make key moments stand out?</span></li>
+        <li><div class="jg-pe-h"><b data-i18n="Music Use 1: Choreography">Music Use 1: Choreography</b></div><span data-i18n="Is your routine in sync with the music?">Is your routine in sync with the music?</span></li>
+        <li><div class="jg-pe-h"><b data-i18n="Music Use 2: Construction">Music Use 2: Construction</b></div><span data-i18n="Is the routine well structured, and does it build?">Is the routine well structured, and does it build?</span></li>
+        <li><div class="jg-pe-h"><b data-i18n="Body Control">Body Control</b></div><span data-i18n="Do your body movements look controlled?">Do your body movements look controlled?</span></li>
+        <li><div class="jg-pe-h"><b data-i18n="Showmanship">Showmanship</b></div><span data-i18n="Do you show presence and engage the audience?">Do you show presence and engage the audience?</span></li>
+      </ul>
+      <p class="jg-p jg-after" data-i18n="Categories are not necessarily weighted equally. See the official IYYF rules.">Categories are not necessarily weighted equally. See the official IYYF rules.</p>
+      <h4 data-i18n="🏁 Other divisions">🏁 Other divisions</h4>
+      <ul class="jg-list">
+          <li><span class="jg-pctb jg-w2">AP</span><div><b data-i18n="Art & Performance">Art & Performance</b><span data-i18n="A separate division.">A separate division.</span></div></li>
+          <li><span class="jg-pctb jg-w2">Junior</span><div><b data-i18n="Junior Freestyle">Junior Freestyle</b><span data-i18n="Age 16 and below. 90 seconds.">Age 16 and below. 90 seconds.</span></div></li>
+          <li><span class="jg-pctb jg-w2">Women</span><div><b data-i18n="Women's Freestyle">Women's Freestyle</b><span data-i18n="2 minutes. One style from 1A to 5A.">2 minutes. One style from 1A to 5A.</span></div></li>
+          <li><span class="jg-pctb jg-w2">Master</span><div><b data-i18n="Over-40 Master Class">Over-40 Master Class</b><span data-i18n="2 minutes. Experienced players aged 40+.">2 minutes. Experienced players aged 40+.</span></div></li>
+          <li><span class="jg-pctb jg-w2">Open</span><div><b data-i18n="Over-40 Open Class">Over-40 Open Class</b><span data-i18n="2 minutes. Players aged 40+ not eligible for Master Class.">2 minutes. Players aged 40+ not eligible for Master Class.</span></div></li>
+      </ul>
+      <p class="jg-p jg-after" data-i18n="These events may use a 30-second technical-only preliminary when more than 10 contestants enter.">These events may use a 30-second technical-only preliminary when more than 10 contestants enter.</p>
+      </div>
+    </div>
+
+    <div class="jg-card sc-card">
+      <div class="jg-head">
+        <h3 data-i18n="Yo-Yo Scoresheets">Yo-Yo Scoresheets</h3>
+        <div class="jg-sw" role="group" aria-label="Scoresheet view" data-i18n-aria="Scoresheet view">
+          <button type="button" id="sc-b-full" aria-pressed="true" data-i18n="Full">Full</button>
+          <button type="button" id="sc-b-sum" aria-pressed="false" data-i18n="Summary">Summary</button>
+        </div>
+      </div>
+      <p class="jg-cap"><span data-i18n="Example scoresheet from AP Yo-Yo Open. For reference only.">Example scoresheet from AP Yo-Yo Open. For reference only.</span></p>
+      <div class="sc-wrap" tabindex="0" role="region" aria-label="Scoresheet table, scrolls sideways" data-i18n-aria="Scoresheet table, scrolls sideways">
+        <table class="sc-t" id="sc-t">
+          <thead><tr><th class="sc-c1" rowspan="3">#</th><th class="sc-c2" rowspan="3"><span data-i18n="Competitor">Competitor</span></th><th class="sc-j sc-b sc-g" colspan="20"><span data-i18n="TE judges">TE judges</span></th><th class="sc-j sc-b sc-g" colspan="30"><span data-i18n="PE judges">PE judges</span></th><th class="sc-b sc-g" colspan="9"><span data-i18n="Collated">Collated</span></th></tr><tr class="sc-jr"><th class="sc-j sc-b" colspan="4">Wayne Xiu</th><th class="sc-j sc-b" colspan="4">Christopher Chia</th><th class="sc-j sc-b" colspan="4">Lee Jihoo</th><th class="sc-j sc-b" colspan="4">Izuru Hasumi</th><th class="sc-j sc-b" colspan="4">Kim Dongyoung</th><th class="sc-j sc-b" colspan="6">Kuo Po Han</th><th class="sc-j sc-b" colspan="6">Benson Fok</th><th class="sc-j sc-b" colspan="6">Moyo Lin</th><th class="sc-j sc-b" colspan="6">Thawhir Iqbal</th><th class="sc-j sc-b" colspan="6">Le Minh Dung</th><th class="sc-b" colspan="9"></th></tr><tr><th class="sc-j sc-b">+</th><th class="sc-j">&minus;</th><th class="sc-j">TE1</th><th class="sc-j">TE2</th><th class="sc-j sc-b">+</th><th class="sc-j">&minus;</th><th class="sc-j">TE1</th><th class="sc-j">TE2</th><th class="sc-j sc-b">+</th><th class="sc-j">&minus;</th><th class="sc-j">TE1</th><th class="sc-j">TE2</th><th class="sc-j sc-b">+</th><th class="sc-j">&minus;</th><th class="sc-j">TE1</th><th class="sc-j">TE2</th><th class="sc-j sc-b">+</th><th class="sc-j">&minus;</th><th class="sc-j">TE1</th><th class="sc-j">TE2</th><th class="sc-j sc-b">P</th><th class="sc-j">M</th><th class="sc-j">T</th><th class="sc-j">U</th><th class="sc-j">E</th><th class="sc-j">PE</th><th class="sc-j sc-b">P</th><th class="sc-j">M</th><th class="sc-j">T</th><th class="sc-j">U</th><th class="sc-j">E</th><th class="sc-j">PE</th><th class="sc-j sc-b">P</th><th class="sc-j">M</th><th class="sc-j">T</th><th class="sc-j">U</th><th class="sc-j">E</th><th class="sc-j">PE</th><th class="sc-j sc-b">P</th><th class="sc-j">M</th><th class="sc-j">T</th><th class="sc-j">U</th><th class="sc-j">E</th><th class="sc-j">PE</th><th class="sc-j sc-b">P</th><th class="sc-j">M</th><th class="sc-j">T</th><th class="sc-j">U</th><th class="sc-j">E</th><th class="sc-j">PE</th><th class="sc-b">TE (/50)</th><th>P</th><th>M</th><th>T</th><th>U</th><th>E</th><th>PE (/50)</th><th><span data-i18n="Total (/100)">Total (/100)</span></th><th><span data-i18n="Rank">Rank</span></th></tr></thead>
+          <tbody>
+<tr><td class="sc-c1">23</td><td class="sc-c2">Allon Chen (Australia)</td><td class="sc-j sc-b sc-in">207</td><td class="sc-j sc-in">11</td><td class="sc-j">196</td><td class="sc-j">50.0</td><td class="sc-j sc-b sc-in">163</td><td class="sc-j sc-in">13</td><td class="sc-j">150</td><td class="sc-j">50.0</td><td class="sc-j sc-b sc-in">117</td><td class="sc-j sc-in">13</td><td class="sc-j">104</td><td class="sc-j">40.3</td><td class="sc-j sc-b sc-in">161</td><td class="sc-j sc-in">11</td><td class="sc-j">150</td><td class="sc-j">50.0</td><td class="sc-j sc-b sc-in">177</td><td class="sc-j sc-in">12</td><td class="sc-j">165</td><td class="sc-j">49.1</td><td class="sc-j sc-in sc-b">9</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">9</td><td class="sc-j">42</td><td class="sc-j sc-in sc-b">9</td><td class="sc-j sc-in">9</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">8</td><td class="sc-j">42</td><td class="sc-j sc-in sc-b">9</td><td class="sc-j sc-in">9</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">8</td><td class="sc-j">42</td><td class="sc-j sc-in sc-b">8</td><td class="sc-j sc-in">9</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">7</td><td class="sc-j">40</td><td class="sc-j sc-in sc-b">10</td><td class="sc-j sc-in">10</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">8</td><td class="sc-j">44</td><td class="sc-b">47.9</td><td>9.0</td><td>9.0</td><td>8.0</td><td>8.0</td><td>8.0</td><td>42.0</td><td class="sc-tot">89.88</td><td class="sc-rk">1</td></tr>
+<tr><td class="sc-c1">21</td><td class="sc-c2">Hunter Feuerstein (USA)</td><td class="sc-j sc-b sc-in">190</td><td class="sc-j sc-in">13</td><td class="sc-j">177</td><td class="sc-j">45.2</td><td class="sc-j sc-b sc-in">132</td><td class="sc-j sc-in">10</td><td class="sc-j">122</td><td class="sc-j">40.7</td><td class="sc-j sc-b sc-in">140</td><td class="sc-j sc-in">11</td><td class="sc-j">129</td><td class="sc-j">50.0</td><td class="sc-j sc-b sc-in">145</td><td class="sc-j sc-in">11</td><td class="sc-j">134</td><td class="sc-j">44.7</td><td class="sc-j sc-b sc-in">151</td><td class="sc-j sc-in">12</td><td class="sc-j">139</td><td class="sc-j">41.4</td><td class="sc-j sc-in sc-b">9</td><td class="sc-j sc-in">9</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">9</td><td class="sc-j">43</td><td class="sc-j sc-in sc-b">9</td><td class="sc-j sc-in">9</td><td class="sc-j sc-in">9</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">8</td><td class="sc-j">43</td><td class="sc-j sc-in sc-b">8</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">8</td><td class="sc-j">38</td><td class="sc-j sc-in sc-b">8</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">7</td><td class="sc-j">39</td><td class="sc-j sc-in sc-b">10</td><td class="sc-j sc-in">10</td><td class="sc-j sc-in">9</td><td class="sc-j sc-in">9</td><td class="sc-j sc-in">8</td><td class="sc-j">46</td><td class="sc-b">44.4</td><td>8.8</td><td>8.6</td><td>8.2</td><td>8.2</td><td>8.0</td><td>41.8</td><td class="sc-tot">86.17</td><td class="sc-rk">2</td></tr>
+<tr><td class="sc-c1">14</td><td class="sc-c2">Jakub Dolejš (Czech Republic)</td><td class="sc-j sc-b sc-in">188</td><td class="sc-j sc-in">19</td><td class="sc-j">169</td><td class="sc-j">43.1</td><td class="sc-j sc-b sc-in">142</td><td class="sc-j sc-in">16</td><td class="sc-j">126</td><td class="sc-j">42.0</td><td class="sc-j sc-b sc-in">148</td><td class="sc-j sc-in">20</td><td class="sc-j">128</td><td class="sc-j">49.6</td><td class="sc-j sc-b sc-in">155</td><td class="sc-j sc-in">19</td><td class="sc-j">136</td><td class="sc-j">45.3</td><td class="sc-j sc-b sc-in">167</td><td class="sc-j sc-in">20</td><td class="sc-j">147</td><td class="sc-j">43.8</td><td class="sc-j sc-in sc-b">9</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">9</td><td class="sc-j sc-in">8</td><td class="sc-j">40</td><td class="sc-j sc-in sc-b">8</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">9</td><td class="sc-j sc-in">9</td><td class="sc-j sc-in">6</td><td class="sc-j">40</td><td class="sc-j sc-in sc-b">8</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">9</td><td class="sc-j sc-in">7</td><td class="sc-j">39</td><td class="sc-j sc-in sc-b">9</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">9</td><td class="sc-j sc-in">9</td><td class="sc-j sc-in">8</td><td class="sc-j">43</td><td class="sc-j sc-in sc-b">8</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">9</td><td class="sc-j sc-in">9</td><td class="sc-j sc-in">8</td><td class="sc-j">42</td><td class="sc-b">44.8</td><td>8.4</td><td>7.8</td><td>8.2</td><td>9.0</td><td>7.4</td><td>40.8</td><td class="sc-tot">85.56</td><td class="sc-rk">3</td></tr>
+<tr><td class="sc-c1">16</td><td class="sc-c2">Takeshi Matsuura (Japan)</td><td class="sc-j sc-b sc-in">136</td><td class="sc-j sc-in">9</td><td class="sc-j">127</td><td class="sc-j">32.4</td><td class="sc-j sc-b sc-in">135</td><td class="sc-j sc-in">8</td><td class="sc-j">127</td><td class="sc-j">42.3</td><td class="sc-j sc-b sc-in">99</td><td class="sc-j sc-in">6</td><td class="sc-j">93</td><td class="sc-j">36.0</td><td class="sc-j sc-b sc-in">101</td><td class="sc-j sc-in">5</td><td class="sc-j">96</td><td class="sc-j">32.0</td><td class="sc-j sc-b sc-in">112</td><td class="sc-j sc-in">9</td><td class="sc-j">103</td><td class="sc-j">30.7</td><td class="sc-j sc-in sc-b">10</td><td class="sc-j sc-in">9</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">10</td><td class="sc-j sc-in">9</td><td class="sc-j">46</td><td class="sc-j sc-in sc-b">9</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">9</td><td class="sc-j sc-in">9</td><td class="sc-j sc-in">9</td><td class="sc-j">44</td><td class="sc-j sc-in sc-b">9</td><td class="sc-j sc-in">9</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">10</td><td class="sc-j sc-in">9</td><td class="sc-j">43</td><td class="sc-j sc-in sc-b">10</td><td class="sc-j sc-in">9</td><td class="sc-j sc-in">10</td><td class="sc-j sc-in">10</td><td class="sc-j sc-in">10</td><td class="sc-j">49</td><td class="sc-j sc-in sc-b">9</td><td class="sc-j sc-in">9</td><td class="sc-j sc-in">9</td><td class="sc-j sc-in">10</td><td class="sc-j sc-in">10</td><td class="sc-j">47</td><td class="sc-b">34.7</td><td>9.4</td><td>8.8</td><td>8.4</td><td>9.8</td><td>9.4</td><td>45.8</td><td class="sc-tot">80.49</td><td class="sc-rk">4</td></tr>
+<tr><td class="sc-c1">20</td><td class="sc-c2">Nam Donghun (Republic of Korea)</td><td class="sc-j sc-b sc-in">164</td><td class="sc-j sc-in">21</td><td class="sc-j">143</td><td class="sc-j">36.5</td><td class="sc-j sc-b sc-in">117</td><td class="sc-j sc-in">14</td><td class="sc-j">103</td><td class="sc-j">34.3</td><td class="sc-j sc-b sc-in">130</td><td class="sc-j sc-in">25</td><td class="sc-j">105</td><td class="sc-j">40.7</td><td class="sc-j sc-b sc-in">156</td><td class="sc-j sc-in">17</td><td class="sc-j">139</td><td class="sc-j">46.3</td><td class="sc-j sc-b sc-in">170</td><td class="sc-j sc-in">20</td><td class="sc-j">150</td><td class="sc-j">44.6</td><td class="sc-j sc-in sc-b">8</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">8</td><td class="sc-j">38</td><td class="sc-j sc-in sc-b">7</td><td class="sc-j sc-in">9</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">6</td><td class="sc-j">36</td><td class="sc-j sc-in sc-b">7</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">8</td><td class="sc-j">36</td><td class="sc-j sc-in sc-b">8</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">7</td><td class="sc-j">39</td><td class="sc-j sc-in sc-b">7</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">8</td><td class="sc-j">38</td><td class="sc-b">40.5</td><td>7.4</td><td>7.6</td><td>7.6</td><td>7.4</td><td>7.4</td><td>37.4</td><td class="sc-tot">77.90</td><td class="sc-rk">5</td></tr>
+<tr><td class="sc-c1">25</td><td class="sc-c2">Xavier Ng (Singapore)</td><td class="sc-j sc-b sc-in">180</td><td class="sc-j sc-in">17</td><td class="sc-j">163</td><td class="sc-j">41.6</td><td class="sc-j sc-b sc-in">133</td><td class="sc-j sc-in">19</td><td class="sc-j">114</td><td class="sc-j">38.0</td><td class="sc-j sc-b sc-in">105</td><td class="sc-j sc-in">24</td><td class="sc-j">81</td><td class="sc-j">31.4</td><td class="sc-j sc-b sc-in">146</td><td class="sc-j sc-in">17</td><td class="sc-j">129</td><td class="sc-j">43.0</td><td class="sc-j sc-b sc-in">153</td><td class="sc-j sc-in">19</td><td class="sc-j">134</td><td class="sc-j">39.9</td><td class="sc-j sc-in sc-b">8</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">8</td><td class="sc-j">40</td><td class="sc-j sc-in sc-b">8</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">7</td><td class="sc-j">39</td><td class="sc-j sc-in sc-b">8</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">7</td><td class="sc-j">38</td><td class="sc-j sc-in sc-b">7</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">6</td><td class="sc-j">35</td><td class="sc-j sc-in sc-b">9</td><td class="sc-j sc-in">9</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">7</td><td class="sc-j">41</td><td class="sc-b">38.8</td><td>8.0</td><td>8.2</td><td>7.6</td><td>7.8</td><td>7.0</td><td>38.6</td><td class="sc-tot">77.37</td><td class="sc-rk">6</td></tr>
+<tr><td class="sc-c1">10</td><td class="sc-c2">Seung Jae Hwi (Republic of Korea)</td><td class="sc-j sc-b sc-in">145</td><td class="sc-j sc-in">17</td><td class="sc-j">128</td><td class="sc-j">32.7</td><td class="sc-j sc-b sc-in">107</td><td class="sc-j sc-in">14</td><td class="sc-j">93</td><td class="sc-j">31.0</td><td class="sc-j sc-b sc-in">142</td><td class="sc-j sc-in">17</td><td class="sc-j">125</td><td class="sc-j">48.4</td><td class="sc-j sc-b sc-in">135</td><td class="sc-j sc-in">16</td><td class="sc-j">119</td><td class="sc-j">39.7</td><td class="sc-j sc-b sc-in">186</td><td class="sc-j sc-in">18</td><td class="sc-j">168</td><td class="sc-j">50.0</td><td class="sc-j sc-in sc-b">9</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">7</td><td class="sc-j">39</td><td class="sc-j sc-in sc-b">8</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">7</td><td class="sc-j">38</td><td class="sc-j sc-in sc-b">8</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">5</td><td class="sc-j">36</td><td class="sc-j sc-in sc-b">7</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">7</td><td class="sc-j">37</td><td class="sc-j sc-in sc-b">7</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">6</td><td class="sc-j">35</td><td class="sc-b">40.4</td><td>7.8</td><td>7.4</td><td>7.6</td><td>7.8</td><td>6.4</td><td>37.0</td><td class="sc-tot">77.35</td><td class="sc-rk">7</td></tr>
+<tr><td class="sc-c1">26</td><td class="sc-c2">Jonathan Sitanggang (Indonesia)</td><td class="sc-j sc-b sc-in">145</td><td class="sc-j sc-in">13</td><td class="sc-j">132</td><td class="sc-j">33.7</td><td class="sc-j sc-b sc-in">117</td><td class="sc-j sc-in">10</td><td class="sc-j">107</td><td class="sc-j">35.7</td><td class="sc-j sc-b sc-in">113</td><td class="sc-j sc-in">13</td><td class="sc-j">100</td><td class="sc-j">38.8</td><td class="sc-j sc-b sc-in">136</td><td class="sc-j sc-in">10</td><td class="sc-j">126</td><td class="sc-j">42.0</td><td class="sc-j sc-b sc-in">126</td><td class="sc-j sc-in">14</td><td class="sc-j">112</td><td class="sc-j">33.3</td><td class="sc-j sc-in sc-b">9</td><td class="sc-j sc-in">9</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">9</td><td class="sc-j">43</td><td class="sc-j sc-in sc-b">8</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">9</td><td class="sc-j sc-in">7</td><td class="sc-j">40</td><td class="sc-j sc-in sc-b">8</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">6</td><td class="sc-j">37</td><td class="sc-j sc-in sc-b">8</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">6</td><td class="sc-j">38</td><td class="sc-j sc-in sc-b">10</td><td class="sc-j sc-in">10</td><td class="sc-j sc-in">9</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">7</td><td class="sc-j">44</td><td class="sc-b">36.7</td><td>8.6</td><td>8.6</td><td>8.0</td><td>8.2</td><td>7.0</td><td>40.4</td><td class="sc-tot">77.09</td><td class="sc-rk">8</td></tr>
+<tr><td class="sc-c1">19</td><td class="sc-c2">Wu Congcong (China)</td><td class="sc-j sc-b sc-in">175</td><td class="sc-j sc-in">14</td><td class="sc-j">161</td><td class="sc-j">41.1</td><td class="sc-j sc-b sc-in">131</td><td class="sc-j sc-in">17</td><td class="sc-j">114</td><td class="sc-j">38.0</td><td class="sc-j sc-b sc-in">125</td><td class="sc-j sc-in">22</td><td class="sc-j">103</td><td class="sc-j">39.9</td><td class="sc-j sc-b sc-in">134</td><td class="sc-j sc-in">15</td><td class="sc-j">119</td><td class="sc-j">39.7</td><td class="sc-j sc-b sc-in">154</td><td class="sc-j sc-in">19</td><td class="sc-j">135</td><td class="sc-j">40.2</td><td class="sc-j sc-in sc-b">8</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">9</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">8</td><td class="sc-j">41</td><td class="sc-j sc-in sc-b">7</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">6</td><td class="sc-j">37</td><td class="sc-j sc-in sc-b">7</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">7</td><td class="sc-j">36</td><td class="sc-j sc-in sc-b">7</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">6</td><td class="sc-j">35</td><td class="sc-j sc-in sc-b">7</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">8</td><td class="sc-j">36</td><td class="sc-b">39.8</td><td>7.2</td><td>7.2</td><td>8.0</td><td>7.6</td><td>7.0</td><td>37.0</td><td class="sc-tot">76.77</td><td class="sc-rk">9</td></tr>
+<tr><td class="sc-c1">27</td><td class="sc-c2">Garbkamol Limangkul (Thailand)</td><td class="sc-j sc-b sc-in">143</td><td class="sc-j sc-in">20</td><td class="sc-j">123</td><td class="sc-j">31.4</td><td class="sc-j sc-b sc-in">131</td><td class="sc-j sc-in">25</td><td class="sc-j">106</td><td class="sc-j">35.3</td><td class="sc-j sc-b sc-in">116</td><td class="sc-j sc-in">27</td><td class="sc-j">89</td><td class="sc-j">34.5</td><td class="sc-j sc-b sc-in">137</td><td class="sc-j sc-in">25</td><td class="sc-j">112</td><td class="sc-j">37.3</td><td class="sc-j sc-b sc-in">141</td><td class="sc-j sc-in">27</td><td class="sc-j">114</td><td class="sc-j">33.9</td><td class="sc-j sc-in sc-b">9</td><td class="sc-j sc-in">9</td><td class="sc-j sc-in">9</td><td class="sc-j sc-in">10</td><td class="sc-j sc-in">8</td><td class="sc-j">45</td><td class="sc-j sc-in sc-b">8</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">9</td><td class="sc-j sc-in">8</td><td class="sc-j">40</td><td class="sc-j sc-in sc-b">9</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">6</td><td class="sc-j">37</td><td class="sc-j sc-in sc-b">8</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">9</td><td class="sc-j sc-in">7</td><td class="sc-j">39</td><td class="sc-j sc-in sc-b">9</td><td class="sc-j sc-in">9</td><td class="sc-j sc-in">9</td><td class="sc-j sc-in">9</td><td class="sc-j sc-in">8</td><td class="sc-j">44</td><td class="sc-b">34.5</td><td>8.6</td><td>8.0</td><td>8.2</td><td>8.8</td><td>7.4</td><td>41.0</td><td class="sc-tot">75.49</td><td class="sc-rk">10</td></tr>
+<tr><td class="sc-c1">7</td><td class="sc-c2">Yuiga Suzuki (Japan)</td><td class="sc-j sc-b sc-in">157</td><td class="sc-j sc-in">17</td><td class="sc-j">140</td><td class="sc-j">35.7</td><td class="sc-j sc-b sc-in">148</td><td class="sc-j sc-in">14</td><td class="sc-j">134</td><td class="sc-j">44.7</td><td class="sc-j sc-b sc-in">129</td><td class="sc-j sc-in">21</td><td class="sc-j">108</td><td class="sc-j">41.9</td><td class="sc-j sc-b sc-in">137</td><td class="sc-j sc-in">15</td><td class="sc-j">122</td><td class="sc-j">40.7</td><td class="sc-j sc-b sc-in">151</td><td class="sc-j sc-in">19</td><td class="sc-j">132</td><td class="sc-j">39.3</td><td class="sc-j sc-in sc-b">9</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">7</td><td class="sc-j">38</td><td class="sc-j sc-in sc-b">7</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">6</td><td class="sc-j">35</td><td class="sc-j sc-in sc-b">7</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">6</td><td class="sc-j">35</td><td class="sc-j sc-in sc-b">6</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">6</td><td class="sc-j">32</td><td class="sc-j sc-in sc-b">6</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">5</td><td class="sc-j">29</td><td class="sc-b">40.4</td><td>7.0</td><td>7.0</td><td>7.0</td><td>6.8</td><td>6.0</td><td>33.8</td><td class="sc-tot">74.24</td><td class="sc-rk">11</td></tr>
+<tr><td class="sc-c1">8</td><td class="sc-c2">Leo Chan (Hong Kong)</td><td class="sc-j sc-b sc-in">152</td><td class="sc-j sc-in">15</td><td class="sc-j">137</td><td class="sc-j">34.9</td><td class="sc-j sc-b sc-in">96</td><td class="sc-j sc-in">13</td><td class="sc-j">83</td><td class="sc-j">27.7</td><td class="sc-j sc-b sc-in">127</td><td class="sc-j sc-in">16</td><td class="sc-j">111</td><td class="sc-j">43.0</td><td class="sc-j sc-b sc-in">123</td><td class="sc-j sc-in">15</td><td class="sc-j">108</td><td class="sc-j">36.0</td><td class="sc-j sc-b sc-in">142</td><td class="sc-j sc-in">19</td><td class="sc-j">123</td><td class="sc-j">36.6</td><td class="sc-j sc-in sc-b">9</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">8</td><td class="sc-j">37</td><td class="sc-j sc-in sc-b">7</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">7</td><td class="sc-j">35</td><td class="sc-j sc-in sc-b">8</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">7</td><td class="sc-j">38</td><td class="sc-j sc-in sc-b">8</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">8</td><td class="sc-j">38</td><td class="sc-j sc-in sc-b">7</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">6</td><td class="sc-j">35</td><td class="sc-b">35.6</td><td>7.8</td><td>7.4</td><td>7.2</td><td>7.0</td><td>7.2</td><td>36.6</td><td class="sc-tot">72.25</td><td class="sc-rk">12</td></tr>
+<tr><td class="sc-c1">18</td><td class="sc-c2">Li Jiahao (China)</td><td class="sc-j sc-b sc-in">163</td><td class="sc-j sc-in">17</td><td class="sc-j">146</td><td class="sc-j">37.2</td><td class="sc-j sc-b sc-in">114</td><td class="sc-j sc-in">18</td><td class="sc-j">96</td><td class="sc-j">32.0</td><td class="sc-j sc-b sc-in">104</td><td class="sc-j sc-in">16</td><td class="sc-j">88</td><td class="sc-j">34.1</td><td class="sc-j sc-b sc-in">131</td><td class="sc-j sc-in">11</td><td class="sc-j">120</td><td class="sc-j">40.0</td><td class="sc-j sc-b sc-in">138</td><td class="sc-j sc-in">16</td><td class="sc-j">122</td><td class="sc-j">36.3</td><td class="sc-j sc-in sc-b">7</td><td class="sc-j sc-in">5</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">8</td><td class="sc-j">33</td><td class="sc-j sc-in sc-b">7</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">7</td><td class="sc-j">35</td><td class="sc-j sc-in sc-b">7</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">7</td><td class="sc-j">34</td><td class="sc-j sc-in sc-b">7</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">7</td><td class="sc-j">32</td><td class="sc-j sc-in sc-b">8</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">8</td><td class="sc-j">37</td><td class="sc-b">35.9</td><td>7.2</td><td>6.4</td><td>6.6</td><td>6.6</td><td>7.4</td><td>34.2</td><td class="sc-tot">70.13</td><td class="sc-rk">13</td></tr>
+<tr><td class="sc-c1">9</td><td class="sc-c2">Wayne Chung Cheng Hsun (Taiwan)</td><td class="sc-j sc-b sc-in">157</td><td class="sc-j sc-in">15</td><td class="sc-j">142</td><td class="sc-j">36.2</td><td class="sc-j sc-b sc-in">125</td><td class="sc-j sc-in">17</td><td class="sc-j">108</td><td class="sc-j">36.0</td><td class="sc-j sc-b sc-in">96</td><td class="sc-j sc-in">17</td><td class="sc-j">79</td><td class="sc-j">30.6</td><td class="sc-j sc-b sc-in">117</td><td class="sc-j sc-in">16</td><td class="sc-j">101</td><td class="sc-j">33.7</td><td class="sc-j sc-b sc-in">138</td><td class="sc-j sc-in">16</td><td class="sc-j">122</td><td class="sc-j">36.3</td><td class="sc-j sc-in sc-b">8</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">7</td><td class="sc-j">35</td><td class="sc-j sc-in sc-b">7</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">7</td><td class="sc-j">34</td><td class="sc-j sc-in sc-b">7</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">7</td><td class="sc-j">36</td><td class="sc-j sc-in sc-b">5</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">5</td><td class="sc-j sc-in">5</td><td class="sc-j">27</td><td class="sc-j sc-in sc-b">5</td><td class="sc-j sc-in">5</td><td class="sc-j sc-in">5</td><td class="sc-j sc-in">4</td><td class="sc-j sc-in">5</td><td class="sc-j">24</td><td class="sc-b">34.6</td><td>6.4</td><td>6.6</td><td>6.4</td><td>5.6</td><td>6.2</td><td>31.2</td><td class="sc-tot">65.76</td><td class="sc-rk">14</td></tr>
+<tr><td class="sc-c1">3</td><td class="sc-c2">Yasutaka Maeda (Japan)</td><td class="sc-j sc-b sc-in">119</td><td class="sc-j sc-in">13</td><td class="sc-j">106</td><td class="sc-j">27.0</td><td class="sc-j sc-b sc-in">114</td><td class="sc-j sc-in">14</td><td class="sc-j">100</td><td class="sc-j">33.3</td><td class="sc-j sc-b sc-in">107</td><td class="sc-j sc-in">17</td><td class="sc-j">90</td><td class="sc-j">34.9</td><td class="sc-j sc-b sc-in">112</td><td class="sc-j sc-in">13</td><td class="sc-j">99</td><td class="sc-j">33.0</td><td class="sc-j sc-b sc-in">126</td><td class="sc-j sc-in">16</td><td class="sc-j">110</td><td class="sc-j">32.7</td><td class="sc-j sc-in sc-b">7</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">7</td><td class="sc-j">33</td><td class="sc-j sc-in sc-b">6</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">7</td><td class="sc-j">31</td><td class="sc-j sc-in sc-b">6</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">6</td><td class="sc-j">31</td><td class="sc-j sc-in sc-b">7</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">6</td><td class="sc-j">33</td><td class="sc-j sc-in sc-b">6</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">6</td><td class="sc-j">32</td><td class="sc-b">32.2</td><td>6.4</td><td>6.8</td><td>6.2</td><td>6.2</td><td>6.4</td><td>32.0</td><td class="sc-tot">64.20</td><td class="sc-rk">15</td></tr>
+<tr><td class="sc-c1">2</td><td class="sc-c2">Ryota Ogi (Japan)</td><td class="sc-j sc-b sc-in">113</td><td class="sc-j sc-in">21</td><td class="sc-j">92</td><td class="sc-j">23.5</td><td class="sc-j sc-b sc-in">118</td><td class="sc-j sc-in">16</td><td class="sc-j">102</td><td class="sc-j">34.0</td><td class="sc-j sc-b sc-in">91</td><td class="sc-j sc-in">18</td><td class="sc-j">73</td><td class="sc-j">28.3</td><td class="sc-j sc-b sc-in">101</td><td class="sc-j sc-in">18</td><td class="sc-j">83</td><td class="sc-j">27.7</td><td class="sc-j sc-b sc-in">114</td><td class="sc-j sc-in">18</td><td class="sc-j">96</td><td class="sc-j">28.6</td><td class="sc-j sc-in sc-b">8</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">9</td><td class="sc-j sc-in">8</td><td class="sc-j">40</td><td class="sc-j sc-in sc-b">7</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">6</td><td class="sc-j">32</td><td class="sc-j sc-in sc-b">7</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">7</td><td class="sc-j">35</td><td class="sc-j sc-in sc-b">7</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">6</td><td class="sc-j">34</td><td class="sc-j sc-in sc-b">7</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">7</td><td class="sc-j">37</td><td class="sc-b">28.4</td><td>7.2</td><td>6.4</td><td>7.4</td><td>7.8</td><td>6.8</td><td>35.6</td><td class="sc-tot">64.00</td><td class="sc-rk">16</td></tr>
+<tr><td class="sc-c1">6</td><td class="sc-c2">Lin Junyi (China)</td><td class="sc-j sc-b sc-in">133</td><td class="sc-j sc-in">30</td><td class="sc-j">103</td><td class="sc-j">26.3</td><td class="sc-j sc-b sc-in">104</td><td class="sc-j sc-in">27</td><td class="sc-j">77</td><td class="sc-j">25.7</td><td class="sc-j sc-b sc-in">124</td><td class="sc-j sc-in">32</td><td class="sc-j">92</td><td class="sc-j">35.7</td><td class="sc-j sc-b sc-in">127</td><td class="sc-j sc-in">26</td><td class="sc-j">101</td><td class="sc-j">33.7</td><td class="sc-j sc-b sc-in">147</td><td class="sc-j sc-in">32</td><td class="sc-j">115</td><td class="sc-j">34.2</td><td class="sc-j sc-in sc-b">8</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">5</td><td class="sc-j">33</td><td class="sc-j sc-in sc-b">6</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">4</td><td class="sc-j">29</td><td class="sc-j sc-in sc-b">7</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">7</td><td class="sc-j">36</td><td class="sc-j sc-in sc-b">7</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">6</td><td class="sc-j">34</td><td class="sc-j sc-in sc-b">6</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">5</td><td class="sc-j">31</td><td class="sc-b">31.1</td><td>6.8</td><td>7.0</td><td>6.8</td><td>6.6</td><td>5.4</td><td>32.6</td><td class="sc-tot">63.70</td><td class="sc-rk">17</td></tr>
+<tr><td class="sc-c1">15</td><td class="sc-c2">Ryo Igarashi (Japan)</td><td class="sc-j sc-b sc-in">130</td><td class="sc-j sc-in">15</td><td class="sc-j">115</td><td class="sc-j">29.3</td><td class="sc-j sc-b sc-in">95</td><td class="sc-j sc-in">18</td><td class="sc-j">77</td><td class="sc-j">25.7</td><td class="sc-j sc-b sc-in">113</td><td class="sc-j sc-in">17</td><td class="sc-j">96</td><td class="sc-j">37.2</td><td class="sc-j sc-b sc-in">97</td><td class="sc-j sc-in">15</td><td class="sc-j">82</td><td class="sc-j">27.3</td><td class="sc-j sc-b sc-in">128</td><td class="sc-j sc-in">20</td><td class="sc-j">108</td><td class="sc-j">32.1</td><td class="sc-j sc-in sc-b">7</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">7</td><td class="sc-j">34</td><td class="sc-j sc-in sc-b">7</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">7</td><td class="sc-j">34</td><td class="sc-j sc-in sc-b">6</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">6</td><td class="sc-j">31</td><td class="sc-j sc-in sc-b">6</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">6</td><td class="sc-j">30</td><td class="sc-j sc-in sc-b">6</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">5</td><td class="sc-j sc-in">6</td><td class="sc-j">29</td><td class="sc-b">30.3</td><td>6.4</td><td>6.4</td><td>6.6</td><td>5.8</td><td>6.4</td><td>31.6</td><td class="sc-tot">61.94</td><td class="sc-rk">18</td></tr>
+<tr><td class="sc-c1">5</td><td class="sc-c2">D&#x27;Angelo Pham (Indonesia)</td><td class="sc-j sc-b sc-in">134</td><td class="sc-j sc-in">22</td><td class="sc-j">112</td><td class="sc-j">28.6</td><td class="sc-j sc-b sc-in">111</td><td class="sc-j sc-in">22</td><td class="sc-j">89</td><td class="sc-j">29.7</td><td class="sc-j sc-b sc-in">97</td><td class="sc-j sc-in">23</td><td class="sc-j">74</td><td class="sc-j">28.7</td><td class="sc-j sc-b sc-in">118</td><td class="sc-j sc-in">24</td><td class="sc-j">94</td><td class="sc-j">31.3</td><td class="sc-j sc-b sc-in">124</td><td class="sc-j sc-in">22</td><td class="sc-j">102</td><td class="sc-j">30.4</td><td class="sc-j sc-in sc-b">8</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">7</td><td class="sc-j">36</td><td class="sc-j sc-in sc-b">7</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">5</td><td class="sc-j">32</td><td class="sc-j sc-in sc-b">6</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">5</td><td class="sc-j">29</td><td class="sc-j sc-in sc-b">6</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">6</td><td class="sc-j">31</td><td class="sc-j sc-in sc-b">6</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">4</td><td class="sc-j">29</td><td class="sc-b">29.7</td><td>6.6</td><td>6.6</td><td>6.6</td><td>6.2</td><td>5.4</td><td>31.4</td><td class="sc-tot">61.12</td><td class="sc-rk">19</td></tr>
+<tr><td class="sc-c1">1</td><td class="sc-c2">Martin Gazo (Philippines)</td><td class="sc-j sc-b sc-in">120</td><td class="sc-j sc-in">7</td><td class="sc-j">113</td><td class="sc-j">28.8</td><td class="sc-j sc-b sc-in">103</td><td class="sc-j sc-in">18</td><td class="sc-j">85</td><td class="sc-j">28.3</td><td class="sc-j sc-b sc-in">101</td><td class="sc-j sc-in">17</td><td class="sc-j">84</td><td class="sc-j">32.6</td><td class="sc-j sc-b sc-in">112</td><td class="sc-j sc-in">14</td><td class="sc-j">98</td><td class="sc-j">32.7</td><td class="sc-j sc-b sc-in">114</td><td class="sc-j sc-in">15</td><td class="sc-j">99</td><td class="sc-j">29.5</td><td class="sc-j sc-in sc-b">7</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">5</td><td class="sc-j sc-in">7</td><td class="sc-j">31</td><td class="sc-j sc-in sc-b">6</td><td class="sc-j sc-in">5</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">5</td><td class="sc-j sc-in">6</td><td class="sc-j">28</td><td class="sc-j sc-in sc-b">5</td><td class="sc-j sc-in">5</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">5</td><td class="sc-j sc-in">7</td><td class="sc-j">28</td><td class="sc-j sc-in sc-b">5</td><td class="sc-j sc-in">5</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">4</td><td class="sc-j sc-in">4</td><td class="sc-j">24</td><td class="sc-j sc-in sc-b">6</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">5</td><td class="sc-j sc-in">5</td><td class="sc-j sc-in">5</td><td class="sc-j">27</td><td class="sc-b">30.4</td><td>5.8</td><td>5.4</td><td>5.8</td><td>4.8</td><td>5.8</td><td>27.6</td><td class="sc-tot">57.97</td><td class="sc-rk">20</td></tr>
+<tr><td class="sc-c1">4</td><td class="sc-c2">Du Yujia (China)</td><td class="sc-j sc-b sc-in">109</td><td class="sc-j sc-in">25</td><td class="sc-j">84</td><td class="sc-j">21.4</td><td class="sc-j sc-b sc-in">100</td><td class="sc-j sc-in">25</td><td class="sc-j">75</td><td class="sc-j">25.0</td><td class="sc-j sc-b sc-in">92</td><td class="sc-j sc-in">24</td><td class="sc-j">68</td><td class="sc-j">26.4</td><td class="sc-j sc-b sc-in">104</td><td class="sc-j sc-in">22</td><td class="sc-j">82</td><td class="sc-j">27.3</td><td class="sc-j sc-b sc-in">112</td><td class="sc-j sc-in">25</td><td class="sc-j">87</td><td class="sc-j">25.9</td><td class="sc-j sc-in sc-b">7</td><td class="sc-j sc-in">5</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">6</td><td class="sc-j">30</td><td class="sc-j sc-in sc-b">6</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">5</td><td class="sc-j">30</td><td class="sc-j sc-in sc-b">6</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">5</td><td class="sc-j">29</td><td class="sc-j sc-in sc-b">5</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">5</td><td class="sc-j">28</td><td class="sc-j sc-in sc-b">5</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">5</td><td class="sc-j sc-in">4</td><td class="sc-j">26</td><td class="sc-b">25.2</td><td>5.8</td><td>5.8</td><td>6.0</td><td>6.0</td><td>5.0</td><td>28.6</td><td class="sc-tot">53.80</td><td class="sc-rk">21</td></tr>
+<tr><td class="sc-c1">13</td><td class="sc-c2">Hiroyuki Suzuki (Japan)</td><td class="sc-j sc-b sc-in">76</td><td class="sc-j sc-in">14</td><td class="sc-j">62</td><td class="sc-j">15.8</td><td class="sc-j sc-b sc-in">88</td><td class="sc-j sc-in">7</td><td class="sc-j">81</td><td class="sc-j">27.0</td><td class="sc-j sc-b sc-in">51</td><td class="sc-j sc-in">19</td><td class="sc-j">32</td><td class="sc-j">12.4</td><td class="sc-j sc-b sc-in">60</td><td class="sc-j sc-in">15</td><td class="sc-j">45</td><td class="sc-j">15.0</td><td class="sc-j sc-b sc-in">79</td><td class="sc-j sc-in">18</td><td class="sc-j">61</td><td class="sc-j">18.2</td><td class="sc-j sc-in sc-b">9</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">8</td><td class="sc-j">39</td><td class="sc-j sc-in sc-b">7</td><td class="sc-j sc-in">9</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">7</td><td class="sc-j">36</td><td class="sc-j sc-in sc-b">7</td><td class="sc-j sc-in">9</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">8</td><td class="sc-j sc-in">6</td><td class="sc-j">36</td><td class="sc-j sc-in sc-b">7</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">6</td><td class="sc-j">32</td><td class="sc-j sc-in sc-b">7</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">6</td><td class="sc-j">32</td><td class="sc-b">17.7</td><td>7.4</td><td>8.0</td><td>6.2</td><td>6.8</td><td>6.6</td><td>35.0</td><td class="sc-tot">52.67</td><td class="sc-rk">22</td></tr>
+<tr><td class="sc-c1">24</td><td class="sc-c2">Lam Nguyen (Vietnam)</td><td class="sc-j sc-b sc-in">115</td><td class="sc-j sc-in">20</td><td class="sc-j">95</td><td class="sc-j">24.2</td><td class="sc-j sc-b sc-in">96</td><td class="sc-j sc-in">28</td><td class="sc-j">68</td><td class="sc-j">22.7</td><td class="sc-j sc-b sc-in">73</td><td class="sc-j sc-in">31</td><td class="sc-j">42</td><td class="sc-j">16.3</td><td class="sc-j sc-b sc-in">105</td><td class="sc-j sc-in">25</td><td class="sc-j">80</td><td class="sc-j">26.7</td><td class="sc-j sc-b sc-in">116</td><td class="sc-j sc-in">27</td><td class="sc-j">89</td><td class="sc-j">26.5</td><td class="sc-j sc-in sc-b">7</td><td class="sc-j sc-in">5</td><td class="sc-j sc-in">5</td><td class="sc-j sc-in">5</td><td class="sc-j sc-in">6</td><td class="sc-j">28</td><td class="sc-j sc-in sc-b">6</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">4</td><td class="sc-j">29</td><td class="sc-j sc-in sc-b">6</td><td class="sc-j sc-in">5</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">5</td><td class="sc-j sc-in">5</td><td class="sc-j">28</td><td class="sc-j sc-in sc-b">4</td><td class="sc-j sc-in">4</td><td class="sc-j sc-in">5</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">4</td><td class="sc-j">23</td><td class="sc-j sc-in sc-b">6</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">6</td><td class="sc-j">30</td><td class="sc-b">23.3</td><td>5.8</td><td>5.2</td><td>6.0</td><td>5.6</td><td>5.0</td><td>27.6</td><td class="sc-tot">50.87</td><td class="sc-rk">23</td></tr>
+<tr><td class="sc-c1">17</td><td class="sc-c2">Jia Hantao (China)</td><td class="sc-j sc-b sc-in">103</td><td class="sc-j sc-in">18</td><td class="sc-j">85</td><td class="sc-j">21.7</td><td class="sc-j sc-b sc-in">85</td><td class="sc-j sc-in">23</td><td class="sc-j">62</td><td class="sc-j">20.7</td><td class="sc-j sc-b sc-in">92</td><td class="sc-j sc-in">21</td><td class="sc-j">71</td><td class="sc-j">27.5</td><td class="sc-j sc-b sc-in">95</td><td class="sc-j sc-in">12</td><td class="sc-j">83</td><td class="sc-j">27.7</td><td class="sc-j sc-b sc-in">92</td><td class="sc-j sc-in">21</td><td class="sc-j">71</td><td class="sc-j">21.1</td><td class="sc-j sc-in sc-b">7</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">7</td><td class="sc-j">33</td><td class="sc-j sc-in sc-b">6</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">6</td><td class="sc-j">31</td><td class="sc-j sc-in sc-b">4</td><td class="sc-j sc-in">5</td><td class="sc-j sc-in">5</td><td class="sc-j sc-in">5</td><td class="sc-j sc-in">5</td><td class="sc-j">24</td><td class="sc-j sc-in sc-b">5</td><td class="sc-j sc-in">4</td><td class="sc-j sc-in">5</td><td class="sc-j sc-in">5</td><td class="sc-j sc-in">4</td><td class="sc-j">23</td><td class="sc-j sc-in sc-b">2</td><td class="sc-j sc-in">2</td><td class="sc-j sc-in">3</td><td class="sc-j sc-in">3</td><td class="sc-j sc-in">4</td><td class="sc-j">14</td><td class="sc-b">23.7</td><td>4.8</td><td>5.0</td><td>5.0</td><td>5.0</td><td>5.2</td><td>25.0</td><td class="sc-tot">48.73</td><td class="sc-rk">24</td></tr>
+<tr><td class="sc-c1">11</td><td class="sc-c2">Ilhan Gabriel (Malaysia)</td><td class="sc-j sc-b sc-in">124</td><td class="sc-j sc-in">19</td><td class="sc-j">105</td><td class="sc-j">26.8</td><td class="sc-j sc-b sc-in">68</td><td class="sc-j sc-in">22</td><td class="sc-j">46</td><td class="sc-j">15.3</td><td class="sc-j sc-b sc-in">54</td><td class="sc-j sc-in">23</td><td class="sc-j">31</td><td class="sc-j">12.0</td><td class="sc-j sc-b sc-in">76</td><td class="sc-j sc-in">20</td><td class="sc-j">56</td><td class="sc-j">18.7</td><td class="sc-j sc-b sc-in">75</td><td class="sc-j sc-in">22</td><td class="sc-j">53</td><td class="sc-j">15.8</td><td class="sc-j sc-in sc-b">7</td><td class="sc-j sc-in">7</td><td class="sc-j sc-in">5</td><td class="sc-j sc-in">5</td><td class="sc-j sc-in">7</td><td class="sc-j">31</td><td class="sc-j sc-in sc-b">6</td><td class="sc-j sc-in">5</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">5</td><td class="sc-j sc-in">5</td><td class="sc-j">27</td><td class="sc-j sc-in sc-b">5</td><td class="sc-j sc-in">5</td><td class="sc-j sc-in">5</td><td class="sc-j sc-in">5</td><td class="sc-j sc-in">6</td><td class="sc-j">26</td><td class="sc-j sc-in sc-b">5</td><td class="sc-j sc-in">5</td><td class="sc-j sc-in">5</td><td class="sc-j sc-in">4</td><td class="sc-j sc-in">5</td><td class="sc-j">24</td><td class="sc-j sc-in sc-b">4</td><td class="sc-j sc-in">5</td><td class="sc-j sc-in">4</td><td class="sc-j sc-in">4</td><td class="sc-j sc-in">4</td><td class="sc-j">21</td><td class="sc-b">17.7</td><td>5.4</td><td>5.4</td><td>5.0</td><td>4.6</td><td>5.4</td><td>25.8</td><td class="sc-tot">43.52</td><td class="sc-rk">25</td></tr>
+<tr><td class="sc-c1">12</td><td class="sc-c2">Liu Tianhao (United Kingdom)</td><td class="sc-j sc-b sc-in">96</td><td class="sc-j sc-in">20</td><td class="sc-j">76</td><td class="sc-j">19.4</td><td class="sc-j sc-b sc-in">71</td><td class="sc-j sc-in">17</td><td class="sc-j">54</td><td class="sc-j">18.0</td><td class="sc-j sc-b sc-in">69</td><td class="sc-j sc-in">24</td><td class="sc-j">45</td><td class="sc-j">17.4</td><td class="sc-j sc-b sc-in">79</td><td class="sc-j sc-in">21</td><td class="sc-j">58</td><td class="sc-j">19.3</td><td class="sc-j sc-b sc-in">90</td><td class="sc-j sc-in">21</td><td class="sc-j">69</td><td class="sc-j">20.5</td><td class="sc-j sc-in sc-b">6</td><td class="sc-j sc-in">5</td><td class="sc-j sc-in">4</td><td class="sc-j sc-in">4</td><td class="sc-j sc-in">7</td><td class="sc-j">26</td><td class="sc-j sc-in sc-b">6</td><td class="sc-j sc-in">6</td><td class="sc-j sc-in">5</td><td class="sc-j sc-in">5</td><td class="sc-j sc-in">5</td><td class="sc-j">27</td><td class="sc-j sc-in sc-b">5</td><td class="sc-j sc-in">5</td><td class="sc-j sc-in">4</td><td class="sc-j sc-in">4</td><td class="sc-j sc-in">6</td><td class="sc-j">24</td><td class="sc-j sc-in sc-b">5</td><td class="sc-j sc-in">5</td><td class="sc-j sc-in">5</td><td class="sc-j sc-in">5</td><td class="sc-j sc-in">4</td><td class="sc-j">24</td><td class="sc-j sc-in sc-b">2</td><td class="sc-j sc-in">3</td><td class="sc-j sc-in">3</td><td class="sc-j sc-in">3</td><td class="sc-j sc-in">4</td><td class="sc-j">15</td><td class="sc-b">18.9</td><td>4.8</td><td>4.8</td><td>4.2</td><td>4.2</td><td>5.2</td><td>23.2</td><td class="sc-tot">42.14</td><td class="sc-rk">26</td></tr>
+<tr class="sc-na"><td class="sc-c1">22</td><td class="sc-c2">Zhu Hangfeng (China)</td><td class="sc-j sc-b">N/A</td><td class="sc-j">N/A</td><td class="sc-j">N/A</td><td class="sc-j">N/A</td><td class="sc-j sc-b">N/A</td><td class="sc-j">N/A</td><td class="sc-j">N/A</td><td class="sc-j">N/A</td><td class="sc-j sc-b">N/A</td><td class="sc-j">N/A</td><td class="sc-j">N/A</td><td class="sc-j">N/A</td><td class="sc-j sc-b">N/A</td><td class="sc-j">N/A</td><td class="sc-j">N/A</td><td class="sc-j">N/A</td><td class="sc-j sc-b">N/A</td><td class="sc-j">N/A</td><td class="sc-j">N/A</td><td class="sc-j">N/A</td><td class="sc-j sc-b">N/A</td><td class="sc-j">N/A</td><td class="sc-j">N/A</td><td class="sc-j">N/A</td><td class="sc-j">N/A</td><td class="sc-j">N/A</td><td class="sc-j sc-b">N/A</td><td class="sc-j">N/A</td><td class="sc-j">N/A</td><td class="sc-j">N/A</td><td class="sc-j">N/A</td><td class="sc-j">N/A</td><td class="sc-j sc-b">N/A</td><td class="sc-j">N/A</td><td class="sc-j">N/A</td><td class="sc-j">N/A</td><td class="sc-j">N/A</td><td class="sc-j">N/A</td><td class="sc-j sc-b">N/A</td><td class="sc-j">N/A</td><td class="sc-j">N/A</td><td class="sc-j">N/A</td><td class="sc-j">N/A</td><td class="sc-j">N/A</td><td class="sc-j sc-b">N/A</td><td class="sc-j">N/A</td><td class="sc-j">N/A</td><td class="sc-j">N/A</td><td class="sc-j">N/A</td><td class="sc-j">N/A</td><td class="sc-b">N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="jg-p jg-after sc-hint"><span data-i18n="Scroll sideways to see every judge. Summary shows only the collated result.">Scroll sideways to see every judge. Summary shows only the collated result.</span></p>
+      <h4 data-i18n="Legend">Legend</h4>
+      <ul class="sc-leg"><li><span class="sc-k">+</span><span data-i18n="Positive clicks">Positive clicks</span></li><li><span class="sc-k">&minus;</span><span data-i18n="Negative clicks">Negative clicks</span></li><li><span class="sc-k">P</span><span data-i18n="Performance Quality">Performance Quality</span></li><li><span class="sc-k">M</span><span data-i18n="Musicality">Musicality</span></li><li><span class="sc-k">T</span><span data-i18n="Trick Diversity">Trick Diversity</span></li><li><span class="sc-k">U</span><span data-i18n="Uniqueness">Uniqueness</span></li><li><span class="sc-k">E</span><span data-i18n="Execution">Execution</span></li><li><span class="sc-k">TE1</span><span data-i18n="Clicker score (pre-normalization)">Clicker score (pre-normalization)</span></li><li><span class="sc-k">TE2</span><span data-i18n="Clicker score (post-normalization)">Clicker score (post-normalization)</span></li><li><span class="sc-k">PE</span><span data-i18n="PE score (summation)">PE score (summation)</span></li></ul>
+      <h4 data-i18n="How the numbers work">How the numbers work</h4>
+      <ul class="jg-notes"><li><span data-i18n="Each judge&#x27;s highest TE1 becomes 50, and all of that judge&#x27;s other scores are scaled to match.">Each judge's highest TE1 becomes 50, and all of that judge's other scores are scaled to match.</span></li><li><span data-i18n="TE (/50) is the average of the 5 TE2 scores.">TE (/50) is the average of the 5 TE2 scores.</span></li><li><span data-i18n="PE is one judge&#x27;s P + M + T + U + E, out of 50.">PE is one judge's P + M + T + U + E, out of 50.</span></li><li><span data-i18n="PE (/50) is the average of the 5 PE scores.">PE (/50) is the average of the 5 PE scores.</span></li><li><span data-i18n="Total (/100) is TE (/50) plus PE (/50). Rank follows the total.">Total (/100) is TE (/50) plus PE (/50). Rank follows the total.</span></li></ul>
+      <p class="jg-p jg-after"><span data-i18n="All judges are volunteers who have dedicated their time and experience to evaluate performances fairly, and have judged to the best of their abilities.">All judges are volunteers who have dedicated their time and experience to evaluate performances fairly, and have judged to the best of their abilities.</span>
+      <span data-i18n="AP Yo-Yo Open is committed to continuously improving the judging system over time.">AP Yo-Yo Open is committed to continuously improving the judging system over time.</span>
+      <span data-i18n="Feedback:">Feedback:</span> <a class="jg-ref" href="mailto:info@apyoyo.com">info@apyoyo.com</a></p>
     </div>
   </div>
 </section>
@@ -1865,6 +2143,153 @@ btn.addEventListener("click",function(e){
 (function(){
 var root=document.getElementById("clicker");if(!root)return;
 var MY={
+"Competitor":"Peserta",
+"TE judges":"Hakim TE",
+"PE judges":"Hakim PE",
+"Collated":"Gabungan",
+"Total (/100)":"Jumlah (/100)",
+"Rank":"Kedudukan",
+"Positive clicks":"Klik positif",
+"Negative clicks":"Klik negatif",
+"Clicker score (pre-normalization)":"Markah pengira klik (sebelum normalisasi)",
+"Clicker score (post-normalization)":"Markah pengira klik (selepas normalisasi)",
+"PE score (summation)":"Markah PE (jumlah)",
+"Each judge's highest TE1 becomes 50, and all of that judge's other scores are scaled to match.":"TE1 tertinggi setiap hakim menjadi 50, dan semua markah lain hakim itu diskalakan mengikut nisbah.",
+"TE (/50) is the average of the 5 TE2 scores.":"TE (/50) ialah purata 5 markah TE2.",
+"PE is one judge's P + M + T + U + E, out of 50.":"PE ialah jumlah P + M + T + U + E daripada seorang hakim, daripada 50.",
+"PE (/50) is the average of the 5 PE scores.":"PE (/50) ialah purata 5 markah PE.",
+"Total (/100) is TE (/50) plus PE (/50). Rank follows the total.":"Jumlah (/100) ialah TE (/50) campur PE (/50). Kedudukan mengikut jumlah.",
+"Yo-Yo Scoresheets":"Helaian Markah Yo-Yo",
+"Example scoresheet from AP Yo-Yo Open. For reference only.":"Contoh helaian markah daripada AP Yo-Yo Open. Untuk rujukan sahaja.",
+"Scroll sideways to see every judge. Summary shows only the collated result.":"Tatal ke tepi untuk melihat setiap hakim. Ringkasan hanya menunjukkan keputusan gabungan.",
+"All judges are volunteers who have dedicated their time and experience to evaluate performances fairly, and have judged to the best of their abilities.":"Semua hakim ialah sukarelawan yang telah mencurahkan masa dan pengalaman mereka untuk menilai persembahan dengan adil, dan menghakimi sebaik mungkin.",
+"AP Yo-Yo Open is committed to continuously improving the judging system over time.":"AP Yo-Yo Open komited untuk menambah baik sistem penilaian dari semasa ke semasa.",
+"Feedback:":"Maklum balas:",
+"Legend":"Petunjuk",
+"How the numbers work":"Cara markah dikira",
+"Full":"Penuh",
+"Summary":"Ringkasan",
+"Scoresheet view":"Paparan helaian markah",
+"Scoresheet table, scrolls sideways":"Jadual helaian markah, tatal ke tepi",
+"30 seconds. Technical Execution only, to the official WildCard music list.":"30 saat. Pelaksanaan Teknikal sahaja, dengan senarai muzik WildCard rasmi.",
+"1 minute.":"1 minit.",
+"90 seconds.":"90 saat.",
+"3 minutes.":"3 minit.",
+"One yo-yo, string tricks":"Satu yo-yo, trik tali",
+"Two responsive yo-yos, looping":"Dua yo-yo responsif, looping",
+"Two yo-yos, string tricks":"Dua yo-yo, trik tali",
+"Off-string yo-yo freestyle":"Freestyle yo-yo luar tali",
+"Counterweight yo-yo freestyle":"Freestyle yo-yo pemberat imbang",
+"Round lengths: WildCard 30 sec, Prelim 1 min, Semi-final 90 sec, Final 3 min. All five divisions follow the same rounds.":"Tempoh pusingan: WildCard 30 saat, Saringan 1 min, Separuh Akhir 90 saat, Akhir 3 min. Kesemua lima divisyen mengikut pusingan yang sama.",
+"\ud83c\udfc1 Championship divisions":"\ud83c\udfc1 Divisyen kejohanan",
+"Use this if your contest follows APYOYO / IYYF rules.":"Gunakan ini jika pertandingan anda mengikut peraturan APYOYO / IYYF.",
+"Use this if your contest follows WORLDS / IYYF rules.":"Gunakan ini jika pertandingan anda mengikut peraturan WORLDS / IYYF.",
+"Official site:":"Laman web rasmi:",
+"30 sec":"30 saat",
+"Technical Execution only":"Pelaksanaan Teknikal sahaja",
+"WildCard":"WildCard",
+"Technical Execution (TE)":"Pelaksanaan Teknikal (TE)",
+"Freestyle Evaluation (FE)":"Penilaian Freestyle (FE)",
+"4 FE categories. Minus Major Deductions.":"4 kategori FE. Ditolak Potongan Besar.",
+"90 sec":"90 saat",
+"8 FE categories. Minus Major Deductions.":"8 kategori FE. Ditolak Potongan Besar.",
+"60/40 is the standard IYYF championship weighting. See the official IYYF rules for the full formula.":"60/40 ialah pemberatan kejohanan standard IYYF. Rujuk peraturan rasmi IYYF untuk formula penuh.",
+"Technical Execution only, to the official WildCard music list.":"Pelaksanaan Teknikal sahaja, dengan senarai muzik WildCard rasmi.",
+"Eligible unseeded contestants":"Peserta tanpa benih yang layak",
+"WildCard winners and other eligible seeded contestants":"Pemenang WildCard dan peserta berbenih lain yang layak",
+"Eligible Prelim winners, National Champions and seeded players":"Pemenang Saringan yang layak, Johan Kebangsaan dan pemain berbenih",
+"Semi-final winners and eligible seeded World Champions":"Pemenang Separuh Akhir dan Johan Dunia berbenih yang layak",
+"\ud83c\udfc1 Who competes in each round":"\ud83c\udfc1 Siapa bertanding dalam setiap pusingan",
+"Positive points":"Mata positif",
+"Points for successful technical elements.":"Mata untuk elemen teknikal yang berjaya.",
+"Negative points":"Mata negatif",
+"Points lost for technical errors and misses.":"Mata ditolak untuk kesilapan teknikal dan kegagalan trik.",
+"TE counts for 60% of the score. The exact TE formula is in the official IYYF scoring rules.":"TE bernilai 60% daripada markah. Formula TE yang tepat terdapat dalam peraturan penilaian rasmi IYYF.",
+"Major Deductions are scored separately from TE and FE.":"Potongan Besar dinilai berasingan daripada TE dan FE.",
+"Yo-yo stop / restart":"Yo-yo berhenti / mula semula",
+"\u26a0\ufe0f Major Deductions (MD)":"\u26a0\ufe0f Potongan Besar (MD)",
+"Is it clean and well executed?":"Adakah ia kemas dan dilaksanakan dengan baik?",
+"Control":"Kawalan",
+"Do you stay in control of the yo-yo and your tricks?":"Adakah anda mengawal yo-yo dan trik anda?",
+"Do you show a variety of tricks and elements?":"Adakah anda menunjukkan pelbagai trik dan elemen?",
+"Space Use & Emphasis":"Penggunaan Ruang & Penekanan",
+"Do you use the stage well and make key moments stand out?":"Adakah anda menggunakan pentas dengan baik dan menonjolkan detik penting?",
+"Music Use 1: Choreography":"Penggunaan Muzik 1: Koreografi",
+"Is your routine in sync with the music?":"Adakah persembahan anda selari dengan muzik?",
+"Music Use 2: Construction":"Penggunaan Muzik 2: Pembinaan",
+"Is the routine well structured, and does it build?":"Adakah persembahan tersusun dengan baik dan berkembang?",
+"Body Control":"Kawalan Badan",
+"Do your body movements look controlled?":"Adakah pergerakan badan anda kelihatan terkawal?",
+"Showmanship":"Persembahan Pentas",
+"Do you show presence and engage the audience?":"Adakah anda menunjukkan kehadiran dan melibatkan penonton?",
+"The Prelim and Semi-final use 4 FE categories. The Final uses all 8.":"Saringan dan Separuh Akhir menggunakan 4 kategori FE. Akhir menggunakan kesemua 8.",
+"Categories are not necessarily weighted equally. See the official IYYF rules.":"Kategori belum tentu mempunyai pemberat yang sama. Rujuk peraturan rasmi IYYF.",
+"\u2699\ufe0f Freestyle Evaluation (FE) Categories":"\u2699\ufe0f Kategori Penilaian Freestyle (FE)",
+"A separate division.":"Divisyen berasingan.",
+"Art & Performance":"Seni & Persembahan",
+"Age 16 and below. 90 seconds.":"Umur 16 tahun ke bawah. 90 saat.",
+"Junior Freestyle":"Freestyle Junior",
+"2 minutes. One style from 1A to 5A.":"2 minit. Satu gaya daripada 1A hingga 5A.",
+"Women's Freestyle":"Freestyle Wanita",
+"2 minutes. Experienced players aged 40+.":"2 minit. Pemain berpengalaman berumur 40+.",
+"Over-40 Master Class":"Kelas Master Atas-40",
+"2 minutes. Players aged 40+ not eligible for Master Class.":"2 minit. Pemain berumur 40+ yang tidak layak untuk Kelas Master.",
+"Over-40 Open Class":"Kelas Terbuka Atas-40",
+"These events may use a 30-second technical-only preliminary when more than 10 contestants enter.":"Acara ini mungkin menggunakan saringan teknikal sahaja selama 30 saat jika lebih 10 peserta menyertai.",
+"\ud83c\udfc1 Other divisions":"\ud83c\udfc1 Divisyen lain",
+"APYOYO":"APYOYO",
+"Use this if your contest follows APYOYO rules.":"Gunakan ini jika pertandingan anda mengikut peraturan APYOYO.",
+"Use this if your contest follows WORLDS IYYF rules.":"Gunakan ini jika pertandingan anda mengikut peraturan WORLDS IYYF.",
+"Judging system":"Sistem penilaian",
+"Yo-yo stop / restart (rewind)":"Yo-yo berhenti / mula semula (rewind)",
+"Yo-yo discard / change":"Yo-yo dibuang / ditukar",
+"Yo-yo detach / string cut":"Yo-yo tertanggal / tali putus",
+"Applies to 1A, 2A, 3A and 5A.":"Terpakai untuk 1A, 2A, 3A dan 5A.",
+"Disqualification":"Diskualifikasi",
+"Yo-yo flies into the audience area behind the judges' table.":"Yo-yo terbang ke kawasan penonton di belakang meja hakim.",
+"\u2699\ufe0f Performance Evaluation (PE) Components":"\u2699\ufe0f Komponen Penilaian Persembahan (PE)",
+"Under 17":"Bawah 17",
+"Age 17 and below":"Umur 17 tahun ke bawah",
+"Semi-final":"Separuh Akhir",
+"Final":"Akhir",
+"\ud83c\udfc1 How players advance":"\ud83c\udfc1 Cara pemain mara",
+"1A":"1A",
+"2A \u2013 5A":"2A \u2013 5A",
+"Under 14":"Bawah 14",
+"All non-seeded contestants start in the 1-minute Prelim.":"Semua peserta tanpa pilihan benih bermula di Saringan selama 1 minit.",
+"Straight to the Final (3 min)":"Terus ke Akhir (3 min)",
+"From the Prelim.":"Dari Saringan.",
+"Go to the Semi-final (1.5 min)":"Ke Separuh Akhir (1.5 min)",
+"Go to the Final":"Ke Akhir",
+"From the Semi-final.":"Dari Separuh Akhir.",
+"Eligible seeded players and champions also compete in the Final.":"Pemain berbenih dan juara yang layak turut bertanding di Akhir.",
+"Top 5 go to the Final":"5 teratas ke Akhir",
+"Top 6 go to the Final":"6 teratas ke Akhir",
+"Two responsive yo-yos, looping.":"Dua yo-yo responsif, looping.",
+"Two yo-yos, string tricks.":"Dua yo-yo, trik tali.",
+"Off-string yo-yo freestyle.":"Freestyle yo-yo luar tali.",
+"Counterweight yo-yo freestyle.":"Freestyle yo-yo pemberat imbang.",
+"A 1.5-minute Semi-final may be added when a division has many contestants.":"Separuh Akhir 1.5 minit mungkin diadakan jika sesuatu divisyen mempunyai ramai peserta.",
+"Age 14 and below":"Umur 14 tahun ke bawah",
+"Routine length: 2 minutes.":"Tempoh persembahan: 2 minit.",
+"\u26a0\ufe0f Penalties":"\u26a0\ufe0f Penalti",
+"Rewind":"Rewind",
+"Yo-yo change":"Tukar yo-yo",
+"Trick or control miss":"Gagal trik atau kawalan",
+"Each miss is one negative click.":"Setiap kegagalan ialah satu klik negatif.",
+"Do you own the stage and connect with the audience?":"Adakah anda menguasai pentas dan berhubung dengan penonton?",
+"Do your tricks match the music's rhythm and choreography?":"Adakah trik anda sepadan dengan rentak dan koreografi muzik?",
+"Do you show a wide range of tricks?":"Adakah anda menunjukkan pelbagai jenis trik?",
+"Is it original, with ideas not commonly seen?":"Adakah ia asli, dengan idea yang jarang dilihat?",
+"Is it smooth, controlled and clean?":"Adakah ia lancar, terkawal dan kemas?",
+"\ud83e\uddee Example TE score":"\ud83e\uddee Contoh markah TE",
+"Positive clicks (unique tricks)":"Klik positif (trik unik)",
+"4 trick or control misses":"4 kegagalan trik atau kawalan",
+"1 rewind":"1 rewind",
+"1 yo-yo change":"1 tukar yo-yo",
+"TE score":"Markah TE",
+"In the Prelim, this TE score is your score. In the Semi-final and Final, TE counts for 50% and PE for the other 50%.":"Di Saringan, markah TE ini ialah markah anda. Di Separuh Akhir dan Akhir, TE bernilai 50% dan PE 50% lagi.",
+"Stage rules: what you can bring":"Peraturan pentas: apa yang boleh dibawa",
 "Yo-Yo Clicker":"Pengira Klik Yo-Yo",
 "sub":"Pembilang digital untuk juri dan pemain yo-yo.",
 "Player":"Pemain","Player name (optional)":"Nama pemain (pilihan)","Routine length":"Tempoh rutin",
@@ -2217,5 +2642,35 @@ renderAll();
 </script>
 
 
+<script>
+(function(){
+var tabs=[].slice.call(document.querySelectorAll(".jg-tab"));if(!tabs.length)return;
+function show(t){tabs.forEach(function(b){var on=b===t;b.setAttribute("aria-selected",on?"true":"false");b.tabIndex=on?0:-1;
+  var p=document.getElementById(b.getAttribute("aria-controls"));if(p)p.hidden=!on;});}
+tabs.forEach(function(b,i){
+  b.addEventListener("click",function(){show(b);});
+  b.addEventListener("keydown",function(e){var n=e.key==="ArrowRight"?1:e.key==="ArrowLeft"?-1:0;if(!n)return;
+    e.preventDefault();var t=tabs[(i+n+tabs.length)%tabs.length];show(t);t.focus();});
+});
+})();
+</script>
+<script>
+(function(){
+var b5=document.getElementById("jg-b-5050"),b6=document.getElementById("jg-b-6040"),v5=document.getElementById("jg-v-5050"),v6=document.getElementById("jg-v-6040");
+if(!b5||!b6||!v5||!v6)return;
+function pick(six){b5.setAttribute("aria-pressed",six?"false":"true");b6.setAttribute("aria-pressed",six?"true":"false");v5.hidden=six;v6.hidden=!six;}
+b5.addEventListener("click",function(){pick(false);});
+b6.addEventListener("click",function(){pick(true);});
+})();
+</script>
+<script>
+(function(){
+var f=document.getElementById("sc-b-full"),m=document.getElementById("sc-b-sum"),t=document.getElementById("sc-t");
+if(!f||!m||!t)return;
+function pick(sum){f.setAttribute("aria-pressed",sum?"false":"true");m.setAttribute("aria-pressed",sum?"true":"false");t.classList.toggle("sc-sum",sum);}
+f.addEventListener("click",function(){pick(false);});
+m.addEventListener("click",function(){pick(true);});
+})();
+</script>
 </body>
 </html>

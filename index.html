@@ -273,6 +273,26 @@ nav #menu li:last-child a{border-bottom:2px solid var(--b)}}
 .fab-list a:hover{background:var(--b);color:var(--w);box-shadow:0 0 0 2px var(--w),0 3px 10px rgba(0,0,0,.3)}
 .fab-list svg{display:block;width:22px;height:22px}
 @media(prefers-reduced-motion:reduce){.stat.pop b{animation:none}html{scroll-behavior:auto}.caret{animation:none}.upd-dot{animation:none}.fab-btn,.fab-list li,.fab-list a{transition:none}}
+/* Widget hint: floating mouse pointer + spin when open */
+.fab-hint{position:absolute;right:0;bottom:0;width:56px;height:56px;pointer-events:none}
+.fab-hint::before{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid var(--b);opacity:0;animation:fab-rip 3.6s ease-out 1.2s 10 both}
+.fab-cur{position:absolute;left:calc(50% - 4px);top:calc(50% - 3px);width:26px;height:26px;opacity:0;filter:drop-shadow(0 2px 3px rgba(0,0,0,.35));animation:fab-cur 3.6s ease-in-out 1.2s 10 both}
+.fab-cur svg{display:block}
+.fab.open .fab-hint,.fab.seen .fab-hint{display:none}
+@keyframes fab-cur{
+0%{opacity:0;transform:translate(-58px,-52px)}
+14%{opacity:1;transform:translate(-44px,-34px)}
+28%{transform:translate(-20px,-30px)}
+42%{transform:translate(-6px,-6px)}
+50%{transform:translate(1px,1px) scale(.86)}
+58%{transform:translate(1px,1px) scale(1)}
+74%{opacity:1;transform:translate(-26px,-22px)}
+90%{opacity:0;transform:translate(-52px,-46px)}
+100%{opacity:0;transform:translate(-58px,-52px)}}
+@keyframes fab-rip{0%,48%{opacity:0;transform:scale(.9)}52%{opacity:.45;transform:scale(1)}78%,100%{opacity:0;transform:scale(1.55)}}
+@keyframes fab-spin{to{transform:rotate(360deg)}}
+.fab.open .fab-btn img{animation:fab-spin 1.4s linear infinite}
+@media(prefers-reduced-motion:reduce){.fab-cur{animation:none;opacity:1;transform:translate(-20px,-18px)}.fab-hint::before{animation:none}.fab.open .fab-btn img{animation:none}}
 /* Yo! menu: hanging yo-yo animation */
 .yo{position:absolute;top:100%;right:clamp(16px,5vw,64px);z-index:-1;display:flex;flex-direction:column;align-items:center;pointer-events:none;opacity:0;visibility:hidden;transition:opacity .25s,visibility 0s .25s}
 .yo.on{opacity:1;visibility:visible;transition-delay:0s}
@@ -297,6 +317,32 @@ nav #menu li:last-child a{border-bottom:2px solid var(--b)}}
 @keyframes yo-pt{0%{opacity:0;transform:translateY(8px) scale(.8)}15%{opacity:.7;transform:translateY(0) scale(1.1)}100%{opacity:0;transform:translateY(-26px) scale(1)}}
 .yo.on.idle{opacity:0;transition:opacity .9s ease}
 .yo.idle .yo-d{pointer-events:none}
+/* Top-right yo-yo: hovering mouse hint (shows whenever the yo-yo is on screen, until it is clicked) */
+.yo-hint{position:absolute;inset:0;pointer-events:none;display:none}
+.yo:not(.idle):not(.seen) .yo-hint{display:block}
+.yo-hint::before{content:"";position:absolute;inset:-2px;border-radius:50%;border:2px solid var(--b);opacity:0;animation:fab-rip 2.8s ease-out .5s infinite both}
+.yo-cur{position:absolute;left:calc(50% - 4px);top:calc(50% - 3px);width:26px;height:26px;opacity:0;filter:drop-shadow(0 2px 3px rgba(0,0,0,.35));animation:yo-cur 2.8s ease-in-out .5s infinite both}
+.yo-cur svg{display:block}
+@keyframes yo-cur{
+0%{opacity:0;transform:translate(-56px,50px)}
+14%{opacity:1;transform:translate(-42px,36px)}
+28%{transform:translate(-20px,30px)}
+42%{transform:translate(-6px,8px)}
+50%{transform:translate(1px,1px) scale(.86)}
+58%{transform:translate(1px,1px) scale(1)}
+74%{opacity:1;transform:translate(-26px,24px)}
+90%{opacity:0;transform:translate(-52px,46px)}
+100%{opacity:0;transform:translate(-56px,50px)}}
+@media(prefers-reduced-motion:reduce){.yo-cur{animation:none;opacity:1;transform:translate(12px,14px)}.yo-hint::before{animation:none}}
+/* Scroll hint: hovering mouse + chevrons, and a one-time auto-scroll demo (Yo-Yo Events / Professionals / Champion) */
+.sc-hint{position:absolute;z-index:5;width:30px;pointer-events:none;opacity:0;transition:opacity .35s}
+.sc-hint.on{opacity:1}
+.sc-bob{display:flex;flex-direction:column;align-items:flex-start;animation:sc-bob 2.4s ease-in-out infinite}
+.sc-bob .cur{display:block;filter:drop-shadow(0 2px 3px rgba(0,0,0,.35))}
+.sc-bob .chev{display:block;margin:2px 0 0 4px;animation:sc-chev 1.2s ease-in-out infinite}
+@keyframes sc-bob{0%,100%{transform:translateY(-8px)}50%{transform:translateY(12px)}}
+@keyframes sc-chev{0%,100%{opacity:.25}50%{opacity:1}}
+@media(prefers-reduced-motion:reduce){.sc-bob,.sc-bob .chev{animation:none}}
 /* Local Yo-Yo Brands */
 #brands .sub{text-align:center;max-width:620px;margin:16px auto 0;color:var(--m);font-size:clamp(15px,1.6vw,18px)}
 .bcar{margin-top:48px}
@@ -478,7 +524,7 @@ nav #menu li:last-child a{border-bottom:2px solid var(--b)}}
     <div class="nb"><a class="btn sm" href="#join">Join Member</a><a class="btn o sm" href="https://docs.google.com/forms/d/e/1FAIpQLSeQGZwOXc7Hyrnx_ew6h03tKm-vOTtwz3aAz2lV4yosMCRLBw/viewform" target="_blank" rel="noopener">Register MYYC26</a></div></div>
     <button type="button" class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
   </div>
-<div class="yo on run" id="yo"><div class="yo-s" aria-hidden="true"></div><div class="yo-d" role="button" tabindex="0" aria-label="Drop the yo-yo lower"><svg class="yo-face" viewBox="0 0 46 46"><circle cx="23" cy="23" r="22" fill="#000"/><circle cx="23" cy="23" r="15" fill="none" stroke="#fff" stroke-width="2" stroke-dasharray="9 7"/><circle cx="23" cy="9" r="2" fill="#fff"/><circle cx="23" cy="23" r="4" fill="#fff"/><circle cx="23" cy="23" r="1.6" fill="#000"/></svg><div class="yo-fx" aria-hidden="true"><svg viewBox="0 0 86 86"><circle class="a2" cx="43" cy="43" r="31"/><circle class="rp" cx="43" cy="43" r="26"/></svg></div><div class="yo-t" aria-hidden="true">0.001s</div><div class="yo-p" aria-hidden="true">+1</div></div></div>
+<div class="yo on run" id="yo"><div class="yo-s" aria-hidden="true"></div><div class="yo-d" role="button" tabindex="0" aria-label="Drop the yo-yo lower"><svg class="yo-face" viewBox="0 0 46 46"><circle cx="23" cy="23" r="22" fill="#000"/><circle cx="23" cy="23" r="15" fill="none" stroke="#fff" stroke-width="2" stroke-dasharray="9 7"/><circle cx="23" cy="9" r="2" fill="#fff"/><circle cx="23" cy="23" r="4" fill="#fff"/><circle cx="23" cy="23" r="1.6" fill="#000"/></svg><div class="yo-fx" aria-hidden="true"><svg viewBox="0 0 86 86"><circle class="a2" cx="43" cy="43" r="31"/><circle class="rp" cx="43" cy="43" r="26"/></svg></div><span class="yo-hint" aria-hidden="true"><span class="yo-cur"><svg viewBox="0 0 26 26" width="26" height="26"><path d="M3.5 2.5l0 18.2 4.7-4.4 3.2 7.1 3.4-1.5-3.2-7 6.5-.4z" fill="#fff" stroke="#000" stroke-width="1.8" stroke-linejoin="round"/></svg></span></span><div class="yo-t" aria-hidden="true">0.001s</div><div class="yo-p" aria-hidden="true">+1</div></div></div>
 </nav>
 
 <header class="hero" id="top">
@@ -1207,6 +1253,7 @@ nav #menu li:last-child a{border-bottom:2px solid var(--b)}}
 <div class="fab" id="fab">
   <ul class="fab-list" id="fablist"><li><a href="mailto:malaysiayoyoassociation@gmail.com" aria-label="Email" title="Email"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></a></li><li><a href="https://wa.me/60137982659?text=Hello%2C%20MYYA%21%20I%20will%20like%20to%20find%20out%20more%20about%20yo-yo%20%26%20latest%20updates%20about%20the%20community.%20via%20https%3A//malaysiayoyoassociation.com" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a></li><li><a href="https://www.facebook.com/malaysiayoyoassociation/" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.7 4.53-4.7 1.31 0 2.69.24 2.69.24v2.97h-1.52c-1.49 0-1.96.93-1.96 1.89v2.26h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07z"/></svg></a></li><li><a href="https://www.instagram.com/malaysiayoyoassociation/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.351-.2 6.78-2.618 6.98-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a></li><li><a href="https://www.youtube.com/@malaysiayoyoassociationmyy2160" target="_blank" rel="noopener" aria-label="YouTube" title="YouTube"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg></a></li><li><a href="#join" aria-label="Join Member" title="Join Member"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg></a></li><li><a href="https://www.facebook.com/share/g/19mVbs9349/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Join Community" title="Join Community"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></a></li></ul>
   <button type="button" class="fab-btn" id="fabbtn" aria-label="Open quick links" aria-expanded="false" aria-controls="fablist"><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTc1IiBoZWlnaHQ9IjU3NSIgdmlld0JveD0iMCAwIDU3NSA1NzUiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxjaXJjbGUgY3g9IjI4Ny41IiBjeT0iMjg3LjUiIHI9IjI4Ny41IiBmaWxsPSJibGFjayIvPgo8cGF0aCBkPSJNMzcgMzI1Ljc1Mkw2My42MjMyIDI1Mi4yMjNIODYuODk2NEwxMTQuMDQ5IDI4NS40NjZMMTY4LjE3NiAyNTIuMjIzSDE5MS40NUwxNjQuODI3IDMyNS43NTJIMTM5LjI2MUwxNTUuODM1IDI3OS40NkwxMDYuOTk2IDMwOS4zODlMODAuMTk2NSAyNzYuNjYzTDYyLjU2NTMgMzI1Ljc1MkgzN1oiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0yMjYuODUxIDMyNS43NTJMMjM3Ljk1OSAyOTQuNzg3TDIwNy4yODEgMjUyLjIyM0gyMzMuOTA0TDI1My42NTEgMjgwLjgwNkwyOTQuMjAzIDI1Mi4yMjNIMzI1LjQxTDI2My43MDEgMjk0Ljg5TDI1Mi41OTMgMzI1Ljc1MkgyMjYuODUxWiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTM0OC41ODMgMzI1Ljc1MkwzNTkuNjkgMjk0Ljc4N0wzMjkuMDEyIDI1Mi4yMjNIMzU1LjYzNUwzNzUuMzgyIDI4MC44MDZMNDE1LjkzNCAyNTIuMjIzSDQ0Ny4xNDFMMzg1LjQzMiAyOTQuODlMMzc0LjMyNCAzMjUuNzUySDM0OC41ODNaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNNDA2LjE3NiAzMjUuNzUyTDQ4Ni43NTEgMjUyLjIyM0g1MDkuNjcyTDUzNyAzMjUuNzUySDUxMi4zMTZMNTA2LjMyMiAzMDguOTc1SDQ1My4yNTJMNDM1LjA5MSAzMjUuNzUySDQwNi4xNzZaTTQ5My4wOTggMjcyLjMxNEw0NjcuNTMzIDI5NS44MjJINTAxLjU2MUw0OTMuMDk4IDI3Mi4zMTRaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNNTIzLjQyNiAzNDcuMzA1QzUxMy42MDIgMzg2LjI0NSA0OTQuMTk1IDQyMi40NiA0NjYuNTY0IDQ1Mi40NTlMNDY2Ljc2MSA0NTIuNjA2TDQ1OS4yMDMgNDYwLjE0QzQ0NS40MzYgNDczLjg4MiA0MzAuMDczIDQ4NS45MjUgNDEzLjQ0MSA0OTYuMDEzTDQwOC41MzQgNDk4Ljk1N0M0MDYuODY2IDQ5OS45MTQgNDA1LjE3MiA1MDAuODQ2IDQwMy40NzkgNTAxLjc3OEMzOTYuNjQyIDUwNS40NzUgMzg5LjYzMiA1MDguODQ1IDM4Mi40NTEgNTExLjg4OEMzNTIuNzM3IDUyNC40OTEgMzIwLjggNTMxLjAxNSAyODguNTI0IDUzMS4wNzZIMjg2Ljc1N0MyNTQuNDgxIDUzMS4wMTMgMjIyLjU0NSA1MjQuNDg4IDE5Mi44MyA1MTEuODg4QzE5MC4xMzEgNTEwLjc4NCAxODcuNDU2IDUwOS41NTcgMTg0LjgzIDUwOC4zM0wxNzkuNTU1IDUwNS44NzZMMTc2Ljk1NCA1MDQuNTUyQzE3NS4yMzcgNTAzLjY2OCAxNzMuNTE5IDUwMi43ODUgMTcxLjgyNiA1MDEuODUzTDE2OS4zNzIgNTAwLjQ1NEMxNDkuODM4IDQ4OS41NiAxMzEuOTA0IDQ3Ni4wMTggMTE2LjA3OCA0NjAuMjEzTDEwOC41NjkgNDUyLjcwNUwxMDguNzQxIDQ1Mi41NThDODEuMDg3OCA0MjIuNTM0IDYxLjY3MDUgMzg2LjI4MyA1MS44NTQ1IDM0Ny4zMDVINzEuNjI2QzgxLjEwMzQgMzgxLjk2OSA5OC45MTUxIDQxNC4wNzIgMTIzLjgzMSA0NDAuNjU3QzE0MC40MjEgNDI4Ljk4NSAxNTguNTQ2IDQxOS42NjIgMTc3LjY5IDQxMi45NTVDMTcxLjIxOCAzOTEuNDU5IDE2Ni40ODggMzY5LjUwNSAxNjMuNTMzIDM0Ny4zMDVIMTgyLjgyNUMxODUuNjQ3IDM2Ny41OCAxOTAuMDIgMzg3LjYzNCAxOTUuOTIxIDQwNy4yODdDMjIyLjczMyAzOTkuODEzIDI1MC4zNjggMzk1LjY5MiAyNzguMTkzIDM5NS4wMTlWMzQ3LjMwNUgyOTcuMzA5VjM5NC45NDRDMzI1LjEzNCAzOTUuNjE4IDM1Mi43NjkgMzk5LjczOSAzNzkuNTgxIDQwNy4yMTNDMzg1LjQ3NCAzODcuNTg0IDM4OS44NDUgMzY3LjU1NSAzOTIuNjY3IDM0Ny4zMDVINDEyLjA5QzQwOS4xMzcgMzY5LjUzOSA0MDQuMzk5IDM5MS41MjcgMzk3LjkxIDQxMy4wNTNDNDE3LjAzMSA0MTkuNzYxIDQzNS4xMzEgNDI5LjA4MyA0NTEuNjk1IDQ0MC43NTVDNDc2LjY2MyA0MTQuMTU0IDQ5NC41MDggMzgyLjAxNCA1MDMuOTkxIDM0Ny4zMDVINTIzLjQyNlpNMjc4LjI2OCA0MTQuMTU3QzI1Mi41NTQgNDE0Ljc4NyAyMjcuMDEzIDQxOC41MzUgMjAyLjIwMyA0MjUuMzIxQzIxMS44OTUgNDUwLjU3IDIyNC4yMTIgNDcxLjY3MiAyMzguMTQ5IDQ4Ni42NjRDMjUwLjg1OSA1MDAuNDI5IDI2NC4zMDYgNTA4Ljc0NyAyNzguMTkzIDUxMS4yMDFMMjc4LjI2OCA0MTQuMTU3Wk0yOTcuMzA5IDUxMS4yMDFDMzExLjI0NSA1MDguNjI1IDMyNC42NjcgNTAwLjQyOSAzMzcuNDI2IDQ4Ni42ODhDMzUxLjI4OSA0NzEuNzQ1IDM2My41NTggNDUwLjY0MyAzNzMuMzczIDQyNS4zNDZDMzQ4LjU2NSA0MTguNTUyIDMyMy4wMjIgNDE0LjgwMyAyOTcuMzA5IDQxNC4xODJWNTExLjIwMVpNMTg0LjA0NSA0MzEuMjg0QzE2Ny43MTEgNDM3LjAzMyAxNTIuMTc2IDQ0NC44NDEgMTM3LjgxNyA0NTQuNTIxTDEzOS42ODMgNDU2LjE4OEwxNDAuMzk0IDQ1Ni44MDNMMTQxLjY5NCA0NTcuOTMxTDE0Mi41NTQgNDU4LjY2N0wxNDMuNzMxIDQ1OS42NzNMMTQ0LjYzOSA0NjAuNDM0TDE0NS43NjggNDYxLjM2NkMxNDYuMDg3IDQ2MS42MzYgMTQ2LjQwNiA0NjEuOTA2IDE0Ni43NDkgNDYyLjE1MUwxNDcuODU0IDQ2My4wNkwxNDguODM1IDQ2My44NDVMMTQ5LjkzOCA0NjQuNzAzTDE1MC45NDUgNDY1LjQ4OEMxNTEuMjg5IDQ2NS43ODMgMTUxLjY1NyA0NjYuMDUyIDE1Mi4wMjQgNDY2LjMyMkwxNTMuMDU1IDQ2Ny4xMDdMMTU0LjE1OSA0NjcuOTQyTDE1NS4xODkgNDY4LjcwM0wxNTYuMjk0IDQ2OS41MTNMMTU3LjMyNCA0NzAuMjczTDE1OC40MjkgNDcxLjA1OUwxNTkuNDgzIDQ3MS43OTVMMTYwLjYxMiA0NzIuNThMMTYxLjY2OCA0NzMuMzE1TDE2Mi43OTYgNDc0LjA3NkwxNjMuODc2IDQ3NC43ODhMMTY1LjAwNSA0NzUuNTQ5TDE2Ni4wNiA0NzYuMjM1TDE2Ny4yMzcgNDc2Ljk5NkwxNjguMjkzIDQ3Ny42NTlMMTY5LjU5MyA0NzguNDkzTDE3MS4zNTkgNDc5LjU0OEwxNzIuNzMzIDQ4MC40MDdMMTczLjgxMyA0ODEuMDQ1TDE3NC45OTEgNDgxLjczMkwxNzYuMTIgNDgyLjM5NUwxNzcuMjczIDQ4My4wNTdMMTc4LjQyNyA0ODMuNjk1TDE3OS41NTUgNDg0LjMzM0wxODAuNzMyIDQ4NC45NzFMMTgxLjg2MSA0ODUuNTg0TDE4My4wMzkgNDg2LjIyM0wxODQuMTkyIDQ4Ni44MTJMMTg1LjM3IDQ4Ny40NDlMMTg2LjUyMyA0ODguMDE0TDE4Ny43MjYgNDg4LjYyN0wxODguODU0IDQ4OS4xOTFMMTkwLjA4MSA0ODkuNzhMMTkxLjIzNCA0OTAuMzQ1TDE5Mi40MzcgNDkwLjkwOUwxOTMuNTkgNDkxLjQ0OEwxOTQuODE3IDQ5Mi4wMTNMMTk1Ljk5NSA0OTIuNTUzTDE5Ny4xOTcgNDkzLjA5M0wxOTguMzk5IDQ5My42MDdMMTk5LjYwMiA0OTQuMTQ3TDIwMC44MDQgNDk0LjYzOUwyMDIuMDMxIDQ5NS4xNTNMMjAzLjIzMyA0OTUuNjQ1TDIwNC40NiA0OTYuMTZMMjA1Ljc2MSA0OTYuNjc1TDIwNy44OTYgNDk3LjQ4NEwyMDkuMjcgNDk4LjAyNEwyMTAuNDk2IDQ5OC40NjZMMjExLjc0OCA0OTguOTA4TDIxMi45NzUgNDk5LjM1TDIxNC4yMjYgNDk5Ljc5MUwyMTUuNDUzIDUwMC4yMDhMMjE2LjcwNCA1MDAuNjI1TDIxNy45NTUgNTAxLjA0M0wyMTkuMjA3IDUwMS40NkwyMjAuNDU4IDUwMS44NTNMMjIxLjcxIDUwMi4yNDVMMjIyLjk2MSA1MDIuNjEzTDIyNC4yMzcgNTAzLjAwNkwyMjUuNDg4IDUwMy4zNDlMMjI2Ljc2NSA1MDMuNzE3TDIyOC4wMTYgNTA0LjA2MUwyMjguNTMxIDUwNC40MDRDMjI3LjA4NCA1MDIuOTgxIDIyNS42NiA1MDEuNTA5IDIyNC4yMzcgNDk5Ljk4N0MyMDguNTgzIDQ4Mi45MzQgMTk0LjY2OSA0NTkuMzMgMTg0LjA0NSA0MzEuMjg0Wk0zOTEuNjA0IDQzMS4wNjNDMzgwLjk3OSA0NTkuMjA3IDM2Ny4xNjUgNDgyLjgxMiAzNTEuNDEyIDQ5OS43NjdDMzUwLjAxNCA1MDEuMjg4IDM0OC41NjYgNTAyLjc2IDM0Ny4xMTggNTA0LjE4NEwzNDcuNTExIDUwNC4wNjFMMzQ4Ljc2MyA1MDMuNzE3TDM1MC4wMzggNTAzLjM0OUwzNTEuMzE0IDUwMy4wMDZMMzUyLjU2NSA1MDIuNjEzTDM1My44MTYgNTAyLjI0NUwzNTUuMDY4IDUwMS44NTNMMzU2LjMxOSA1MDEuNDZMMzU3LjU3MSA1MDEuMDQzTDM1OC44MjIgNTAwLjYyNUwzNjAuMDc0IDUwMC4yMDhMMzYxLjMyNSA0OTkuNzkxTDM2Mi41NTIgNDk5LjM1TDM2My43NzkgNDk4LjkwOEwzNjUuMDMgNDk4LjQ2NkwzNjYuMjU3IDQ5OC4wMjRMMzY3LjU1OCA0OTcuNTA5TDM2OS44MTUgNDk2LjY1TDM3MS4wNjYgNDk2LjE2TDM3Mi4zMTcgNDk1LjY0NUwzNzMuNDk1IDQ5NS4xNTNMMzc0Ljc0NyA0OTQuNjM5TDM3NS45MjUgNDk0LjE0N0wzNzcuMTUxIDQ5My42MDdMMzc4LjMyOSA0OTMuMDkzTDM3OS41NTcgNDkyLjU1M0wzODAuNzA5IDQ5Mi4wMTNMMzgxLjkzNyA0OTEuNDQ4TDM4My4wOSA0OTAuOTA5TDM4NC4zMTYgNDkwLjM0NUwzODUuNDQ1IDQ4OS43OEwzODYuNjcyIDQ4OS4xOTFMMzkwLjE1NiA0ODcuNDQ5TDM5MS4zNTggNDg2LjgxMkwzOTIuNDg3IDQ4Ni4yMjNMMzkzLjY2NSA0ODUuNTg0TDM5NC43OTQgNDg0Ljk3MUwzOTUuOTcyIDQ4NC4zMzNMMzk3LjEwMSA0ODMuNzJMMzk4LjI3OCA0ODMuMDU3TDM5OS4zODIgNDgyLjQxOUw0MDAuNTYgNDgxLjczMkw0MDEuNjY0IDQ4MS4wNjlMNDAyLjgxNyA0ODAuMzgzTDQwNC4wMiA0NzkuNjcxTDQwNi4wNTcgNDc4LjQyTDQwNy4yMzQgNDc3LjY1OUw0MDguMzM4IDQ3Ni45NzJMNDA5LjQ0MiA0NzYuMjM1TDQxMC41NDcgNDc1LjUyNEw0MTEuNjUgNDc0Ljc4OEw0MTMuODU5IDQ3My4zMTVMNDE0LjkzOCA0NzIuNTU1TDQxNi4wMTkgNDcxLjgxOUw0MTcuMDk4IDQ3MS4wMzRMNDE4LjE3OCA0NzAuMjczTDQxOS4yNTcgNDY5LjQ4OEw0MjAuMzM3IDQ2OC43MDNMNDIxLjM5MiA0NjcuOTE4TDQyMi40NzIgNDY3LjEzM0w0MjMuNTAyIDQ2Ni4zMjJMNDI0LjU4MiA0NjUuNTEzTDQyNS42MTIgNDY0LjcwM0w0MjYuNjkxIDQ2My44NDVMNDI3LjY5OCA0NjMuMDZMNDI4Ljc3NyA0NjIuMTc2TDQyOS43NTkgNDYxLjM2Nkw0MzAuODYzIDQ2MC40NThMNDMxLjgyIDQ1OS42NzNMNDMyLjkyNCA0NTguNzE2TDQzMy44NTYgNDU3LjkzMUw0MzUuMDU5IDQ1Ni44NzZMNDM1Ljg2OCA0NTYuMTY0TDQzNy43MDkgNDU0LjUyMUg0MzcuODMxQzQyMy40ODQgNDQ0Ljc2NCA0MDcuOTQ5IDQzNi44ODIgMzkxLjYwNCA0MzEuMDYzWk0yODguNjcxIDQ0Ljk5OEMzNTIuNzMxIDQ1LjEzODMgNDE0LjEzIDcwLjYzMzMgNDU5LjQ0OCAxMTUuOTFMNDY2Ljk4MSAxMjMuMzQ1TDQ2Ni43ODUgMTIzLjQ5MUw0NjYuNTY0IDEyMy4zMkM0OTUuNjI5IDE1NC44NzYgNTE1LjU5NSAxOTMuMzEgNTI0Ljg3OCAyMzQuNTZINTA1LjM4OUM0OTYuMzYzIDE5Ny43MDIgNDc3Ljk4MiAxNjMuNTE0IDQ1MS42OTUgMTM1LjQ2NkM0MzUuMTE0IDE0Ny4xNTMgNDE2Ljk4NyAxNTYuNDc2IDM5Ny44MzYgMTYzLjE2OEM0MDQuODY1IDE4Ni41MTUgNDA5LjgzOSAyMTAuNDAzIDQxMi43MTcgMjM0LjU2SDM5My40MzhDMzkwLjY3MSAyMTIuMzI4IDM4Ni4wNDEgMTkwLjM0MiAzNzkuNTgxIDE2OC44MzZDMzUyLjc2NyAxNzYuMjk4IDMyNS4xMzMgMTgwLjQxOSAyOTcuMzA5IDE4MS4xMDRWMjM0LjU2SDI3OC4xOTNWMTgxLjE3OEMyNTAuMzY4IDE4MC41MDQgMjIyLjczMyAxNzYuMzg0IDE5NS45MjEgMTY4LjkxQzE4OS40NzEgMTkwLjM5MiAxODQuODQ1IDIxMi4zNTMgMTgyLjA3NyAyMzQuNTZIMTYyLjc5OEMxNjUuNjczIDIxMC4zNyAxNzAuNjUyIDE4Ni40NDkgMTc3LjY5IDE2My4wN0MxNTguNTQyIDE1Ni4zNzMgMTQwLjQxNSAxNDcuMDQ5IDEyMy44MzEgMTM1LjM2N0M5Ny41MjcyIDE2My40NDMgNzkuMTM5MyAxOTcuNjY2IDcwLjExODIgMjM0LjU2SDUwLjQ0OTJDNTkuNzQyMSAxOTMuMzQ3IDc5LjY5OTkgMTU0Ljk0OSAxMDguNzQxIDEyMy40MThMMTA4LjU2OSAxMjMuMjcxTDExNi4xMDMgMTE1LjkxQzEzOC4xNzQgOTMuODkzMiAxNjQuMjcyIDc2LjMyNDMgMTkyLjk3NyA2NC4xNjExQzIyMi43MDYgNTEuNTU0NSAyNTQuNjYyIDQ1LjAzODUgMjg2Ljk1MyA0NC45OThIMjg4LjY3MVpNMjc4LjEyIDY0LjkyMTlDMjY0LjIzMiA2Ny41NzE5IDI1MC43ODYgNzUuNzY3NCAyMzguMDc2IDg5LjQ1OUMyMjQuMjEzIDEwNC4zNzcgMjExLjgyMSAxMjUuNDggMjAyLjEyOSAxNTAuODAyQzIyNi45MzkgMTU3LjU3OSAyNTIuNDgxIDE2MS4zMiAyNzguMTkzIDE2MS45NDFMMjc4LjEyIDY0LjkyMTlaTTI5Ny4zMDkgMTYxLjk0MUMzMjMuMDIgMTYxLjMxNiAzNDguNTYyIDE1Ny41NzYgMzczLjM3MyAxNTAuODAyQzM2My41NTggMTI1LjQ4IDM1MS4yODkgMTA0LjM3NyAzMzcuMzc3IDg5LjQ1OUMzMjQuNjQyIDc1LjY5MzkgMzExLjIyMSA2Ny40OTg0IDI5Ny4zMDkgNjQuOTIxOVYxNjEuOTQxWk0yMjguMDE2IDcyLjA2MjVMMjI2Ljc2NSA3Mi40MDUzTDIyNS40ODggNzIuNzczNEwyMjQuMjM3IDczLjE0MTZMMjIyLjk2MSA3My41MDk4TDIyMS43MSA3My45MDIzTDIyMC40NTggNzQuMjk0OUwyMTkuMjA3IDc0LjY4NzVMMjE3Ljk1NSA3NS4wODAxTDIxNS40NTMgNzUuOTE0MUwyMTQuMjI2IDc2LjM1NjRMMjEyLjk3NSA3Ni43NzM0TDIxMS43NDggNzcuMjE0OEwyMTAuNDk2IDc3LjY4MDdMMjA5LjI3IDc4LjEyM0wyMDcuOTIgNzguNjM3N0wyMDUuNzYxIDc5LjQ3MjdMMjA0LjQ2IDc5Ljk4NzNMMjAzLjIzMyA4MC40Nzg1TDIwMi4wMzEgODAuOTY4OEwyMDAuODA0IDgxLjQ4NDRMMTk5LjYyNiA4MkwxOTguMzc1IDgyLjUxNDZMMTk3LjIyMiA4My4wMzAzTDE5NS45OTUgODMuNTk0N0wxOTQuODE3IDg0LjEwOTRMMTkzLjU5IDg0LjY3MzhMMTkyLjQzNyA4NS4yMTM5TDE5MS4yMzQgODUuODAyN0wxOTAuMDgxIDg2LjM0MjhMMTg4Ljg1NCA4Ni45MzE2TDE4Ny43MjYgODcuNDk2MUwxODYuNTIzIDg4LjEwOTRMMTg1LjM3IDg4LjY5ODJMMTg0LjE5MiA4OS4zMTE1TDE4My4wMzkgODkuOTAwNEwxODEuODYxIDkwLjUzODFMMTgwLjczMiA5MS4xNTIzTDE3OS41NTUgOTEuNzlMMTc4LjQyNyA5Mi40Mjc3TDE3Ny4yNDkgOTMuMDkwOEwxNzYuMTQ1IDkzLjcyODVMMTc0Ljk5MSA5NC4zOTA2TDE3My44MzggOTUuMDc4MUwxNzIuNzA5IDk1Ljc0MDJMMTcxLjQ1OCA5Ni41MDFMMTY5LjUyIDk3LjcwMzFMMTY4LjI5MyA5OC40NjM5TDE2Ny4yMTMgOTkuMTUxNEwxNjYuMDg0IDk5Ljg4NjdMMTY0Ljk4IDEwMC41OTlMMTYyLjc3MSAxMDIuMDcxTDE2MS42NjggMTAyLjgzMUwxNjAuNTg4IDEwMy41NjdMMTU5LjUwOSAxMDQuMzI4TDE1OC40MjkgMTA1LjA4OUwxNTcuMzQ5IDEwNS44NzRMMTU2LjI3IDEwNi42MzVMMTU1LjE4OSAxMDcuNDJMMTU0LjEzNSAxMDguMjA1TDE1My4wNTUgMTA5LjAxNUwxNTIuMDI0IDEwOS44TDE1MC45NDUgMTEwLjYzNUwxNDkuOTE0IDExMS40NDRMMTQ4Ljg1OSAxMTIuMjc4TDE0Ny44MjkgMTEzLjA4OEwxNDYuNzQ5IDExMy45NzJMMTQ1Ljc2OCAxMTQuNzU3TDE0NC42NjMgMTE1LjY2NEwxNDMuNzMxIDExNi40NzRMMTQyLjYwMyAxMTcuNDMxTDE0MS42OTQgMTE4LjE5MUwxNDAuNDY4IDExOS4yNzFDMTQwLjE5OCAxMTkuNDkyIDEzOS45MjggMTE5LjcxMyAxMzkuNjgzIDExOS45NThMMTM3LjgxNyAxMjEuNjAzVjEyMS43MjVDMTUyLjEyMSAxMzEuNDczIDE2Ny42MTYgMTM5LjM0OSAxODMuOTIzIDE0NS4xNThDMTk0LjU0NyAxMTcuMDE0IDIwOC4zNjEgOTMuNDMzNyAyMjQuMTE0IDc2LjQ1NDFDMjI1LjUzNyA3NC45MzI5IDIyNi45NjEgNzMuNDg1NiAyMjguNDA4IDcyLjA2MjVIMjI4LjAxNlpNMzQ3LjE0MyA3MS43Njc2QzM0OC41OSA3My4xOTA3IDM1MC4wMzggNzQuNjM4OSAzNTEuNDM3IDc2LjE2MDJDMzY3LjA5MSA5My4zMzYgMzgxLjAwMyAxMTYuODE4IDM5MS42MjggMTQ0Ljg2M0M0MDcuOTY3IDEzOS4xMjUgNDIzLjUwNCAxMzEuMzE3IDQzNy44NTYgMTIxLjYyN0w0MzUuODY4IDExOS44Nkw0MzUuMTMzIDExOS4yMjNMNDMzLjg1NiAxMTguMDk0TDQzMi45OTggMTE3LjM1N0w0MzEuODIgMTE2LjM3Nkw0MzAuOTEyIDExNS41OTFMNDI5Ljc4MyAxMTQuNjU4TDQyOC44MjYgMTEzLjg3M0w0MjcuNzIzIDExMi45OUw0MjYuNzE2IDExMi4xOEw0MjUuNjM3IDExMS4zMjFMNDI0LjYwNiAxMTAuNTM2TDQyMy41MjYgMTA5LjcwMkw0MjIuNDk2IDEwOC45MTdMNDIxLjQxNiAxMDguMTA3TDQyMC4zNjEgMTA3LjMyMkw0MTkuMjgxIDEwNi41MzZMNDE4LjIyNyAxMDUuNzc2TDQxNy4xMjIgMTA0Ljk5MUw0MTYuMDY3IDEwNC4yM0w0MTQuOTM4IDEwMy40N0w0MTMuODg0IDEwMi43MzNMNDEyLjc1NSAxMDEuOTczTDQxMS42OTkgMTAxLjIzNkw0MTAuNTQ3IDEwMC41MDFMNDA5LjQ5MSA5OS43ODkxTDQwOC4zMTMgOTkuMDUyN0w0MDcuMjU5IDk4LjM2NjJMNDA1Ljk4MiA5Ny41ODExTDQwNC4xNjcgOTYuNDUyMUw0MDIuODQyIDk1LjY0MjZMNDAxLjczNyA5NC45Nzk1TDQwMC41NiA5NC4yOTNMMzk5LjQzMSA5My42Mjk5QzM5OS4wMzggOTMuNDMzNyAzOTguNjcxIDkzLjIxMjkgMzk4LjMwMyA5Mi45OTIyTDM5Ny4xMjUgOTIuMzMwMUwzOTUuOTk2IDkxLjY5MTRMMzk0LjgxOCA5MS4wNTM3TDM5My42ODkgOTAuNDQwNEwzOTIuNTEyIDg5LjgyNzFMMzkxLjM4MyA4OS4yMTM5TDM5MC4xODEgODguNTk5NkwzODkuMDI3IDg4LjAxMDdMMzg3Ljg1IDg3LjM5NzVMMzg2LjY5NiA4Ni44MzNMMzg1LjQ5NCA4Ni4yNDQxTDM4NC4zNDEgODUuNzA1MUwzODMuMTE0IDg1LjExNjJMMzgxLjk2MSA4NC41NzYyTDM4MC43MzQgODQuMDExN0wzNzkuNTMxIDgzLjU5NDdMMzc4LjMyOSA4My4wMzAzTDM3Ny4xNTEgODIuNTE0NkwzNzUuOTI1IDgyTDM3NC43MjMgODEuNDg0NEwzNzMuNDk1IDgwLjk2ODhMMzcyLjI5MyA4MC40Nzg1TDM3MS4wNjYgNzkuOTg3M0wzNjkuNzY2IDc5LjQ3MjdMMzY3LjYzMSA3OC42Mzc3TDM2Ni4yNTcgNzguMTIzTDM2NS4wNTUgNzcuNjgwN0wzNjMuNzc5IDc3LjIxNDhMMzYyLjU1MiA3Ni43NzM0TDM2MS4zMjUgNzYuMzU2NEwzNjAuMDc0IDc1LjkxNDFMMzU4LjgyMiA3NS40OTcxTDM1Ny41NzEgNzUuMDgwMUwzNTYuMzE5IDc0LjY4NzVMMzU1LjA5MyA3NC4yOTQ5TDM1My44MTYgNzMuOTAyM0wzNTIuNTY1IDczLjUwOThMMzUxLjI5IDczLjE0MTZMMzUwLjAzOCA3Mi43NzM0TDM0OC43NjMgNzIuNDA1M0wzNDcuNTExIDcyLjA2MjVMMzQ3LjE0MyA3MS43Njc2WiIgZmlsbD0id2hpdGUiLz4KPC9zdmc+Cg==" alt="" width="56" height="56"></button>
+  <span class="fab-hint" aria-hidden="true"><span class="fab-cur"><svg viewBox="0 0 26 26" width="26" height="26"><path d="M3.5 2.5l0 18.2 4.7-4.4 3.2 7.1 3.4-1.5-3.2-7 6.5-.4z" fill="#fff" stroke="#000" stroke-width="1.8" stroke-linejoin="round"/></svg></span></span>
 </div>
 
 <script>
@@ -1218,7 +1265,7 @@ nav #menu li:last-child a{border-bottom:2px solid var(--b)}}
 })();
 (function(){
   var f=document.getElementById("fab"),b=document.getElementById("fabbtn");
-  function set(o){f.classList.toggle("open",o);b.setAttribute("aria-expanded",o);b.setAttribute("aria-label",o?"Close quick links":"Open quick links");}
+  function set(o){f.classList.toggle("open",o);if(o)f.classList.add("seen");b.setAttribute("aria-expanded",o);b.setAttribute("aria-label",o?"Close quick links":"Open quick links");}
   b.addEventListener("click",function(){set(!f.classList.contains("open"));});
   document.addEventListener("click",function(e){if(!f.contains(e.target))set(false);});
   document.addEventListener("keydown",function(e){if(e.key==="Escape")set(false);});
@@ -1611,7 +1658,7 @@ btn.addEventListener("click",function(e){
   var reduce=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
   var svg=disc.querySelector(".yo-face"),tm=yo.querySelector(".yo-t"),pt=yo.querySelector(".yo-p"),prevT=0,tStart=0,ang=0,spin=reduce?0:500,fast=false;
   var t0=performance.now(),last=t0,extra=0,target=0,until=0;
-  var lastAct=t0,isIdle=false,IDLE=5000;
+  var lastAct=t0,isIdle=false,IDLE=5000,quiet=false;
   addEventListener("scroll",function(){lastAct=performance.now();},{passive:true});
   disc.addEventListener("focus",function(){lastAct=performance.now();});
   /* Yo-yo sound: the official recording (yoyobearing.mp3 on Cloudflare R2).
@@ -1688,12 +1735,30 @@ btn.addEventListener("click",function(e){
     g.gain.exponentialRampToValueAtTime(.07,t+.006);g.gain.exponentialRampToValueAtTime(.0001,t+.14);
     o.connect(g);g.connect(ac.destination);o.start(t);o.stop(t+.16);
   }
+  /* Scoring beep for the +1: a quick rising 8-bit chime (G5, D6, G6) */
+  function score(){
+    if(!ac)return;
+    try{
+      if(ac.state==="suspended")ac.resume();
+      var t=ac.currentTime+.02,notes=[[784,0,.07],[1175,.08,.07],[1568,.16,.26]];
+      notes.forEach(function(n){
+        var o=ac.createOscillator();o.type="square";o.frequency.setValueAtTime(n[0],t+n[1]);
+        var lp=ac.createBiquadFilter();lp.type="lowpass";lp.frequency.value=3200;
+        var g=ac.createGain();
+        g.gain.setValueAtTime(.0001,t+n[1]);
+        g.gain.exponentialRampToValueAtTime(.05,t+n[1]+.006);
+        g.gain.setValueAtTime(.05,t+n[1]+n[2]*.6);
+        g.gain.exponentialRampToValueAtTime(.0001,t+n[1]+n[2]);
+        o.connect(lp);lp.connect(g);g.connect(ac.destination);o.start(t+n[1]);o.stop(t+n[1]+n[2]+.02);
+      });
+    }catch(e){}
+  }
   function whoosh(down){
     if(!ac||down)return;
     thud(ac.currentTime+.3);
   }
   document.addEventListener("visibilitychange",function(){
-    if(document.hidden){target=0;spin=reduce?0:500;wantOn=false;apply();}
+    if(document.hidden){target=0;quiet=true;spin=reduce?0:500;wantOn=false;apply();}
   });
 
   function base(t){
@@ -1703,7 +1768,7 @@ btn.addEventListener("click",function(e){
   }
   function frame(now){
     var dt=Math.min(.05,(now-last)/1000);last=now;
-    if(prevT>0&&target===0){pt.classList.remove("show");void pt.offsetWidth;pt.classList.add("show");sound(false);whoosh(false);}
+    if(prevT>0&&target===0){pt.classList.remove("show");void pt.offsetWidth;pt.classList.add("show");sound(false);whoosh(false);if(!quiet){score();if(window.myyaConfetti){var cr=disc.getBoundingClientRect();window.myyaConfetti(cr.left+cr.width/2,cr.top+cr.height/2);}}quiet=false;}
     prevT=target;
     if(target>0&&now>until)target=0;
     extra+=(target-extra)*(1-Math.exp(-dt*(target>0?5:2.2)));
@@ -1726,7 +1791,7 @@ btn.addEventListener("click",function(e){
   }
   requestAnimationFrame(frame);
   function drop(){
-    initAudio();
+    initAudio();yo.classList.add("seen");
     if(target>0){target=0;return;}
     sound(true);
     whoosh(true);
@@ -1757,6 +1822,35 @@ btn.addEventListener("click",function(e){
       o.connect(lp);lp.connect(g);g.connect(ac.destination);o.start(t);o.stop(t+.15);
     }catch(e){}
   }
+  /* Mouse-click sound (synthesised): top-right yo-yo and bottom-right widget. Press = louder tick, release = softer tick. */
+  var nb=null,downAt=0;
+  function ctx(){try{if(!ac)ac=new AC();if(ac.state==="suspended")ac.resume();}catch(e){}return ac;}
+  function tick(t,vol,hz){
+    var c=ac;if(!c)return;
+    if(!nb){nb=c.createBuffer(1,Math.ceil(c.sampleRate*.04),c.sampleRate);var d=nb.getChannelData(0);for(var i=0;i<d.length;i++)d[i]=Math.random()*2-1;}
+    var s=c.createBufferSource();s.buffer=nb;
+    var bp=c.createBiquadFilter();bp.type="bandpass";bp.frequency.value=hz;bp.Q.value=.9;
+    var g=c.createGain();g.gain.setValueAtTime(vol,t);g.gain.exponentialRampToValueAtTime(.0001,t+.022);
+    s.connect(bp);bp.connect(g);g.connect(c.destination);s.start(t);s.stop(t+.03);
+    var o=c.createOscillator();o.type="sine";o.frequency.setValueAtTime(hz*.6,t);o.frequency.exponentialRampToValueAtTime(hz*.28,t+.02);
+    var og=c.createGain();og.gain.setValueAtTime(vol*.35,t);og.gain.exponentialRampToValueAtTime(.0001,t+.025);
+    o.connect(og);og.connect(c.destination);o.start(t);o.stop(t+.03);
+  }
+  function clickDown(){if(!ctx())return;downAt=Date.now();tick(ac.currentTime,.2,2600);}
+  function clickUp(){if(!ctx())return;tick(ac.currentTime+.005,.11,3400);}
+  var CLK="#fabbtn,.yo-d";
+  document.addEventListener("pointerdown",function(e){
+    if(e.button>0||!e.target.closest||!e.target.closest(CLK))return;
+    clickDown();
+  },true);
+  document.addEventListener("pointerup",function(e){
+    if(!downAt||!e.target.closest||!e.target.closest(CLK))return;
+    downAt=0;clickUp();
+  },true);
+  document.addEventListener("click",function(e){
+    /* keyboard-activated (Enter/Space) has no pointer events: play the whole click */
+    if(e.detail===0&&e.target.closest&&e.target.closest(CLK)){clickDown();downAt=0;setTimeout(clickUp,55);}
+  },true);
   document.addEventListener("click",function(e){
     var el=e.target&&e.target.closest?e.target.closest('button,a.btn,a.lang,[role="button"]'):null;
     if(!el||el.closest(".yo-d,.vw-x,.vw-ar,.vs-mu,.vs-pp,.ck-main,.ck-knob"))return;
@@ -2055,6 +2149,73 @@ new MutationObserver(function(){renderStatic();renderCtl();}).observe(document.d
 renderAll();
 })();
 </script>
+<script>
+(function(){
+  var SEL=".ev-scroll,.ch-scroll,.jm-names";
+  var reduce=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var ARROW='<svg class="cur" viewBox="0 0 26 26" width="26" height="26" aria-hidden="true"><path d="M3.5 2.5l0 18.2 4.7-4.4 3.2 7.1 3.4-1.5-3.2-7 6.5-.4z" fill="#fff" stroke="#000" stroke-width="1.8" stroke-linejoin="round"/></svg>';
+  var CHEV='<svg class="chev" viewBox="0 0 18 18" width="18" height="18" fill="none" stroke="#000" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5l5 5 5-5M4 9.5l5 5 5-5"/></svg>';
+  function ease(t){return t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2;}
+  function setup(el){
+    var can=function(){return el.scrollHeight>el.clientHeight+6;};
+    var parent=el.parentElement;if(!parent)return;
+    if(getComputedStyle(parent).position==="static")parent.style.position="relative";
+    var hint=document.createElement("div");hint.className="sc-hint";hint.setAttribute("aria-hidden","true");
+    hint.innerHTML='<div class="sc-bob">'+ARROW+CHEV+'</div>';
+    parent.appendChild(hint);
+    var done=false,raf=0,runs=0,vis=false,hideT=0,io=null,quiet=0;
+    function setTop(v){quiet=performance.now()+160;el.scrollTop=v;}
+    function place(){
+      hint.style.left=(el.offsetLeft+el.offsetWidth-58)+"px";
+      hint.style.top=(el.offsetTop+Math.max(20,el.clientHeight-110))+"px";
+    }
+    function showHint(){
+      if(done||!can())return;
+      place();hint.classList.add("on");
+      clearTimeout(hideT);hideT=setTimeout(function(){hint.classList.remove("on");},16000);
+    }
+    function stop(){
+      if(done)return;done=true;cancelAnimationFrame(raf);
+      clearTimeout(hideT);hint.classList.remove("on");
+      if(io)io.disconnect();
+      ["wheel","touchstart","pointerdown","keydown"].forEach(function(ev){el.removeEventListener(ev,stop);});
+    }
+    ["wheel","touchstart","pointerdown","keydown"].forEach(function(ev){el.addEventListener(ev,stop,{passive:true});});
+    function demo(){
+      if(done||reduce||!can()||runs>=2)return;
+      runs++;
+      var max=el.scrollHeight-el.clientHeight,dist=Math.min(max,Math.max(90,el.clientHeight*.45));
+      var t0=null,down=1700,wait=500,up=1300;
+      function step(now){
+        if(done){return;}
+        if(t0===null)t0=now;
+        var t=now-t0;
+        if(t<down)setTop(dist*ease(t/down));
+        else if(t<down+wait)setTop(dist);
+        else if(t<down+wait+up)setTop(dist*(1-ease((t-down-wait)/up)));
+        else{setTop(0);return;}
+        raf=requestAnimationFrame(step);
+      }
+      raf=requestAnimationFrame(step);
+    }
+    /* any scroll that is not our own demo (scrollbar drag, keyboard, etc.) counts as the visitor taking over */
+    el.addEventListener("scroll",function(){if(performance.now()<quiet)return;stop();},{passive:true});
+    if(!("IntersectionObserver" in window))return;
+    io=new IntersectionObserver(function(en){
+      en.forEach(function(x){
+        var now=x.isIntersecting&&x.intersectionRatio>=.6;
+        if(now&&!vis){vis=true;showHint();setTimeout(demo,700);}
+        else if(!now&&vis){vis=false;cancelAnimationFrame(raf);if(!done){setTop(0);hint.classList.remove("on");}}
+      });
+    },{threshold:[0,.6]});
+    io.observe(el);
+    addEventListener("resize",function(){if(!done&&hint.classList.contains("on"))place();});
+  }
+  function init(){Array.prototype.forEach.call(document.querySelectorAll(SEL),setup);}
+  if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init);else init();
+})();
+</script>
+
 
 </body>
 </html>

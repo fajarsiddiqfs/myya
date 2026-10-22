@@ -595,7 +595,7 @@ nav #menu li:last-child a{border-bottom:2px solid var(--b)}}
 .ck-log th{text-align:left;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--m);padding:8px 10px;border-bottom:2px solid var(--b)}
 .ck-log td{padding:10px;border-bottom:1px solid var(--l);font-variant-numeric:tabular-nums}
 .ck-log td:first-child{font-weight:700}
-.ck-log td:nth-child(4){font-weight:900}
+.ck-log td:nth-child(5){font-weight:900}
 @media(max-width:640px){.ck-ctl .btn{min-width:0;flex:1 1 40%}.ck-name{flex-direction:column;align-items:stretch;gap:6px;width:100%}.ck-name input{width:100%}}
 @media(prefers-reduced-motion:reduce){.ck-dev.hov:not(.press) .ck-body{animation:none}.ck-body,.ck-d.roll,.ck-fx,.ck-time.low,.ck-unit.shake .ck-dev{animation:none;transition:none}}
 
@@ -673,12 +673,12 @@ html{overflow-x:clip}
 #clicker .sub{margin-top:8px;font-size:14px}
 .ck-panel,.ck-pair,.ck-result{margin-left:-8px;margin-right:-8px}
 .ck-panel{margin-top:14px;padding:12px 12px 10px;border-radius:22px}
-.ck-top{flex-wrap:nowrap;gap:8px}
-.ck-name{flex:1 1 auto;min-width:0;width:auto;flex-direction:row;gap:0}
+.ck-top{flex-wrap:wrap;gap:6px 8px}
+.ck-name{flex:1 1 calc(50% - 4px);min-width:0;width:auto;flex-direction:row;gap:0}
 .ck-name>span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .ck-name input{width:100%;min-width:0;padding:8px 10px;font-size:16px}
-.ck-dur{flex:none}
-.ck-dur button{padding:8px 10px;font-size:12.5px;white-space:nowrap}
+.ck-dur{flex:1 1 100%;display:flex}
+.ck-dur button{flex:1;padding:8px 10px;font-size:12.5px;white-space:nowrap}
 .ck-time{font-size:56px;margin-top:4px}
 .ck-bar{height:6px;margin:6px auto 0}
 .ck-status{margin:6px 0 0;font-size:13px;min-height:1.2em;line-height:1.2}
@@ -1828,6 +1828,7 @@ body.imgbox-lock{overflow:hidden}
     <div class="ck-panel">
       <div class="ck-top">
         <label class="ck-name"><span data-i18n="Player">Player</span><input id="ck-player" type="text" maxlength="40" autocomplete="off" data-i18n-ph="Player name" placeholder="Player name" aria-required="true"></label>
+        <label class="ck-name"><span data-i18n="Judge">Judge</span><input id="ck-judge" type="text" maxlength="40" autocomplete="off" data-i18n-ph="Judge name" placeholder="Judge name"></label>
         <div class="ck-dur" role="group" aria-label="Routine length" data-i18n-aria="Routine length">
           <button type="button" class="on" data-s="60" aria-pressed="true" data-i18n="1 min">1 min</button>
           <button type="button" data-s="180" aria-pressed="false" data-i18n="3 min">3 min</button>
@@ -1896,7 +1897,7 @@ body.imgbox-lock{overflow:hidden}
         <h3 data-i18n="Round results">Round results</h3>
         <div><button type="button" class="btn o sm" id="ck-copy" data-i18n="Copy">Copy</button> <button type="button" class="btn o sm" id="ck-clr" data-i18n="Clear">Clear</button></div>
       </div>
-      <div class="ck-tw"><table><thead><tr><th data-i18n="Player">Player</th><th data-i18n="Positive">Positive</th><th data-i18n="Negative">Negative</th><th data-i18n="Total">Total</th><th data-i18n="Time">Time</th></tr></thead><tbody id="ck-rows"></tbody></table></div>
+      <div class="ck-tw"><table><thead><tr><th data-i18n="Player">Player</th><th data-i18n="Judge">Judge</th><th data-i18n="Positive">Positive</th><th data-i18n="Negative">Negative</th><th data-i18n="Total">Total</th><th data-i18n="Time">Time</th></tr></thead><tbody id="ck-rows"></tbody></table></div>
     </div>
 
     <div class="jg-card">
@@ -2644,7 +2645,7 @@ btn.addEventListener("click",function(e){
       }catch(e){}
     });
   }
-  /* Mouse-click sound: top-right yo-yo, bottom-right widget and photo slider arrows/dots. Press = louder tick, release = softer tick. */
+  /* Mouse-click sound: top-right yo-yo, bottom-right widget, photo slider arrows/dots, Local Yo-Yo Brands arrows/dots and the photo pop-up arrows. Press = louder tick, release = softer tick. */
   function tick(c,t,vol,hz){
     if(!nb){nb=c.createBuffer(1,Math.ceil(c.sampleRate*.04),c.sampleRate);var d=nb.getChannelData(0);for(var i=0;i<d.length;i++)d[i]=Math.random()*2-1;}
     var s=c.createBufferSource();s.buffer=nb;
@@ -2658,7 +2659,8 @@ btn.addEventListener("click",function(e){
   function clickDown(){downAt=Date.now();ready(function(c){tick(c,c.currentTime,.2,2600);});}
   function clickUp(){ready(function(c){tick(c,c.currentTime+.005,.11,3400);});}
   function fullClick(){clickDown();downAt=0;setTimeout(clickUp,55);}
-  var CLK="#fabbtn,.yo-d,.slider .sl-prev,.slider .sl-next,.slider .sl-dots button";
+  window.myyaClick=fullClick; /* lets the photo pop-up play the same click for keyboard arrows */
+  var CLK="#fabbtn,.yo-d,.slider .sl-prev,.slider .sl-next,.slider .sl-dots button,#brandcar .bc-prev,#brandcar .bc-next,#brandcar .car-dots button,.imgbox-prev,.imgbox-next";
   function hit(e){return e.target&&e.target.closest&&e.target.closest(CLK);}
   document.addEventListener("pointerdown",function(e){
     ptype=e.pointerType||"mouse";
@@ -2676,7 +2678,7 @@ btn.addEventListener("click",function(e){
   },true);
   document.addEventListener("click",function(e){
     var el=e.target&&e.target.closest?e.target.closest('button,a.btn,a.lang,[role="button"]'):null;
-    if(!el||el.closest(".yo-d,.slider,.vw-x,.vw-ar,.vs-mu,.vs-pp,.ck-main,.ck-knob"))return;
+    if(!el||el.closest(".yo-d,.slider,.vw-x,.vw-ar,.vs-mu,.vs-pp,.ck-main,.ck-knob,.bc-prev,.bc-next,.car-dots,.imgbox-prev,.imgbox-next"))return;
     var now=Date.now();if(now-lastT<80)return;lastT=now;
     /* widget and language switch: rising beep when turning on, falling when turning off */
     var st=el.getAttribute("aria-expanded")||el.getAttribute("aria-pressed");
@@ -2840,7 +2842,7 @@ var MY={
 "Stage rules: what you can bring":"Peraturan pentas: apa yang boleh dibawa",
 "Yo-Yo Clicker":"Pengira Klik Yo-Yo",
 "sub":"Pembilang digital untuk juri & pemain.",
-"Player":"Pemain","Player name":"Nama pemain","Routine length":"Tempoh rutin",
+"Player":"Pemain","Player name":"Nama pemain","Judge":"Hakim","Judge name":"Nama hakim","Routine length":"Tempoh rutin",
 "1 min":"1 min","3 min":"3 min","Start":"Mula","Pause":"Jeda","Resume":"Sambung","Finish":"Tamat","Reset":"Set Semula","New Round":"Pusingan Baru",
 "Sound: On":"Bunyi: Hidup","Sound: Off":"Bunyi: Mati",
 "Positive score":"Markah positif","Negative score":"Markah negatif","Positive":"Positif","Negative":"Negatif","Total":"Jumlah","Total score":"Jumlah markah","Time":"Masa",
@@ -2907,7 +2909,7 @@ function t(k){return ms()?(MY[k]!==undefined?MY[k]:(EN[k]||k)):(EN[k]!==undefine
 
 var $=function(s,c){return(c||root).querySelector(s);},$$=function(s,c){return Array.prototype.slice.call((c||root).querySelectorAll(s));};
 var el={time:$("#ck-time"),prog:$("#ck-prog"),status:$("#ck-status"),go:$("#ck-go"),fin:$("#ck-fin"),rst:$("#ck-rst"),snd:$("#ck-snd"),
-  player:$("#ck-player"),modal:$("#ck-modal"),mok:$("#ck-modal-ok"),dur:$$(".ck-dur button"),result:$("#ck-result"),rp:$("#ck-rp"),rn:$("#ck-rn"),rt:$("#ck-rt"),
+  player:$("#ck-player"),judge:$("#ck-judge"),modal:$("#ck-modal"),mok:$("#ck-modal-ok"),dur:$$(".ck-dur button"),result:$("#ck-result"),rp:$("#ck-rp"),rn:$("#ck-rn"),rt:$("#ck-rt"),
   log:$("#ck-log"),rows:$("#ck-rows"),copy:$("#ck-copy"),clr:$("#ck-clr")};
 var units={pos:$('.ck-unit[data-k="pos"]'),neg:$('.ck-unit[data-k="neg"]')};
 var S={state:"idle",dur:60,remain:60000,endAt:0,pos:0,neg:0,hist:[],sound:true,log:[],timer:0,early:false};
@@ -2990,7 +2992,7 @@ function renderLog(){
   el.log.hidden=!S.log.length;el.rows.textContent="";
   S.log.slice().reverse().forEach(function(r){
     var tr=document.createElement("tr");
-    [r.name,"+"+r.pos,"\u2212"+r.neg,r.total,Math.round(r.dur/60)+" min"].forEach(function(v){var td=document.createElement("td");td.textContent=v;tr.appendChild(td);});
+    [r.name,r.judge||"\u2014","+"+r.pos,"\u2212"+r.neg,r.total,Math.round(r.dur/60)+" min"].forEach(function(v){var td=document.createElement("td");td.textContent=v;tr.appendChild(td);});
     el.rows.appendChild(tr);
   });
 }
@@ -3102,7 +3104,7 @@ function finish(early){
   el.result.classList.remove("win");void el.result.offsetWidth;el.result.classList.add("win");
   confetti();if(!early){buzz();vib([120,60,120,60,240]);}
   var name=el.player.value.trim()||(t("Player ")+(S.log.length+1));
-  S.log.push({name:name,pos:S.pos,neg:S.neg,total:total(),dur:S.dur});if(S.log.length>50)S.log.shift();
+  S.log.push({name:name,judge:el.judge.value.trim(),pos:S.pos,neg:S.neg,total:total(),dur:S.dur});if(S.log.length>50)S.log.shift();
   saveLog();renderLog();
   try{el.result.scrollIntoView({behavior:"smooth",block:"nearest"});}catch(e){}
 }
@@ -3127,8 +3129,8 @@ el.dur.forEach(function(b){b.addEventListener("click",function(){
 });});
 el.clr.addEventListener("click",function(){if(!window.confirm(t("clear_confirm")))return;S.log=[];saveLog();renderLog();});
 el.copy.addEventListener("click",function(){
-  var lines=[[t("Player"),t("Positive"),t("Negative"),t("Total"),t("Time")].join("\t")];
-  S.log.forEach(function(r){lines.push([r.name,r.pos,r.neg,r.total,Math.round(r.dur/60)+" min"].join("\t"));});
+  var lines=[[t("Player"),t("Judge"),t("Positive"),t("Negative"),t("Total"),t("Time")].join("\t")];
+  S.log.forEach(function(r){lines.push([r.name,r.judge||"",r.pos,r.neg,r.total,Math.round(r.dur/60)+" min"].join("\t"));});
   var txt=lines.join("\n");
   function ok(){var o=el.copy.textContent;el.copy.textContent=t("Copied!");setTimeout(function(){el.copy.textContent=t("Copy");},1400);}
   try{navigator.clipboard.writeText(txt).then(ok,function(){fallback();});}catch(e){fallback();}
@@ -3282,6 +3284,7 @@ function close(){
   t=setTimeout(function(){box.classList.remove("open");big.removeAttribute("src");},200);
 }
 function isOpen(){return box.classList.contains("open")&&box.classList.contains("show");}
+function snd(){try{if(window.myyaClick)window.myyaClick();}catch(x){}}
 document.addEventListener("click",function(e){
   var im=e.target.closest&&e.target.closest(".slider .sl-track img");
   if(im){open(im);}
@@ -3293,8 +3296,8 @@ next.addEventListener("click",function(e){e.stopPropagation();show(idx+1);});
 document.addEventListener("keydown",function(e){
   if(!isOpen())return;
   if(e.key==="Escape")close();
-  else if(e.key==="ArrowLeft"){e.preventDefault();show(idx-1);}
-  else if(e.key==="ArrowRight"){e.preventDefault();show(idx+1);}
+  else if(e.key==="ArrowLeft"){e.preventDefault();show(idx-1);snd();}
+  else if(e.key==="ArrowRight"){e.preventDefault();show(idx+1);snd();}
 });
 var sx=null,sy=null;
 box.addEventListener("touchstart",function(e){if(e.touches.length===1){sx=e.touches[0].clientX;sy=e.touches[0].clientY;}else{sx=null;}},{passive:true});

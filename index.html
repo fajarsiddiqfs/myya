@@ -369,14 +369,15 @@ nav #menu li:last-child a{border-bottom:2px solid var(--b)}}
 @media(max-width:860px){.brand{flex-basis:calc((100% - 20px)/2)}}
 @media(max-width:640px){.brand{flex-basis:100%}}
 /* MYYA certificate carousel */
-#cert-gallery{position:relative;overflow:hidden;padding:56px 0 8px}
-.cx-stage{--cw:clamp(118px,13.5vw,208px);position:relative;height:calc(var(--cw)*2.5);margin:0 auto;perspective:1000px;perspective-origin:50% 45%;touch-action:pan-y;-webkit-user-select:none;user-select:none}
+#cert-gallery{position:relative;overflow:hidden;padding:56px 0 0}
+.cx-stage{--cw:clamp(170px,20vw,310px);position:relative;height:calc(var(--cw)*2);margin:0 auto;perspective:1000px;perspective-origin:50% 45%;touch-action:pan-y;overscroll-behavior-x:contain;-webkit-user-select:none;user-select:none}
+.cx-stage.cx-drag,.cx-stage.cx-drag .cx-card{cursor:grabbing}
 .cx-card{position:absolute;left:50%;top:50%;width:var(--cw);aspect-ratio:210/297;margin:calc(var(--cw)*-.7071) 0 0 calc(var(--cw)/-2);padding:0;border:0;background:none;cursor:pointer;font:inherit;color:inherit;opacity:0;will-change:transform,opacity;-webkit-tap-highlight-color:transparent}
 .cx-ready .cx-card{opacity:1}
 .cx-card:focus-visible{outline:3px solid var(--b);outline-offset:6px;border-radius:10px}
 .cx-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .cx-paper{position:absolute;inset:0;display:block;container-type:inline-size;background:#fff;border-radius:6px;overflow:hidden;box-shadow:0 10px 24px -8px rgba(0,0,0,.16),0 1px 4px rgba(0,0,0,.08)}
-.cx-paper img{display:block;width:100%;height:100%;object-fit:cover}
+.cx-paper img{display:block;width:100%;height:100%;object-fit:cover;pointer-events:none;-webkit-user-drag:none}
 .cx-ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3.2cqw;padding:12cqw 10cqw;text-align:center;color:#111;background:linear-gradient(180deg,#fff,#faf8f4)}
 .cx-ph::before{content:"";position:absolute;inset:4cqw;border:.9cqw solid #111;pointer-events:none}
 .cx-ph::after{content:"";position:absolute;inset:6.4cqw;border:.25cqw solid #111;pointer-events:none}
@@ -387,11 +388,6 @@ nav #menu li:last-child a{border-bottom:2px solid var(--b)}}
 .cx-ttl{font-size:6.2cqw;font-weight:800;line-height:1.2}
 .cx-line{display:block;width:56%;height:0;border-top:.4cqw solid #111;margin-top:6cqw}
 .cx-small{font-size:3cqw;color:#555;letter-spacing:.08em;text-transform:uppercase}
-.cx-pause{position:absolute;right:max(16px,calc((100% - 1080px)/2));bottom:12px;width:40px;height:40px;border-radius:50%;border:1px solid var(--b);background:var(--w);color:var(--b);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0}
-.cx-pause svg{fill:currentColor}
-.cx-pause .i-play,.cx-pause[aria-pressed="true"] .i-pause{display:none}
-.cx-pause[aria-pressed="true"] .i-play{display:block}
-.cx-pause:focus-visible{outline:3px solid var(--b);outline-offset:3px}
 html.cx-lock{overflow:hidden}
 .cx-modal{position:fixed;inset:0;z-index:3000;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .22s ease}
 .cx-modal[hidden]{display:none}
@@ -419,7 +415,7 @@ html.cx-lock{overflow:hidden}
 @media(max-width:560px){#cert-gallery{padding-top:36px}.cx-nav{width:38px;height:38px}.cx-view{height:min(70vh,calc((100vw - 120px)*1.4142));height:min(70dvh,calc((100vw - 120px)*1.4142))}}
 @media(prefers-reduced-motion:reduce){.cx-modal{transition:none}.cx-view.go-next .cx-paper,.cx-view.go-prev .cx-paper{animation:none}}
 /* MYYA Coach Certification Framework */
-#coach-cert{border-bottom:1px solid var(--l)}
+#coach-cert{padding-top:12px;border-bottom:1px solid var(--l)}
 #coach-cert .sub{text-align:center;max-width:620px;margin:16px auto 0;color:var(--m);font-size:clamp(15px,1.6vw,18px)}
 .cc-card{max-width:1080px;margin:48px auto 0;border:1px solid var(--b);border-radius:28px;background:var(--w);overflow:hidden}
 .cc-table{min-width:680px}
@@ -427,19 +423,6 @@ html.cx-lock{overflow:hidden}
 .cc-table td:nth-child(2){font-weight:700}
 .cc-table td:nth-child(3){white-space:nowrap;font-weight:600}
 .cc-table td:nth-child(4){color:var(--m)}
-.cc-certs{margin-top:40px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-.cc-cert{border:1px solid var(--b);border-radius:28px;background:var(--w);padding:22px 18px 24px;text-align:center}
-.cc-badge{width:100%;max-width:150px;margin:0 auto;color:var(--b)}
-.cc-badge svg{display:block;width:100%;height:auto}
-.cc-badge .bd-s{stroke:currentColor}
-.cc-badge .bd-f{fill:currentColor;stroke:none}
-.cc-badge .bd-bg{fill:var(--w)}
-.cc-badge.hd{color:var(--w)}
-.cc-badge.hd .bd-bg{fill:var(--b)}
-.cc-lv{margin-top:14px;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--m)}
-.cc-tt{margin-top:4px;font-size:clamp(16px,1.8vw,19px);font-weight:800;line-height:1.25}
-@media(max-width:960px){.cc-certs{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:560px){.cc-certs{grid-template-columns:1fr}.cc-badge{max-width:130px}}
 #coach-cert h3.cc-sub{text-align:center;margin-top:56px;font-size:clamp(22px,3vw,30px);font-weight:900;letter-spacing:-.01em;line-height:1.2}
 .cc-grid{margin-top:28px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
 .cc-item{border:1px solid var(--b);border-radius:28px;background:var(--w);padding:24px 22px;text-align:left}
@@ -1712,19 +1695,19 @@ body.imgbox-lock{overflow:hidden}
         <div class="car-track">
         <div class="brand">
           <div class="brand-head">
-            <div class="brand-logo"><img loading="lazy" decoding="async" src="assets/img/74-28spin-logo.webp" alt="28Spin logo" width="64" height="64"></div>
-            <h3>28Spin</h3>
-          </div>
-          <p>28Spin was founded by two siblings, Raymond Thian and Mimi Thian. It is a Malaysia-based competition and collector yo-yo store, curated around one idea: The Throws That Win. Every model they carry has been chosen, not just stocked. Each one is a signature throw proven by the champions who compete with them, so players know they are getting yo-yos with a real track record. Whether you are a competitor looking for your next throw or a collector hunting for something special, it is a store built around quality over quantity. Visit the website to browse the full collection. In a market full of choices, that focus makes it easy to shop with confidence. Every throw on the shelf has earned its place, so you can spend less time second-guessing and more time practicing, performing and competing. For newcomers and veterans alike, it is a welcoming place to learn what makes a great yo-yo, and a reminder that the best gear is simply the gear that helps you improve. Behind every pick is a love for the sport and the players who keep it moving.</p>
-          <a class="btn sm" href="https://28spin.com/" target="_blank" rel="noopener">Visit Website</a>
-        </div>
-        <div class="brand">
-          <div class="brand-head">
             <div class="brand-logo"><img loading="lazy" decoding="async" src="assets/img/75-alternatives-logo.webp" alt="Alternatives logo" width="64" height="64"></div>
             <h3>Alternatives</h3>
           </div>
           <p>ALT (“alternatives”) is a Malaysian-founded, competition-grade yo-yo brand established by Ho Swee Jim. Known for its precision engineering, ALT is backed by a team of national and Asia-Pacific champions who put its designs to the test on the competition stage. Beyond making yo-yos, the brand also nurtures emerging talent into competitive champions, helping the next generation of Malaysian players grow. Its models include the Insomnia 7068, Inertia, Lacrima, and Key. Visit the website to explore the lineup and see what the brand is up to. Every release reflects the same commitment to detail, from the first design to the final throw. For competitors, that means dependable performance when it matters most. ALT proves that great yo-yos and great players grow best together. Quality you can feel in every spin. For players across Malaysia and the region, the brand stands as a symbol of local craftsmanship and ambition. It shows how a passion for design, careful engineering and support for the community can come together to shape the future of the sport.</p>
-          <a class="btn sm" href="https://altyoyo.com/" target="_blank" rel="noopener">Visit Website</a>
+          <a class="btn sm" href="https://www.instagram.com/altyoyo" target="_blank" rel="noopener">View on Instagram</a>
+        </div>
+        <div class="brand">
+          <div class="brand-head">
+            <div class="brand-logo"><img loading="lazy" decoding="async" src="assets/img/74-28spin-logo.webp" alt="28Spin logo" width="64" height="64"></div>
+            <h3>28Spin</h3>
+          </div>
+          <p>28Spin was founded by two siblings, Raymond Thian and Mimi Thian. It is a Malaysia-based competition and collector yo-yo store, curated around one idea: The Throws That Win. Every model they carry has been chosen, not just stocked. Each one is a signature throw proven by the champions who compete with them, so players know they are getting yo-yos with a real track record. Whether you are a competitor looking for your next throw or a collector hunting for something special, it is a store built around quality over quantity. Visit the website to browse the full collection. In a market full of choices, that focus makes it easy to shop with confidence. Every throw on the shelf has earned its place, so you can spend less time second-guessing and more time practicing, performing and competing. For newcomers and veterans alike, it is a welcoming place to learn what makes a great yo-yo, and a reminder that the best gear is simply the gear that helps you improve. Behind every pick is a love for the sport and the players who keep it moving.</p>
+          <a class="btn sm" href="https://www.instagram.com/28spin" target="_blank" rel="noopener">View on Instagram</a>
         </div>
         <div class="brand">
           <div class="brand-head">
@@ -1732,7 +1715,7 @@ body.imgbox-lock{overflow:hidden}
             <h3>Kedaiyoyo</h3>
           </div>
           <p>Kedaiyoyo is Malaysia's largest online and physical yo-yo store, founded by 8x Malaysia yo-yo champion Ewin Ee. It is also an Official Storefront on Shopee Malaysia, making it easy to order from anywhere in the country. The range covers yo-yos for all skill levels, international heavyweights, premium &amp; competition labels, and regional &amp; local favorites, alongside alternative skill toys, parts &amp; accessories, and lifestyle &amp; miscellaneous items. Whether you are picking up your very first yo-yo or upgrading your setup, it is a one-stop shop for the community. Visit the website to start shopping. With a physical store and an online shop working side by side, the community can browse and shop in whichever way suits them. It is a place where beginners find their feet and seasoned players find their next favorite. Backed by the experience of a champion, the store understands what players need at every stage, from choosing a first yo-yo to finding the right parts and accessories. It is a dependable home for the community, serving players across Malaysia.</p>
-          <a class="btn sm" href="https://kedaiyoyo.com/" target="_blank" rel="noopener">Visit Website</a>
+          <a class="btn sm" href="https://www.instagram.com/kedaiyoyo/" target="_blank" rel="noopener">View on Instagram</a>
         </div>
         <div class="brand">
           <div class="brand-head">
@@ -1839,23 +1822,22 @@ body.imgbox-lock{overflow:hidden}
     <button type="button" class="cx-card" data-cert="2" tabindex="-1" aria-hidden="true" aria-label="View Level 3 certificate: Senior Yo-Yo Coach"><span class="cx-sr cx-name"><b>Level 3</b> <span>Senior Yo-Yo Coach</span></span><span class="cx-paper" aria-hidden="true"><span class="cx-ph"><span class="cx-org">Malaysia Yo-Yo Association</span><span class="cx-big">Certificate</span><span class="cx-of">of Achievement</span><span class="cx-lvl">Level 3</span><span class="cx-ttl">Senior Yo-Yo Coach</span><span class="cx-line"></span><span class="cx-small">A4 certificate placeholder</span></span></span></button>
     <button type="button" class="cx-card" data-cert="3" tabindex="-1" aria-hidden="true" aria-label="View Level 4 certificate: Professional Yo-Yo Head Coach"><span class="cx-sr cx-name"><b>Level 4</b> <span>Professional Yo-Yo Head Coach</span></span><span class="cx-paper" aria-hidden="true"><span class="cx-ph"><span class="cx-org">Malaysia Yo-Yo Association</span><span class="cx-big">Certificate</span><span class="cx-of">of Achievement</span><span class="cx-lvl">Level 4</span><span class="cx-ttl">Professional Yo-Yo Head Coach</span><span class="cx-line"></span><span class="cx-small">A4 certificate placeholder</span></span></span></button>
   </div>
-  <button type="button" class="cx-pause" id="cxPause" aria-pressed="false" aria-label="Pause animation"><svg class="i-pause" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg><svg class="i-play" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.9l10.5-6.5a1 1 0 0 0 0-1.8L9.5 4.6A1 1 0 0 0 8 5.5z"/></svg></button>
 </section>
 <script>
 (function(){
   "use strict";
   var root=document.getElementById("cert-gallery"); if(!root) return;
-  var stage=document.getElementById("cxStage"), pauseBtn=document.getElementById("cxPause");
+  var stage=document.getElementById("cxStage");
   var cards=[].slice.call(stage.querySelectorAll(".cx-card"));
   var N=cards.length, REAL=4, PERSP=1000, BASE=.22;
   var mm=function(q){return window.matchMedia&&window.matchMedia(q).matches;};
   var reduce=mm("(prefers-reduced-motion: reduce)"), canHover=mm("(hover: hover)");
   var cw=190, pitch=cw*1.16, pos=0, speed=0, last=0, raf=0, visible=true;
-  var hold={hover:false,focus:false,modal:false,user:reduce};
+  var hold={hover:false,focus:false,modal:false,input:false,user:reduce};
+  var vel=0, remaining=0, inputT=0, suppress=false, drag=null;
   stage.style.perspective=PERSP+"px";
-  if(reduce) pauseBtn.hidden=true;
 
-  function measure(){var w=cards[0].offsetWidth; if(w){cw=w; pitch=w*1.16;}}
+  function measure(){var w=cards[0].offsetWidth; if(w){cw=w; pitch=w*1.16; PERSP=1000*w/190; stage.style.perspective=PERSP+"px";}}
   function layout(){
     var f=cw/190;
     for(var i=0;i<N;i++){
@@ -1871,19 +1853,23 @@ body.imgbox-lock{overflow:hidden}
       c.style.visibility=op<=0?"hidden":"visible";
     }
   }
-  function wanted(){return !(hold.hover||hold.focus||hold.modal||hold.user||!visible||document.hidden);}
-  function schedule(){ if(!raf&&!reduce&&visible&&!document.hidden) raf=requestAnimationFrame(tick); }
+  function wanted(){return !(hold.hover||hold.focus||hold.modal||hold.user||hold.input||!visible||document.hidden);}
+  function schedule(){ if(!raf&&visible&&!document.hidden) raf=requestAnimationFrame(tick); }
   function tick(t){
     raf=0;
     var dt=last?Math.min(.05,(t-last)/1000):0; last=t;
     var target=wanted()?BASE:0;
     speed+=(target-speed)*Math.min(1,dt*5);
     if(target===0&&speed<.002) speed=0;
-    pos=(pos+speed*dt)%N;
+    var step=0;
+    if(remaining!==0){ step=remaining*Math.min(1,dt*7); remaining-=step; if(Math.abs(remaining)<.003){step+=remaining;remaining=0;} }
+    vel*=Math.exp(-dt*3.5); if(Math.abs(vel)<.01) vel=0;
+    pos=(((pos+(speed+vel)*dt+step)%N)+N)%N;
     layout();
-    if(target>0||speed>0) schedule(); else last=0;
+    if(target>0||speed>0||vel!==0||remaining!==0) schedule(); else last=0;
   }
   function kick(){ if(wanted()) schedule(); }
+  function userInput(){ hold.input=true; clearTimeout(inputT); inputT=setTimeout(function(){hold.input=false;last=0;kick();},1200); }
 
   measure(); layout(); stage.classList.add("cx-ready"); root.classList.add("cx-ready");
   if("ResizeObserver" in window){ new ResizeObserver(function(){measure();layout();}).observe(stage); }
@@ -1898,9 +1884,54 @@ body.imgbox-lock{overflow:hidden}
   }
   stage.addEventListener("focusin",function(){hold.focus=true;});
   stage.addEventListener("focusout",function(e){ if(!stage.contains(e.relatedTarget)){hold.focus=false;last=0;kick();} });
-  pauseBtn.addEventListener("click",function(){
-    hold.user=!hold.user; pauseBtn.setAttribute("aria-pressed",hold.user?"true":"false");
-    if(!hold.user){last=0;kick();}
+  /* swipe / scroll / drag / keyboard */
+  stage.addEventListener("wheel",function(e){
+    var dx=e.deltaX, dy=e.deltaY;
+    if(e.shiftKey&&!dx){dx=dy;dy=0;}
+    if(Math.abs(dx)<=Math.abs(dy)) return;          /* vertical scroll keeps scrolling the page */
+    if(e.deltaMode===1) dx*=16;
+    e.preventDefault(); userInput();
+    pos=(((pos+dx/pitch*.9)%N)+N)%N; schedule();
+  },{passive:false});
+  stage.addEventListener("pointerdown",function(e){
+    if(e.pointerType==="mouse"&&e.button!==0) return;
+    drag={id:e.pointerId,x:e.clientX,lx:e.clientX,lt:performance.now(),v:0,cap:false};
+  });
+  stage.addEventListener("pointermove",function(e){
+    if(!drag||e.pointerId!==drag.id) return;
+    var dx=e.clientX-drag.lx, now=performance.now(), dtm=Math.max(1,now-drag.lt);
+    if(!drag.cap&&Math.abs(e.clientX-drag.x)>6){
+      drag.cap=true; try{stage.setPointerCapture(e.pointerId);}catch(_){}
+      stage.classList.add("cx-drag"); vel=0; remaining=0;
+    }
+    if(drag.cap){
+      userInput();
+      pos=(((pos-dx/pitch)%N)+N)%N;
+      drag.v=.6*drag.v+.4*((-dx/pitch)/(dtm/1000));
+      schedule();
+    }
+    drag.lx=e.clientX; drag.lt=now;
+  });
+  function endDrag(e){
+    if(!drag||(e&&e.pointerId!==drag.id)) return;
+    if(drag.cap){
+      suppress=true; setTimeout(function(){suppress=false;},60);
+      if(performance.now()-drag.lt>90) drag.v=0;
+      vel=Math.max(-6,Math.min(6,drag.v)); userInput(); schedule();
+      try{stage.releasePointerCapture(drag.id);}catch(_){}
+    }
+    stage.classList.remove("cx-drag"); drag=null;
+  }
+  stage.addEventListener("pointerup",endDrag);
+  stage.addEventListener("pointercancel",endDrag);
+  document.addEventListener("keydown",function(e){
+    if(e.key!=="ArrowLeft"&&e.key!=="ArrowRight") return;
+    if(e.altKey||e.ctrlKey||e.metaKey||(modal&&!modal.hidden)) return;
+    var t=e.target, tag=t&&t.tagName;
+    if(tag==="INPUT"||tag==="TEXTAREA"||tag==="SELECT"||(t&&t.isContentEditable)) return;
+    if(!(hold.hover||stage.contains(document.activeElement))) return;
+    e.preventDefault(); userInput();
+    remaining+=(e.key==="ArrowRight"?1:-1); schedule();
   });
 
   /* ---------- modal photo slider ---------- */
@@ -1956,6 +1987,7 @@ body.imgbox-lock{overflow:hidden}
     if(lastFocus&&lastFocus.focus) try{lastFocus.focus({preventScroll:true});}catch(e){}
   }
   stage.addEventListener("click",function(e){
+    if(suppress) return;
     var c=e.target.closest?e.target.closest(".cx-card"):null;
     if(!c||c.style.pointerEvents==="none") return;
     var opener=c.getAttribute("tabindex")==="-1"?card(+c.dataset.cert):c;
@@ -1993,7 +2025,7 @@ body.imgbox-lock{overflow:hidden}
 
 <section id="coach-cert">
   <div class="wrap">
-    <h2>MYYA Yo-Yo Coach Certification Framework</h2>
+    <h2>MYYA Yo-Yo Coach<br>Certification Framework</h2>
     <p class="sub">Proposed training standards for MYYA.</p>
     <div class="cc-card">
       <div class="ev-scroll">
@@ -2007,12 +2039,6 @@ body.imgbox-lock{overflow:hidden}
           </tbody>
         </table>
       </div>
-    </div>
-    <div class="cc-certs">
-      <div class="cc-cert"><div class="cc-badge"><svg viewBox="0 0 160 160" aria-hidden="true" focusable="false"><circle class="bd-bg bd-s" cx="80" cy="80" r="72" stroke-width="3"/><circle class="bd-s" cx="80" cy="80" r="52" fill="none" stroke-width="1.5" stroke-dasharray="3 4"/><path class="bd-s" d="M80 26v18" fill="none" stroke-width="3" stroke-linecap="round"/><circle class="bd-s" cx="80" cy="22" r="4.5" fill="none" stroke-width="3"/><circle class="bd-s" cx="80" cy="70" r="26" fill="none" stroke-width="3.5"/><circle class="bd-f" cx="80" cy="70" r="9"/><polygon class="bd-f" points="80.0,111.0 82.4,116.7 88.6,117.2 83.9,121.3 85.3,127.3 80.0,124.0 74.7,127.3 76.1,121.3 71.4,117.2 77.6,116.7"/></svg></div><div class="cc-lv">Level 1</div><div class="cc-tt">Assistant Yo-Yo Coach</div></div>
-      <div class="cc-cert"><div class="cc-badge"><svg viewBox="0 0 160 160" aria-hidden="true" focusable="false"><circle class="bd-bg bd-s" cx="80" cy="80" r="72" stroke-width="3"/><circle class="bd-s" cx="80" cy="80" r="52" fill="none" stroke-width="1.5" stroke-dasharray="3 4"/><path class="bd-s" d="M80 26v18" fill="none" stroke-width="3" stroke-linecap="round"/><circle class="bd-s" cx="80" cy="22" r="4.5" fill="none" stroke-width="3"/><circle class="bd-s" cx="80" cy="70" r="26" fill="none" stroke-width="3.5"/><circle class="bd-f" cx="80" cy="70" r="9"/><polygon class="bd-f" points="69.0,111.0 71.4,116.7 77.6,117.2 72.9,121.3 74.3,127.3 69.0,124.0 63.7,127.3 65.1,121.3 60.4,117.2 66.6,116.7"/><polygon class="bd-f" points="91.0,111.0 93.4,116.7 99.6,117.2 94.9,121.3 96.3,127.3 91.0,124.0 85.7,127.3 87.1,121.3 82.4,117.2 88.6,116.7"/></svg></div><div class="cc-lv">Level 2</div><div class="cc-tt">Certified Yo-Yo Coach</div></div>
-      <div class="cc-cert"><div class="cc-badge"><svg viewBox="0 0 160 160" aria-hidden="true" focusable="false"><circle class="bd-bg bd-s" cx="80" cy="80" r="72" stroke-width="3"/><circle class="bd-s" cx="80" cy="80" r="52" fill="none" stroke-width="1.5" stroke-dasharray="3 4"/><path class="bd-s" d="M80 26v18" fill="none" stroke-width="3" stroke-linecap="round"/><circle class="bd-s" cx="80" cy="22" r="4.5" fill="none" stroke-width="3"/><circle class="bd-s" cx="80" cy="70" r="26" fill="none" stroke-width="3.5"/><circle class="bd-f" cx="80" cy="70" r="9"/><polygon class="bd-f" points="58.0,111.0 60.4,116.7 66.6,117.2 61.9,121.3 63.3,127.3 58.0,124.0 52.7,127.3 54.1,121.3 49.4,117.2 55.6,116.7"/><polygon class="bd-f" points="80.0,111.0 82.4,116.7 88.6,117.2 83.9,121.3 85.3,127.3 80.0,124.0 74.7,127.3 76.1,121.3 71.4,117.2 77.6,116.7"/><polygon class="bd-f" points="102.0,111.0 104.4,116.7 110.6,117.2 105.9,121.3 107.3,127.3 102.0,124.0 96.7,127.3 98.1,121.3 93.4,117.2 99.6,116.7"/></svg></div><div class="cc-lv">Level 3</div><div class="cc-tt">Senior Yo-Yo Coach</div></div>
-      <div class="cc-cert"><div class="cc-badge hd"><svg viewBox="0 0 160 160" aria-hidden="true" focusable="false"><circle class="bd-bg bd-s" cx="80" cy="80" r="72" stroke-width="3"/><circle class="bd-s" cx="80" cy="80" r="52" fill="none" stroke-width="1.5" stroke-dasharray="3 4"/><path class="bd-s" d="M80 26v18" fill="none" stroke-width="3" stroke-linecap="round"/><circle class="bd-s" cx="80" cy="22" r="4.5" fill="none" stroke-width="3"/><circle class="bd-s" cx="80" cy="70" r="26" fill="none" stroke-width="3.5"/><circle class="bd-f" cx="80" cy="70" r="9"/><polygon class="bd-f" points="47.0,111.0 49.4,116.7 55.6,117.2 50.9,121.3 52.3,127.3 47.0,124.0 41.7,127.3 43.1,121.3 38.4,117.2 44.6,116.7"/><polygon class="bd-f" points="69.0,111.0 71.4,116.7 77.6,117.2 72.9,121.3 74.3,127.3 69.0,124.0 63.7,127.3 65.1,121.3 60.4,117.2 66.6,116.7"/><polygon class="bd-f" points="91.0,111.0 93.4,116.7 99.6,117.2 94.9,121.3 96.3,127.3 91.0,124.0 85.7,127.3 87.1,121.3 82.4,117.2 88.6,116.7"/><polygon class="bd-f" points="113.0,111.0 115.4,116.7 121.6,117.2 116.9,121.3 118.3,127.3 113.0,124.0 107.7,127.3 109.1,121.3 104.4,117.2 110.6,116.7"/></svg></div><div class="cc-lv">Level 4</div><div class="cc-tt">Professional Yo-Yo Head Coach</div></div>
     </div>
     <h3 class="cc-sub">Four qualification criteria</h3>
     <div class="cc-grid">
@@ -2943,7 +2969,7 @@ var T={
 "Malaysia Yo-Yo Association":"Persatuan Yo-Yo Malaysia"
 ,"Open Yo-Yo Clicker":"Buka Pengira Klik Yo-Yo"
 ,"Yo-Yo Champion":"Johan Yo-Yo","Yo-Yo Champions":"Johan Yo-Yo","Yo-Yo Events":"Acara Yo-Yo","Contests & Competitions":"Pertandingan & Kejohanan","A running list of yo-yo contests, championships and fairs held across Malaysia, from national championships and regional contests to battles, cups and community events.":"Senarai pertandingan yo-yo, kejohanan dan pesta yang diadakan di seluruh Malaysia, daripada kejohanan kebangsaan dan pertandingan serantau hingga battle, piala dan acara komuniti.","Vahana Strings is a handmade yo-yo string brand in Sabah, Malaysia, and all of its strings are 100% polyester. Introducing the all new Vahana Strings, locally made in Kota Kinabalu, Sabah. Founded by Fairuddin Amiruddin, this new string company is making good progress in East Malaysia. Each pack contains 15 strings with a length of 125cm, in a 100% polyester blend, and every string is handmade to perfection. The strings are a very durable chubby type, giving a good, tight bind and therefore a better spin for the following throw. They are also smooth and do not snag easily. Strong, smooth and tight-binding, they are made to keep up with everyday play. It is time to show your support for the local company. Try one today.":"Vahana Strings ialah jenama tali yo-yo buatan tangan di Sabah, Malaysia, dan semua talinya ialah poliester 100%. Memperkenalkan Vahana Strings yang baharu, dibuat secara tempatan di Kota Kinabalu, Sabah. Diasaskan oleh Fairuddin Amiruddin, syarikat tali baharu ini mencatat kemajuan yang baik di Malaysia Timur. Setiap pek mengandungi 15 tali dengan panjang 125cm, dalam campuran poliester 100%, dan setiap tali dibuat dengan tangan sehabis baik. Tali ini jenis chubby yang sangat tahan lama, memberikan ikatan yang baik dan ketat lalu putaran yang lebih baik untuk lontaran seterusnya. Ia juga licin dan tidak mudah tersangkut. Kuat, licin dan mengikat ketat, ia dibuat untuk menyaingi permainan harian. Sudah tiba masanya untuk anda menyokong syarikat tempatan. Cuba satu hari ini.","Wyvern Strings was established in June 2014 by Adam Hamzah from Malaysia. Wyvern Strings produces 100% polyester strings, and each string is purely hand turned. Made for slacks, suicide tricks and fast play, the strings are long lasting and do not create too much excess fibre, which can cut into the spin time of the yo-yo. Strings that last longer mean less time restringing and more time playing. They have a slick feel that minimises friction with the hand, minimal sweat absorption from the palm, and just the right weight for slacks and suicide tricks. Vibrant colours make the string easier to spot during play. The main goal for Adam is to make Wyvern Strings known worldwide and used globally by yo-yo players, without compromising on the quality of the strings.":"Wyvern Strings ditubuhkan pada Jun 2014 oleh Adam Hamzah dari Malaysia. Wyvern Strings menghasilkan tali poliester 100%, dan setiap tali dipintal sepenuhnya dengan tangan. Dibuat untuk slack, suicide trick dan permainan pantas, tali ini tahan lama dan tidak menghasilkan terlalu banyak serabut berlebihan yang boleh mengurangkan masa putaran yo-yo. Tali yang tahan lama bermaksud kurang masa menukar tali dan lebih banyak masa bermain. Ia mempunyai rasa licin yang mengurangkan geseran dengan tangan, penyerapan peluh yang minimum dari tapak tangan, dan berat yang tepat untuk slack dan suicide trick. Warna yang terang memudahkan tali dikesan semasa bermain. Matlamat utama Adam ialah menjadikan Wyvern Strings dikenali di seluruh dunia dan digunakan secara global oleh pemain yo-yo, tanpa menjejaskan kualiti tali.","Team RevYo, short for Revolution Yoer, is a professional yo-yo club based in Kota Kinabalu, the capital of Sabah in East Malaysia (Borneo). Founded on May 3, 2013, by Paul Peter and Micku Michelle @ Hochi, the team carries the motto “Passion. Skill.” on its logo, a nod to the dedication and technique that competitive yo-yo demands. Its name, Revolution Yoer, captures the spirit of a club that aims to move yo-yo forward in Sabah. RevYo is also active in the wider scene as an organizer of regional competitions, including the Sabah Open YoYo Championship (SOYC) 2019, held with MYYA. The team announced with a heavy heart that SOYC 2020 had to be cancelled due to the uncertainty of the recent COVID-19 outbreak, and MYYC 2020 was then held online. Follow the team on Instagram for updates, event news and highlights.":"Team RevYo, singkatan bagi Revolution Yoer, ialah kelab yo-yo profesional yang berpusat di Kota Kinabalu, ibu negeri Sabah di Malaysia Timur (Borneo). Ditubuhkan pada 3 Mei 2013 oleh Paul Peter dan Micku Michelle @ Hochi, pasukan ini membawa moto “Passion. Skill.” pada logonya, satu isyarat kepada dedikasi dan teknik yang diperlukan dalam yo-yo pertandingan. Namanya, Revolution Yoer, menggambarkan semangat sebuah kelab yang berhasrat memajukan yo-yo di Sabah. RevYo turut aktif dalam arena yang lebih luas sebagai penganjur pertandingan serantau, termasuk Sabah Open YoYo Championship (SOYC) 2019, yang diadakan bersama MYYA. Pasukan ini mengumumkan dengan berat hati bahawa SOYC 2020 terpaksa dibatalkan kerana ketidakpastian wabak COVID-19 baru-baru ini, dan MYYC 2020 kemudian diadakan secara dalam talian. Ikuti pasukan ini di Instagram untuk kemas kini, berita acara dan sorotan.","Data Source: Verified public records from Wikipedia, Yoyo Wiki, Yoyo Archive, Kedaiyoyo, MYYA via AI Overview by Google":"Sumber Data: Rekod awam yang disahkan daripada Wikipedia, Yoyo Wiki, Yoyo Archive, Kedaiyoyo, MYYA melalui AI Overview oleh Google","Champions and podium finishers from Malaysian yo-yo contests.":"Johan dan pemenang podium daripada pertandingan yo-yo Malaysia.","Year":"Tahun","Event":"Acara","Division":"Bahagian","1st Place (🥇)":"Tempat Pertama (🥇)","2nd Place (🥈)":"Tempat Kedua (🥈)","3rd Place (🥉)":"Tempat Ketiga (🥉)","Data Unavailable":"Tiada Data","Head Judge":"Hakim Ketua","Judge":"Hakim","School":"Sekolah","Club":"Kelab","Hall of Fame":"Hall of Fame","Legend/Pioneer":"Legenda/Perintis","Pioneer":"Perintis","Grand Master/Pioneer":"Grand Master/Perintis","Title":"Gelaran","Who it recognises":"Siapa yang diiktiraf","Yo-Yo Grandmaster":"Grandmaster Yo-Yo","Yo-Yo Legend":"Legenda Yo-Yo","Yo-Yo Pioneer":"Perintis Yo-Yo","Yo-Yo Hall of Fame":"Hall of Fame Yo-Yo","Highly skilled, experienced and respected players":"Pemain yang sangat mahir, berpengalaman dan dihormati","Masters with exceptional expertise and significant contributions":"Master dengan kepakaran luar biasa dan sumbangan yang besar","Iconic figures who have shaped the yo-yo community":"Tokoh ikonik yang membentuk komuniti yo-yo","People who pioneered a style, scene or movement":"Mereka yang memelopori gaya, arena atau gerakan","National or international competition champions":"Johan pertandingan peringkat kebangsaan atau antarabangsa","Individuals recognised for lifetime achievements":"Individu yang diiktiraf atas pencapaian seumur hidup","Powered by":"Dikuasakan oleh","Home":"Utama","Championships":"Kejohanan","Reels":"Reels","History":"Sejarah","Meet-Ups":"Pertemuan","Shop":"Kedai","Professionals":"Profesional","Champions":"Johan","Legacy":"Legasi","Get Started":"Mula","FAQ":"Soalan Lazim"
-,"Collectibles & Limited-Edition":"Barangan Koleksi & Edisi Terhad","From 1970s classics to 2000s moderns — Malaysia Yo-Yo Museum":"Daripada klasik 1970-an hingga moden 2000-an — Muzium Yo-Yo Malaysia","MYYA Yo-Yo Coach Certification Framework":"Rangka Kerja Pensijilan Jurulatih Yo-Yo MYYA","Proposed training standards for MYYA.":"Cadangan piawaian latihan untuk MYYA.","Level":"Tahap","Coaching title":"Gelaran jurulatih","Required hours":"Jam diperlukan","Qualification criteria":"Kriteria kelayakan","Assistant Yo-Yo Coach":"Penolong Jurulatih Yo-Yo","Certified Yo-Yo Coach":"Jurulatih Yo-Yo Bersijil","Senior Yo-Yo Coach":"Jurulatih Yo-Yo Kanan","Professional Yo-Yo Head Coach":"Ketua Jurulatih Yo-Yo Profesional","8 hours":"8 jam","20 hours cumulative":"20 jam terkumpul","40 hours cumulative":"40 jam terkumpul","60+ hours cumulative":"60+ jam terkumpul","Training-based + practical assessment":"Berasaskan latihan + penilaian praktikal","Training-based + competency assessment":"Berasaskan latihan + penilaian kompetensi","Experience-based + advanced assessment":"Berasaskan pengalaman + penilaian lanjutan","Appointment-based + leadership assessment":"Berasaskan pelantikan + penilaian kepimpinan","Four qualification criteria":"Empat kriteria kelayakan","Training-Based":"Berasaskan Latihan","Completion of the required training hours.":"Menamatkan jam latihan yang diperlukan.","Competency-Based":"Berasaskan Kompetensi","Demonstration of yo-yo skills, teaching ability and safety.":"Menunjukkan kemahiran yo-yo, keupayaan mengajar dan keselamatan.","Experience-Based":"Berasaskan Pengalaman","Verified coaching experience, practical teaching and community contributions.":"Pengalaman melatih yang disahkan, pengajaran praktikal dan sumbangan kepada komuniti.","Appointment-Based":"Berasaskan Pelantikan","Formal appointment and approval by MYYA.":"Pelantikan rasmi dan kelulusan oleh MYYA.","Note:":"Nota:","The training hours listed above are suggested cumulative minimums and do not represent existing official MYYA requirements. Higher-level recognition requires the relevant experience, assessments, and fulfilment of the training requirements for the Professional-Level Yo-Yo Train-The-Trainer Programme established by the Malaysia Yo-Yo Association (MYYA). The title of Professional Yo-Yo Head Coach is awarded through formal appointment by MYYA and is not granted automatically upon completion of 60 training hours.":"Jam latihan yang disenaraikan di atas ialah cadangan minimum terkumpul dan tidak mewakili syarat rasmi MYYA yang sedia ada. Pengiktirafan peringkat lebih tinggi memerlukan pengalaman yang berkaitan, penilaian, dan pemenuhan syarat latihan bagi Program Latihan Jurulatih (Train-The-Trainer) Yo-Yo Peringkat Profesional yang ditubuhkan oleh Persatuan Yo-Yo Malaysia (MYYA). Gelaran Ketua Jurulatih Yo-Yo Profesional dianugerahkan melalui pelantikan rasmi oleh MYYA dan tidak diberikan secara automatik setelah menamatkan 60 jam latihan."
+,"Collectibles & Limited-Edition":"Barangan Koleksi & Edisi Terhad","From 1970s classics to 2000s moderns — Malaysia Yo-Yo Museum":"Daripada klasik 1970-an hingga moden 2000-an — Muzium Yo-Yo Malaysia","MYYA Yo-Yo Coach":"Jurulatih Yo-Yo MYYA","Certification Framework":"Rangka Kerja Pensijilan","Proposed training standards for MYYA.":"Cadangan piawaian latihan untuk MYYA.","Level":"Tahap","Coaching title":"Gelaran jurulatih","Required hours":"Jam diperlukan","Qualification criteria":"Kriteria kelayakan","Assistant Yo-Yo Coach":"Penolong Jurulatih Yo-Yo","Certified Yo-Yo Coach":"Jurulatih Yo-Yo Bersijil","Senior Yo-Yo Coach":"Jurulatih Yo-Yo Kanan","Professional Yo-Yo Head Coach":"Ketua Jurulatih Yo-Yo Profesional","8 hours":"8 jam","20 hours cumulative":"20 jam terkumpul","40 hours cumulative":"40 jam terkumpul","60+ hours cumulative":"60+ jam terkumpul","Training-based + practical assessment":"Berasaskan latihan + penilaian praktikal","Training-based + competency assessment":"Berasaskan latihan + penilaian kompetensi","Experience-based + advanced assessment":"Berasaskan pengalaman + penilaian lanjutan","Appointment-based + leadership assessment":"Berasaskan pelantikan + penilaian kepimpinan","Four qualification criteria":"Empat kriteria kelayakan","Training-Based":"Berasaskan Latihan","Completion of the required training hours.":"Menamatkan jam latihan yang diperlukan.","Competency-Based":"Berasaskan Kompetensi","Demonstration of yo-yo skills, teaching ability and safety.":"Menunjukkan kemahiran yo-yo, keupayaan mengajar dan keselamatan.","Experience-Based":"Berasaskan Pengalaman","Verified coaching experience, practical teaching and community contributions.":"Pengalaman melatih yang disahkan, pengajaran praktikal dan sumbangan kepada komuniti.","Appointment-Based":"Berasaskan Pelantikan","Formal appointment and approval by MYYA.":"Pelantikan rasmi dan kelulusan oleh MYYA.","Note:":"Nota:","The training hours listed above are suggested cumulative minimums and do not represent existing official MYYA requirements. Higher-level recognition requires the relevant experience, assessments, and fulfilment of the training requirements for the Professional-Level Yo-Yo Train-The-Trainer Programme established by the Malaysia Yo-Yo Association (MYYA). The title of Professional Yo-Yo Head Coach is awarded through formal appointment by MYYA and is not granted automatically upon completion of 60 training hours.":"Jam latihan yang disenaraikan di atas ialah cadangan minimum terkumpul dan tidak mewakili syarat rasmi MYYA yang sedia ada. Pengiktirafan peringkat lebih tinggi memerlukan pengalaman yang berkaitan, penilaian, dan pemenuhan syarat latihan bagi Program Latihan Jurulatih (Train-The-Trainer) Yo-Yo Peringkat Profesional yang ditubuhkan oleh Persatuan Yo-Yo Malaysia (MYYA). Gelaran Ketua Jurulatih Yo-Yo Profesional dianugerahkan melalui pelantikan rasmi oleh MYYA dan tidak diberikan secara automatik setelah menamatkan 60 jam latihan."
 ,"Level 1":"Tahap 1","Level 2":"Tahap 2","Level 3":"Tahap 3","Level 4":"Tahap 4"
 };
 var TITLE="Persatuan Yo-Yo Malaysia | Komuniti Yo-Yo No. 1 Malaysia",saved=[],origTitle=document.title,ms=false;

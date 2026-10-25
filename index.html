@@ -368,6 +368,56 @@ nav #menu li:last-child a{border-bottom:2px solid var(--b)}}
 .brand .btn{margin-top:auto}
 @media(max-width:860px){.brand{flex-basis:calc((100% - 20px)/2)}}
 @media(max-width:640px){.brand{flex-basis:100%}}
+/* MYYA certificate carousel */
+#cert-gallery{position:relative;overflow:hidden;padding:56px 0 8px}
+.cx-stage{--cw:clamp(118px,13.5vw,208px);position:relative;height:calc(var(--cw)*2.5);margin:0 auto;perspective:1000px;perspective-origin:50% 45%;touch-action:pan-y;-webkit-user-select:none;user-select:none}
+.cx-card{position:absolute;left:50%;top:50%;width:var(--cw);aspect-ratio:210/297;margin:calc(var(--cw)*-.7071) 0 0 calc(var(--cw)/-2);padding:0;border:0;background:none;cursor:pointer;font:inherit;color:inherit;opacity:0;will-change:transform,opacity;-webkit-tap-highlight-color:transparent}
+.cx-ready .cx-card{opacity:1}
+.cx-card:focus-visible{outline:3px solid var(--b);outline-offset:6px;border-radius:10px}
+.cx-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.cx-paper{position:absolute;inset:0;display:block;container-type:inline-size;background:#fff;border-radius:6px;overflow:hidden;box-shadow:0 10px 24px -8px rgba(0,0,0,.16),0 1px 4px rgba(0,0,0,.08)}
+.cx-paper img{display:block;width:100%;height:100%;object-fit:cover}
+.cx-ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3.2cqw;padding:12cqw 10cqw;text-align:center;color:#111;background:linear-gradient(180deg,#fff,#faf8f4)}
+.cx-ph::before{content:"";position:absolute;inset:4cqw;border:.9cqw solid #111;pointer-events:none}
+.cx-ph::after{content:"";position:absolute;inset:6.4cqw;border:.25cqw solid #111;pointer-events:none}
+.cx-org{font-size:3.4cqw;letter-spacing:.22em;text-transform:uppercase;font-weight:700}
+.cx-big{font-family:Anton,Impact,"Arial Narrow",sans-serif;font-size:15cqw;line-height:1;text-transform:uppercase;letter-spacing:.02em}
+.cx-of{font-size:4.6cqw;font-style:italic;color:#444}
+.cx-lvl{margin-top:4cqw;display:inline-block;padding:1.6cqw 5cqw;border-radius:99px;background:#111;color:#fff;font-size:4cqw;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+.cx-ttl{font-size:6.2cqw;font-weight:800;line-height:1.2}
+.cx-line{display:block;width:56%;height:0;border-top:.4cqw solid #111;margin-top:6cqw}
+.cx-small{font-size:3cqw;color:#555;letter-spacing:.08em;text-transform:uppercase}
+.cx-pause{position:absolute;right:max(16px,calc((100% - 1080px)/2));bottom:12px;width:40px;height:40px;border-radius:50%;border:1px solid var(--b);background:var(--w);color:var(--b);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0}
+.cx-pause svg{fill:currentColor}
+.cx-pause .i-play,.cx-pause[aria-pressed="true"] .i-pause{display:none}
+.cx-pause[aria-pressed="true"] .i-play{display:block}
+.cx-pause:focus-visible{outline:3px solid var(--b);outline-offset:3px}
+html.cx-lock{overflow:hidden}
+.cx-modal{position:fixed;inset:0;z-index:3000;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .22s ease}
+.cx-modal[hidden]{display:none}
+.cx-modal.open{opacity:1}
+.cx-backdrop{position:absolute;inset:0;background:rgba(10,10,12,.84);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.cx-dialog{position:relative;display:flex;flex-direction:column;align-items:center;gap:14px;padding:16px;max-width:100vw}
+.cx-x{position:absolute;top:-4px;right:8px;width:44px;height:44px;border:0;border-radius:50%;background:rgba(255,255,255,.14);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0}
+.cx-row{display:flex;align-items:center;gap:clamp(8px,2vw,24px);margin-top:36px}
+.cx-nav{flex:none;width:46px;height:46px;border:0;border-radius:50%;background:#fff;color:#111;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;box-shadow:0 6px 20px rgba(0,0,0,.35)}
+.cx-x:hover,.cx-nav:hover{filter:brightness(.92)}
+.cx-x:focus-visible,.cx-nav:focus-visible,.cx-dots button:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.cx-modal svg{display:block;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.cx-view{height:min(76vh,calc((100vw - 170px)*1.4142));height:min(76dvh,calc((100vw - 170px)*1.4142));aspect-ratio:210/297;position:relative;touch-action:pan-y}
+.cx-view .cx-paper{position:relative;inset:auto;width:100%;height:100%;border-radius:8px;box-shadow:0 14px 40px rgba(0,0,0,.35)}
+.cx-view.go-next .cx-paper{animation:cxNext .3s ease both}
+.cx-view.go-prev .cx-paper{animation:cxPrev .3s ease both}
+@keyframes cxNext{from{opacity:0;transform:translateX(36px) scale(.97)}to{opacity:1;transform:none}}
+@keyframes cxPrev{from{opacity:0;transform:translateX(-36px) scale(.97)}to{opacity:1;transform:none}}
+.cx-meta{display:flex;flex-direction:column;align-items:center;gap:10px;color:#fff;text-align:center}
+.cx-cap{font-size:15px;font-weight:600}
+.cx-cap b{font-weight:800}
+.cx-dots{display:flex;gap:10px;align-items:center}
+.cx-dots button{width:10px;height:10px;padding:0;border:0;border-radius:50%;background:rgba(255,255,255,.4);cursor:pointer}
+.cx-dots button[aria-current="true"]{background:#fff;transform:scale(1.25)}
+@media(max-width:560px){#cert-gallery{padding-top:36px}.cx-nav{width:38px;height:38px}.cx-view{height:min(70vh,calc((100vw - 120px)*1.4142));height:min(70dvh,calc((100vw - 120px)*1.4142))}}
+@media(prefers-reduced-motion:reduce){.cx-modal{transition:none}.cx-view.go-next .cx-paper,.cx-view.go-prev .cx-paper{animation:none}}
 /* MYYA Coach Certification Framework */
 #coach-cert{border-bottom:1px solid var(--l)}
 #coach-cert .sub{text-align:center;max-width:620px;margin:16px auto 0;color:var(--m);font-size:clamp(15px,1.6vw,18px)}
@@ -1774,6 +1824,172 @@ body.imgbox-lock{overflow:hidden}
     </div>
   </div>
 </section>
+
+<section id="cert-gallery" aria-roledescription="carousel" aria-label="MYYA coach certificates">
+  <!-- To use real A4 certificates: replace each <span class="cx-paper">…</span> with
+       <span class="cx-paper"><img src="assets/certs/level-1.webp" alt="Level 1 certificate" loading="lazy" width="1240" height="1754"></span>
+       (repeat for every card with the same data-cert number; 0 = Level 1 … 3 = Level 4) -->
+  <div class="cx-stage" id="cxStage">
+    <button type="button" class="cx-card" data-cert="0" aria-label="View Level 1 certificate: Assistant Yo-Yo Coach"><span class="cx-sr cx-name"><b>Level 1</b> <span>Assistant Yo-Yo Coach</span></span><span class="cx-paper" aria-hidden="true"><span class="cx-ph"><span class="cx-org">Malaysia Yo-Yo Association</span><span class="cx-big">Certificate</span><span class="cx-of">of Achievement</span><span class="cx-lvl">Level 1</span><span class="cx-ttl">Assistant Yo-Yo Coach</span><span class="cx-line"></span><span class="cx-small">A4 certificate placeholder</span></span></span></button>
+    <button type="button" class="cx-card" data-cert="1" aria-label="View Level 2 certificate: Certified Yo-Yo Coach"><span class="cx-sr cx-name"><b>Level 2</b> <span>Certified Yo-Yo Coach</span></span><span class="cx-paper" aria-hidden="true"><span class="cx-ph"><span class="cx-org">Malaysia Yo-Yo Association</span><span class="cx-big">Certificate</span><span class="cx-of">of Achievement</span><span class="cx-lvl">Level 2</span><span class="cx-ttl">Certified Yo-Yo Coach</span><span class="cx-line"></span><span class="cx-small">A4 certificate placeholder</span></span></span></button>
+    <button type="button" class="cx-card" data-cert="2" aria-label="View Level 3 certificate: Senior Yo-Yo Coach"><span class="cx-sr cx-name"><b>Level 3</b> <span>Senior Yo-Yo Coach</span></span><span class="cx-paper" aria-hidden="true"><span class="cx-ph"><span class="cx-org">Malaysia Yo-Yo Association</span><span class="cx-big">Certificate</span><span class="cx-of">of Achievement</span><span class="cx-lvl">Level 3</span><span class="cx-ttl">Senior Yo-Yo Coach</span><span class="cx-line"></span><span class="cx-small">A4 certificate placeholder</span></span></span></button>
+    <button type="button" class="cx-card" data-cert="3" aria-label="View Level 4 certificate: Professional Yo-Yo Head Coach"><span class="cx-sr cx-name"><b>Level 4</b> <span>Professional Yo-Yo Head Coach</span></span><span class="cx-paper" aria-hidden="true"><span class="cx-ph"><span class="cx-org">Malaysia Yo-Yo Association</span><span class="cx-big">Certificate</span><span class="cx-of">of Achievement</span><span class="cx-lvl">Level 4</span><span class="cx-ttl">Professional Yo-Yo Head Coach</span><span class="cx-line"></span><span class="cx-small">A4 certificate placeholder</span></span></span></button>
+    <button type="button" class="cx-card" data-cert="0" tabindex="-1" aria-hidden="true" aria-label="View Level 1 certificate: Assistant Yo-Yo Coach"><span class="cx-sr cx-name"><b>Level 1</b> <span>Assistant Yo-Yo Coach</span></span><span class="cx-paper" aria-hidden="true"><span class="cx-ph"><span class="cx-org">Malaysia Yo-Yo Association</span><span class="cx-big">Certificate</span><span class="cx-of">of Achievement</span><span class="cx-lvl">Level 1</span><span class="cx-ttl">Assistant Yo-Yo Coach</span><span class="cx-line"></span><span class="cx-small">A4 certificate placeholder</span></span></span></button>
+    <button type="button" class="cx-card" data-cert="1" tabindex="-1" aria-hidden="true" aria-label="View Level 2 certificate: Certified Yo-Yo Coach"><span class="cx-sr cx-name"><b>Level 2</b> <span>Certified Yo-Yo Coach</span></span><span class="cx-paper" aria-hidden="true"><span class="cx-ph"><span class="cx-org">Malaysia Yo-Yo Association</span><span class="cx-big">Certificate</span><span class="cx-of">of Achievement</span><span class="cx-lvl">Level 2</span><span class="cx-ttl">Certified Yo-Yo Coach</span><span class="cx-line"></span><span class="cx-small">A4 certificate placeholder</span></span></span></button>
+    <button type="button" class="cx-card" data-cert="2" tabindex="-1" aria-hidden="true" aria-label="View Level 3 certificate: Senior Yo-Yo Coach"><span class="cx-sr cx-name"><b>Level 3</b> <span>Senior Yo-Yo Coach</span></span><span class="cx-paper" aria-hidden="true"><span class="cx-ph"><span class="cx-org">Malaysia Yo-Yo Association</span><span class="cx-big">Certificate</span><span class="cx-of">of Achievement</span><span class="cx-lvl">Level 3</span><span class="cx-ttl">Senior Yo-Yo Coach</span><span class="cx-line"></span><span class="cx-small">A4 certificate placeholder</span></span></span></button>
+    <button type="button" class="cx-card" data-cert="3" tabindex="-1" aria-hidden="true" aria-label="View Level 4 certificate: Professional Yo-Yo Head Coach"><span class="cx-sr cx-name"><b>Level 4</b> <span>Professional Yo-Yo Head Coach</span></span><span class="cx-paper" aria-hidden="true"><span class="cx-ph"><span class="cx-org">Malaysia Yo-Yo Association</span><span class="cx-big">Certificate</span><span class="cx-of">of Achievement</span><span class="cx-lvl">Level 4</span><span class="cx-ttl">Professional Yo-Yo Head Coach</span><span class="cx-line"></span><span class="cx-small">A4 certificate placeholder</span></span></span></button>
+  </div>
+  <button type="button" class="cx-pause" id="cxPause" aria-pressed="false" aria-label="Pause animation"><svg class="i-pause" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg><svg class="i-play" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.9l10.5-6.5a1 1 0 0 0 0-1.8L9.5 4.6A1 1 0 0 0 8 5.5z"/></svg></button>
+</section>
+<script>
+(function(){
+  "use strict";
+  var root=document.getElementById("cert-gallery"); if(!root) return;
+  var stage=document.getElementById("cxStage"), pauseBtn=document.getElementById("cxPause");
+  var cards=[].slice.call(stage.querySelectorAll(".cx-card"));
+  var N=cards.length, REAL=4, PERSP=1000, BASE=.22;
+  var mm=function(q){return window.matchMedia&&window.matchMedia(q).matches;};
+  var reduce=mm("(prefers-reduced-motion: reduce)"), canHover=mm("(hover: hover)");
+  var cw=190, pitch=cw*1.16, pos=0, speed=0, last=0, raf=0, visible=true;
+  var hold={hover:false,focus:false,modal:false,user:reduce};
+  stage.style.perspective=PERSP+"px";
+  if(reduce) pauseBtn.hidden=true;
+
+  function measure(){var w=cards[0].offsetWidth; if(w){cw=w; pitch=w*1.16;}}
+  function layout(){
+    var f=cw/190;
+    for(var i=0;i<N;i++){
+      var x=((i-pos+N/2)%N+N)%N-N/2, ax=Math.abs(x);
+      var tz=48*Math.pow(ax,1.7)*f, s=PERSP/(PERSP-tz), tx=x*pitch/s;
+      var ry=-(x<0?-1:1)*Math.min(64,ax*21);
+      var op=ax<2.5?1:Math.max(0,1-(ax-2.5)/1.3);
+      var c=cards[i];
+      c.style.transform="translate3d("+tx.toFixed(1)+"px,0,"+tz.toFixed(1)+"px) rotateY("+ry.toFixed(2)+"deg)";
+      c.style.opacity=op.toFixed(3);
+      c.style.zIndex=Math.round(tz)+100;
+      c.style.pointerEvents=op>.25?"auto":"none";
+      c.style.visibility=op<=0?"hidden":"visible";
+    }
+  }
+  function wanted(){return !(hold.hover||hold.focus||hold.modal||hold.user||!visible||document.hidden);}
+  function schedule(){ if(!raf&&!reduce&&visible&&!document.hidden) raf=requestAnimationFrame(tick); }
+  function tick(t){
+    raf=0;
+    var dt=last?Math.min(.05,(t-last)/1000):0; last=t;
+    var target=wanted()?BASE:0;
+    speed+=(target-speed)*Math.min(1,dt*5);
+    if(target===0&&speed<.002) speed=0;
+    pos=(pos+speed*dt)%N;
+    layout();
+    if(target>0||speed>0) schedule(); else last=0;
+  }
+  function kick(){ if(wanted()) schedule(); }
+
+  measure(); layout(); stage.classList.add("cx-ready"); root.classList.add("cx-ready");
+  if("ResizeObserver" in window){ new ResizeObserver(function(){measure();layout();}).observe(stage); }
+  else addEventListener("resize",function(){measure();layout();});
+  if("IntersectionObserver" in window){
+    new IntersectionObserver(function(es){visible=es[0].isIntersecting; if(visible)kick();}).observe(root);
+  }
+  document.addEventListener("visibilitychange",function(){ if(!document.hidden){last=0;kick();} });
+  if(canHover){
+    stage.addEventListener("mouseenter",function(){hold.hover=true;});
+    stage.addEventListener("mouseleave",function(){hold.hover=false;last=0;kick();});
+  }
+  stage.addEventListener("focusin",function(){hold.focus=true;});
+  stage.addEventListener("focusout",function(e){ if(!stage.contains(e.relatedTarget)){hold.focus=false;last=0;kick();} });
+  pauseBtn.addEventListener("click",function(){
+    hold.user=!hold.user; pauseBtn.setAttribute("aria-pressed",hold.user?"true":"false");
+    if(!hold.user){last=0;kick();}
+  });
+
+  /* ---------- modal photo slider ---------- */
+  var modal=document.createElement("div");
+  modal.className="cx-modal"; modal.hidden=true;
+  modal.setAttribute("role","dialog"); modal.setAttribute("aria-modal","true"); modal.setAttribute("aria-label","Certificate viewer");
+  var chev=function(d){return '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="'+d+'"/></svg>';};
+  modal.innerHTML=
+    '<div class="cx-backdrop" data-close="1"></div>'+
+    '<div class="cx-dialog">'+
+      '<button type="button" class="cx-x" data-close="1" aria-label="Close">'+chev("M6 6l12 12M18 6L6 18")+'</button>'+
+      '<div class="cx-row">'+
+        '<button type="button" class="cx-nav cx-prev" aria-label="Previous certificate">'+chev("M15 5l-7 7 7 7")+'</button>'+
+        '<div class="cx-view" aria-live="polite"></div>'+
+        '<button type="button" class="cx-nav cx-next" aria-label="Next certificate">'+chev("M9 5l7 7-7 7")+'</button>'+
+      '</div>'+
+      '<div class="cx-meta"><div class="cx-cap"></div><div class="cx-dots"></div></div>'+
+    '</div>';
+  document.body.appendChild(modal);
+  var view=modal.querySelector(".cx-view"), cap=modal.querySelector(".cx-cap"),
+      dotsBox=modal.querySelector(".cx-dots"), xBtn=modal.querySelector(".cx-x");
+  var dots=[], cur=0, lastFocus=null, closeT=0;
+  for(var d=0;d<REAL;d++){
+    (function(n){
+      var b=document.createElement("button"); b.type="button"; b.setAttribute("aria-label","Go to certificate "+(n+1));
+      b.addEventListener("click",function(){ go(n, n>cur?1:-1); });
+      dotsBox.appendChild(b); dots.push(b);
+    })(d);
+  }
+  function card(i){ return stage.querySelector('.cx-card[data-cert="'+i+'"]'); }
+  function render(dir){
+    var c=card(cur), src=c.querySelector(".cx-paper"), clone=src.cloneNode(true);
+    clone.removeAttribute("aria-hidden");
+    var lv=c.querySelector(".cx-name b"), tt=c.querySelector(".cx-name span");
+    var name=(lv?lv.textContent:"")+" · "+(tt?tt.textContent:"");
+    view.className="cx-view"+(dir?(dir>0?" go-next":" go-prev"):"");
+    view.innerHTML=""; view.appendChild(clone);
+    cap.innerHTML=""; var b=document.createElement("b"); b.textContent=lv?lv.textContent:""; cap.appendChild(b);
+    cap.appendChild(document.createTextNode(" · "+(tt?tt.textContent:"")+"   ("+(cur+1)+" / "+REAL+")"));
+    for(var k=0;k<REAL;k++) dots[k].setAttribute("aria-current",k===cur?"true":"false");
+    view.setAttribute("aria-label",name);
+  }
+  function go(n,dir){ cur=((n%REAL)+REAL)%REAL; render(dir||1); }
+  function open(i,opener){
+    clearTimeout(closeT); lastFocus=opener||document.activeElement; cur=i; render(0);
+    modal.hidden=false; document.documentElement.classList.add("cx-lock"); hold.modal=true;
+    requestAnimationFrame(function(){requestAnimationFrame(function(){modal.classList.add("open"); xBtn.focus();});});
+  }
+  function close(){
+    modal.classList.remove("open"); document.documentElement.classList.remove("cx-lock");
+    closeT=setTimeout(function(){modal.hidden=true;},230);
+    hold.modal=false; last=0; kick();
+    if(lastFocus&&lastFocus.focus) try{lastFocus.focus({preventScroll:true});}catch(e){}
+  }
+  stage.addEventListener("click",function(e){
+    var c=e.target.closest?e.target.closest(".cx-card"):null;
+    if(!c||c.style.pointerEvents==="none") return;
+    var opener=c.getAttribute("tabindex")==="-1"?card(+c.dataset.cert):c;
+    open(+c.dataset.cert, opener);
+  });
+  modal.addEventListener("click",function(e){
+    var t=e.target;
+    if(t.closest&&t.closest("[data-close]")) close();
+    else if(t.closest&&t.closest(".cx-prev")) go(cur-1,-1);
+    else if(t.closest&&t.closest(".cx-next")) go(cur+1,1);
+  });
+  document.addEventListener("keydown",function(e){
+    if(modal.hidden) return;
+    if(e.key==="Escape"){e.preventDefault();close();}
+    else if(e.key==="ArrowLeft"){e.preventDefault();go(cur-1,-1);}
+    else if(e.key==="ArrowRight"){e.preventDefault();go(cur+1,1);}
+    else if(e.key==="Tab"){
+      var f=[].slice.call(modal.querySelectorAll("button")); if(!f.length) return;
+      var first=f[0], lastEl=f[f.length-1];
+      if(e.shiftKey&&document.activeElement===first){e.preventDefault();lastEl.focus();}
+      else if(!e.shiftKey&&document.activeElement===lastEl){e.preventDefault();first.focus();}
+    }
+  });
+  var sx=null;
+  view.addEventListener("pointerdown",function(e){sx=e.clientX;});
+  view.addEventListener("pointerup",function(e){
+    if(sx===null) return; var dx=e.clientX-sx; sx=null;
+    if(Math.abs(dx)>50) go(cur+(dx<0?1:-1), dx<0?1:-1);
+  });
+  view.addEventListener("pointercancel",function(){sx=null;});
+
+  kick();
+})();
+</script>
 
 <section id="coach-cert">
   <div class="wrap">

@@ -48,6 +48,12 @@
 .kit-slide{flex:0 0 100%;min-width:0;scroll-snap-align:start;scroll-snap-stop:always;overflow:hidden}
 .tier .kit-slide ul{margin:0;flex:none}
 @media(prefers-reduced-motion:reduce){.kit-seg button{transition:none}}
+.tiers{max-width:1240px;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr)}
+.tier-img{padding:6px}
+@media(max-width:999px){.tiers{max-width:640px;grid-template-columns:minmax(0,1fr)}.tier-img{width:100%}}
+.tier#tierCard{display:grid;grid-template-columns:minmax(0,1fr)}
+.tier#tierCard>.pane{grid-area:1/1;min-width:0}
+.tier#tierCard>.pane[hidden]{display:flex;visibility:hidden;pointer-events:none}
 </style>
 </head>
 <body>
@@ -212,7 +218,7 @@
 <a class="btn o" href="https://www.facebook.com/share/g/19mVbs9349/?mibextid=wwXIfr" target="_blank" rel="noopener" data-join="free">Join</a>
 </div>
 </div>
-<div class="tier-img"><img src="assets/img/myya-member-kit.webp" srcset="assets/img/myya-member-kit-600.webp 600w, assets/img/myya-member-kit.webp 1000w" sizes="(max-width:999px) min(460px,calc(100vw - 80px)), 360px" width="1000" height="1000" loading="lazy" decoding="async" alt="Official MYYA member kit: black T-shirt, yo-yo with strings, three grading cards, certificate of participation and member card"></div>
+<div class="tier-img"><img src="assets/img/myya-member-kit.webp" srcset="assets/img/myya-member-kit-600.webp 600w, assets/img/myya-member-kit.webp 1000w" sizes="(max-width:999px) min(640px,calc(100vw - 40px)), 680px" width="1000" height="1000" loading="lazy" decoding="async" alt="Official MYYA member kit: black T-shirt, yo-yo with strings, three grading cards, certificate of participation and member card"></div>
 </div>
 </div>
 <script>(function(){var t=document.getElementById("kitTrack"),seg=document.getElementById("kitSeg");if(!t||!seg)return;var th=seg.querySelector(".kit-thumb"),tabs=seg.querySelectorAll("[data-kit]"),cur=0,lock=null;function ui(p){th.style.transform="translateX("+(p*100)+"%)";var i=p>.5?1:0;if(i!==cur){cur=i;tabs.forEach(function(b,k){b.setAttribute("aria-selected",k===i?"true":"false");b.tabIndex=k===i?0:-1})}}function prog(){var w=t.clientWidth;return w?Math.max(0,Math.min(1,t.scrollLeft/w)):0}t.addEventListener("scroll",function(){ui(prog())},{passive:true});function go(i,focus){var rm=window.matchMedia&&matchMedia("(prefers-reduced-motion:reduce)").matches;t.scrollTo({left:i*t.clientWidth,behavior:rm?"auto":"smooth"});if(focus)tabs[i].focus()}tabs.forEach(function(b){b.addEventListener("click",function(){go(+b.getAttribute("data-kit"))});b.addEventListener("keydown",function(e){if(e.key==="ArrowRight"||e.key==="ArrowLeft"){e.preventDefault();go(e.key==="ArrowRight"?1:0,true)}})});window.addEventListener("resize",function(){t.scrollLeft=cur*t.clientWidth;ui(cur)});var dx=null,sl=0,moved=false;t.addEventListener("pointerdown",function(e){if(e.pointerType!=="mouse")return;dx=e.clientX;sl=t.scrollLeft;moved=false;t.style.scrollSnapType="none";t.style.cursor="grabbing"});window.addEventListener("pointermove",function(e){if(dx===null)return;var d=e.clientX-dx;if(Math.abs(d)>3)moved=true;t.scrollLeft=sl-d});window.addEventListener("pointerup",function(){if(dx===null)return;dx=null;t.style.scrollSnapType="";t.style.cursor="";go(prog()>.5?1:0)})})();</script>
